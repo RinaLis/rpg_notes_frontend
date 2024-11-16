@@ -33,6 +33,7 @@
     "react/button-has-type": "off",
 
     "import/prefer-default-export": "off",
+		"import/no-named-as-default": 0,
     "import/no-extraneous-dependencies": [
       "error",
       {
@@ -49,5 +50,6 @@
       }
     ],
     "prettier/prettier": ["error"]
-  }
+  },
+	"ignorePatterns": ["node_modules/"]
 }
