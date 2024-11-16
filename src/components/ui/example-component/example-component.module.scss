@@ -1,0 +1,33 @@
+.example {
+	// такие коменты писать не надо, это просто пример
+	// это стили для элемента с классом example
+	// когда будут переменные все цвета засунем в них и будем использовать
+	// переменные вместо цветов
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100px;
+	background-color: aquamarine;
+
+	&__digit {
+		// это стили для элемента с классом example__digit
+		font-size: 20px;
+		color: red;
+	}
+	&__button {
+		margin-left: 10px;
+		border-radius: 50%;
+
+		&:hover {
+			// это стили для элемента с классом example__button при наведении
+			background-color: orange;
+		}
+	}
+	&__content {
+		margin-left: 10px;
+		display: flex;
+		flex-direction: column;
+	}
+}

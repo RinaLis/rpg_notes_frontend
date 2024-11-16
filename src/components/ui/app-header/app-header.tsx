@@ -1,7 +1,8 @@
 import React from 'react';
+import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import styles from './app-header.module.css';
-import logo from '/logo.svg';
+import logo from '@assets/logo.svg';
+import styles from './app-header.module.scss';
 
 export const AppHeaderUI: React.FC = () => {
 	return (
@@ -10,9 +11,7 @@ export const AppHeaderUI: React.FC = () => {
 				<div className={styles.menu_part_left}>
 					<NavLink
 						to="/adventures"
-						className={({ isActive }) =>
-							isActive ? styles.link + ' ' + styles.link_active : styles.link
-						}
+						className={({ isActive }) => clsx(styles.link, isActive && styles.link_active)}
 					>
 						Все приключения
 					</NavLink>
@@ -27,9 +26,7 @@ export const AppHeaderUI: React.FC = () => {
 				<div className={styles.menu_part_right}>
 					<NavLink
 						to="/profile"
-						className={({ isActive }) =>
-							isActive ? styles.link + ' ' + styles.link_active : styles.link
-						}
+						className={({ isActive }) => clsx(styles.link, isActive && styles.link_active)}
 					>
 						Личный кабинет
 					</NavLink>
@@ -38,4 +35,3 @@ export const AppHeaderUI: React.FC = () => {
 		</header>
 	);
 };
-
