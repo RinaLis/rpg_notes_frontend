@@ -5,7 +5,8 @@
     "airbnb/hooks",
     "airbnb-typescript",
     "plugin:eslint-comments/recommended",
-    "prettier"
+    "plugin:prettier/recommended",
+
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -19,15 +20,18 @@
     "prettier"
   ],
   "rules": {
-    "react/function-component-definition": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-uses-react": "off",
+
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-unused-vars": "warn", // можно заменить на error , но оно задолбает
+
+    "react/function-component-definition": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/prop-types": "off",
     "react/button-has-type": "off",
+
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": [
       "error",
