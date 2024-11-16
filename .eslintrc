@@ -42,7 +42,9 @@
           "src/setupTests.ts",
 
           "src/components/**/*.stories.tsx",
-          "src/**/*.test.{ts,tsx}"
+          "src/**/*.test.{ts,tsx}",
+					"src/__tests__/**/*.{ts,tsx}"
+
         ]
       }
     ],
