@@ -1,0 +1,18 @@
+.exampleSection {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	background-color: #f0f0f0;
+
+	&__title {
+		font-size: 30px;
+		color: #000;
+		background-color: cadetblue;
+		width: 200px;
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+	}
+}

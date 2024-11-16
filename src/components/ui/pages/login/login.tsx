@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { FC } from 'react';
 
 export const LoginUI: FC = () => {
