@@ -1,6 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
-import logo from '/logo.svg';
+import React, { useState } from 'react';
+import logo from '../../../..assets/logo.svg';
 import './home.css';
 
 export const Home: React.FC = () => {
@@ -8,22 +7,23 @@ export const Home: React.FC = () => {
 	return (
 		<>
 			<div>
-				<a href="#" target="_blank"></a>
 				<a href="https://github.com/RinaLis/rpg_notes_frontend">
 					<img src={logo} className="logo react" alt="NRI logo" />
 				</a>
 			</div>
 			<h1>Home</h1>
-			<div >
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
+			<div>
+				<button onClick={() => setCount((num) => num + 1)}>count is {count}</button>
 			</div>
-            <div>
-            <button onClick={() => (window.location.href = '/login')}>
+			<div>
+				<button
+					onClick={() => {
+						window.location.href = '/login';
+					}}
+				>
 					go to Login
 				</button>
-            </div>
+			</div>
 		</>
 	);
 };

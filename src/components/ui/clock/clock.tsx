@@ -1,5 +1,6 @@
-import { ClockUIProps } from './type';
 import React from 'react';
+import { ClockUIProps } from './type';
+
 export const ClockUI: React.FC<ClockUIProps> = ({ time }) => {
 	return (
 		<div>

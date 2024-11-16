@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { FC } from 'react';
 
 export const LoginUI: FC = () => {
@@ -28,7 +27,13 @@ export const LoginUI: FC = () => {
 			</div>
 
 			<div className="card">
-				<button onClick={() => (window.location.href = '/')}>go to Home</button>
+				<button
+					onClick={() => {
+						window.location.href = '/';
+					}}
+				>
+					go to Home
+				</button>
 			</div>
 		</main>
 	);
