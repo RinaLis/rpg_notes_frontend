@@ -6,35 +6,37 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "npm run lint -- --fix",
-    "format": "prettier --write ./src",
     "preview": "vite preview",
-    "test": "vitest",
+    "lint": "npm run lint:ts",
+    "lint:ts": "tsc && npm run lint:eslint",
+    "lint:eslint": "eslint src/**/*.{ts,tsx}",
+		"lint:some": "eslint ",
+    "format": "npm run format:ts",
+    "format:ts": "prettier --write 'src/**/*.{ts,tsx}' && npm run lint:eslint --fix",
+    "format:check": "prettier -c 'src/**/*.{ts,tsx}'",
+    "test": "jest",
+    "vitest": "vitest",
     "cypress:open": "cypress open",
     "test:staged": "vitest --run",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
-  "lint-staged": {
-    "src/**/*.(json|css|scss|md)|.(babelrc|prettierrc|eslint.js|tsconfig.json)": [
-      "prettier --write"
-    ],
-    "**/*.{js,jsx,ts,tsx}": [
-      "npm run lint",
-      "prettier --write --ignore-unknown",
-      "npm run test:staged"
-    ]
-  },
+
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.3.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
     "@eslint/js": "^9.14.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
@@ -42,13 +44,19 @@
     "@types/mocha": "^10.0.9",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@vitejs/plugin-react": "^4.3.3",
     "cypress": "^13.15.2",
     "cypress-vite": "^1.5.0",
-    "eslint": "^9.14.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
     "husky": "^8.0.0",
@@ -56,10 +64,12 @@
     "jsdom": "^25.0.1",
     "lint-staged": "^15.2.10",
     "prettier": "3.3.3",
+    "sass": "^1.81.0",
     "ts-jest": "^29.2.5",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.14.0",
     "vite": "^5.4.10",
+    "vite-plugin-eslint": "^1.8.1",
     "vitest": "^2.1.5"
   }
 }
