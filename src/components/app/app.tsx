@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { ExamplePage } from '@pages';
-import { LoginUI } from '../ui/pages/login/login';
-import { Home } from '../ui/pages/home/home';
-import { Clock } from '../clock/clock';
+import { ExamplePage, Adventures, Login, Profile } from '@pages';
+import { AppHeader } from '@components';
 
 export const App: React.FC = () => {
 	const location = useLocation();
@@ -15,13 +13,28 @@ export const App: React.FC = () => {
 	};
 	return (
 		<>
-			<Clock />
+			<AppHeader />
 			<Link to="/example">Go to Example Page</Link>
 
 			<Routes location={backgroundLocation || location}>
 				<Route path="/example" element={<ExamplePage />} />
-				<Route path="/" element={<Home />} />
-				<Route path="/login" element={<LoginUI />} />
+				<Route
+					path="/login"
+					element={
+						// <ProtectedRoute>
+						<Login />
+						// <ProtectedRoute>
+					}
+				/>
+				<Route path="/adventures" element={<Adventures />} />
+				<Route
+					path="/profile"
+					element={
+						// <ProtectedRoute>
+						<Profile />
+						// </ProtectedRoute>
+					}
+				/>
 			</Routes>
 		</>
 	);

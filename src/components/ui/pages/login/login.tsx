@@ -25,16 +25,6 @@ export const LoginUI: FC = () => {
 					</div>
 				</form>
 			</div>
-
-			<div className="card">
-				<button
-					onClick={() => {
-						window.location.href = '/';
-					}}
-				>
-					go to Home
-				</button>
-			</div>
 		</main>
 	);
 };
