@@ -11,6 +11,5 @@
 	"bracketSpacing": true,
 	"bracketSameLine": false,
 	"semi": true,
-	"singleQuote": true,
-	"useEditorConfig": true
+	"singleQuote": true
 }
