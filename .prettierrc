@@ -1,5 +1,13 @@
 {
 	"trailingComma": "es5",
+	"overrides": [
+		{
+			"files": ["*.json", "*.jsonc", ".*rc"],
+			"options": {
+				"trailingComma": "none"
+			}
+		}
+	],
 	"bracketSpacing": true,
 	"bracketSameLine": false,
 	"semi": true,

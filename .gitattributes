@@ -1,0 +1,9 @@
+# Ensure consistent line endings
+* text=auto
+
+# Force CRLF line endings for specific file types
+*.ts text eol=crlf
+*.tsx text eol=crlf
+*.js text eol=crlf
+*.scss text eol=crlf
+*.html text eol=crlf
