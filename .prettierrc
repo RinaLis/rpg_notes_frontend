@@ -3,5 +3,6 @@
 	"bracketSpacing": true,
 	"bracketSameLine": false,
 	"semi": true,
-	"singleQuote": true
+	"singleQuote": true,
+	"useEditorConfig": true
 }
