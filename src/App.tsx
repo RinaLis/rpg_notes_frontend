@@ -7,7 +7,6 @@ import {
 } from './services/slices/userSlice';
 import { useDispatch } from './services/store';
 import { requestUserAdventures } from './services/slices/userAdventuresSlice';
-import { requestCreateAdventure, requestDeleteAdventure, requestDeletePlayer, requestGetPlayers, requestInviteUser, requestUpdateAdventure } from './services/slices/adventureSlice';
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -21,7 +20,7 @@ function App() {
 				password: '1234567890',
 			})
 		).then(() => {
-			dispatch(requestDeletePlayer({adventure_id: '90fc1a5a-4ba1-4ff9-9c53-2796009483b8', user_id: 'b4ed2ad7-ef6a-4541-a3dc-8b2e54aa18e9'}));
+			dispatch(requestGetUser());
 		});
 		dispatch(
 			requestUserAdventures()
