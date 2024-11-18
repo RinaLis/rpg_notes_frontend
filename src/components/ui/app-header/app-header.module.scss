@@ -1,6 +1,35 @@
-.link {
-	color: green;
-	&_active {
-		color: red;
+.header {
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	margin-block: 10px;
+
+	&_menu {
+		display: flex;
+		justify-content: space-evenly;
+		width: 100%;
+		align-items: center;
+		max-width: 768px;
+	}
+
+	&_logo {
+		max-width: 70px;
+		max-height: 70px;
+
+		&_img {
+			width: 100%;
+		}
+	}
+
+	&_link {
+		color: var(--color-dark);
+		&_active {
+			text-decoration: underline;
+		}
+
+		&:hover {
+			filter: drop-shadow(2px 4px 6px var(--color-black));
+			transition: 0.3s;
+		}
 	}
 }
