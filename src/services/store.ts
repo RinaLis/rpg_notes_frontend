@@ -1,12 +1,10 @@
-import { combineSlices, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import {
 	TypedUseSelectorHook,
 	useDispatch as dispatchHook,
 	useSelector as selectorHook,
 } from 'react-redux';
-import authSlice from './slices/auth/auth.slice';
-
-export const rootReducer = combineSlices(authSlice);
+import { rootReducer } from '@slices';
 
 const store = configureStore({
 	reducer: rootReducer,

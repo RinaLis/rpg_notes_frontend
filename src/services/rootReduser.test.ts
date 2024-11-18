@@ -1,4 +1,4 @@
-import { rootReducer } from './store';
+import { rootReducer } from './slices';
 import { authSliceInitialState } from './slices/auth/authSlice.test';
 
 const initialState = {
