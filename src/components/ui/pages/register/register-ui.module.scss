@@ -1,0 +1,16 @@
+.registerSection {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 250px;
+
+	&__button {
+		margin-left: 10px;
+		border-radius: 50%;
+
+		&:hover {
+			background-color: orange;
+		}
+	}
+}

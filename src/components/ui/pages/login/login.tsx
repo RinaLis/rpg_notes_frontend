@@ -1,16 +1,17 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 export const LoginUI: FC = () => {
 	return (
 		<main>
-			<h1>Login</h1>
+			<h1>ВХОД</h1>
 			<div>
 				<form name="login" onSubmit={() => {}}>
 					<div>
-						<input />
+						<input type="text" placeholder="Email" />
 					</div>
 					<div>
-						<input />
+						<input placeholder="Пароль" />
 					</div>
 					<div>
 						<button
@@ -22,6 +23,8 @@ export const LoginUI: FC = () => {
 						>
 							Войти
 						</button>
+						<Link to="/register">Регистрация</Link>
+						<Link to="/register">Забыли пароль?</Link>
 					</div>
 				</form>
 			</div>

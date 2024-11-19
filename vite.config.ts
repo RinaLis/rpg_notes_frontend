@@ -22,10 +22,13 @@ export default defineConfig({
 			'@store': 'src/services/store.ts',
 		},
 	},
-
 	test: {
 		globals: true,
 		environment: 'jsdom',
 		setupFiles: ['src/__tests__/setup.ts'],
+	},
+	server: {
+		host: '127.0.0.1',
+		port: 8000,
 	},
 });

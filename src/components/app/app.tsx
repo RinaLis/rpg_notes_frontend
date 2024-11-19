@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { ExamplePage, Adventures, Login, Profile } from '@pages';
+import { ExamplePage, Adventures, Login, Profile, Register } from '@pages';
 import { AppHeader } from '@components';
 
 export const App: React.FC = () => {
@@ -8,6 +8,7 @@ export const App: React.FC = () => {
 	const navigate = useNavigate();
 	// Определение старого фона при переходе по ссылке
 	const backgroundLocation = location.state?.background || null;
+	console.log('aaaaa');
 	const closeModal = () => {
 		navigate(-1); // возвращаемся назад
 	};
@@ -35,6 +36,7 @@ export const App: React.FC = () => {
 						// </ProtectedRoute>
 					}
 				/>
+				<Route path="/register" element={<Register />} />
 			</Routes>
 		</>
 	);
