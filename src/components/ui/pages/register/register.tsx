@@ -4,10 +4,10 @@ import styles from './register-ui.module.scss';
 
 export const RegisterUI: React.FC = () => {
 	return (
-		<section className={styles.registerSection}>
+		<main className={styles.registerSection}>
 			<h1 className={styles.registerSection__title}>РЕГИСТРАЦИЯ</h1>
 			<div>
-				<form name="login" onSubmit={() => {}}>
+				<form name="login" onSubmit={() => {}} className={styles.registerSection__formSection}>
 					<div>
 						<input type="text" placeholder="Имя" />
 					</div>
@@ -38,6 +38,6 @@ export const RegisterUI: React.FC = () => {
 					</div>
 				</form>
 			</div>
-		</section>
+		</main>
 	);
 };

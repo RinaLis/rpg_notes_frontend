@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import styles from './login-ui.module.scss';
 
 export const LoginUI: FC = () => {
 	return (
-		<main>
+		<main className={styles.loginSection}>
 			<h1>ВХОД</h1>
 			<div>
 				<form name="login" onSubmit={() => {}}>
@@ -13,8 +14,9 @@ export const LoginUI: FC = () => {
 					<div>
 						<input placeholder="Пароль" />
 					</div>
-					<div>
+					<div className={styles.loginSection__buttonsSection}>
 						<button
+							className={styles.loginSection__button}
 							type="submit"
 							onClick={(e) => {
 								e.preventDefault();
@@ -24,7 +26,7 @@ export const LoginUI: FC = () => {
 							Войти
 						</button>
 						<Link to="/register">Регистрация</Link>
-						<Link to="/register">Забыли пароль?</Link>
+						<Link to="/forgot-password">Забыли пароль?</Link>
 					</div>
 				</form>
 			</div>

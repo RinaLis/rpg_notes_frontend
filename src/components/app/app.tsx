@@ -1,6 +1,14 @@
 import React from 'react';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { ExamplePage, Adventures, Login, Profile, Register } from '@pages';
+import {
+	ExamplePage,
+	Adventures,
+	Login,
+	Profile,
+	Register,
+	ForgotPassword,
+	ResetPassword,
+} from '@pages';
 import { AppHeader } from '@components';
 
 export const App: React.FC = () => {
@@ -37,6 +45,8 @@ export const App: React.FC = () => {
 					}
 				/>
 				<Route path="/register" element={<Register />} />
+				<Route path="/forgot-password" element={<ForgotPassword />} />
+				<Route path="/reset-password" element={<ResetPassword />} />
 			</Routes>
 		</>
 	);
