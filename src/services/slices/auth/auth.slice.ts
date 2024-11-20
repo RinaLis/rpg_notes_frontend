@@ -1,32 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
 
+const AUTH_NAME = 'auth';
+
 export interface AuthState {
 	isAuthChecked: boolean;
 	user: TUser | null;
-	errors: {
-		login: string | null;
-		register: string | null;
-		update: string | null;
-		logout: string | null;
-		auth: string | null;
-	};
+	errors: string | null;
 }
 
 const initialState: AuthState = {
 	isAuthChecked: false,
 	user: null,
-	errors: {
-		login: null,
-		register: null,
-		update: null,
-		logout: null,
-		auth: null,
-	},
+	errors: null,
 };
 
 const authSlice = createSlice({
-	name: 'auth',
+	name: AUTH_NAME,
 	initialState,
 	reducers: {
 		setAuthChecked: (state, action: PayloadAction<boolean>) => {
@@ -35,27 +25,18 @@ const authSlice = createSlice({
 		setUser: (state, action: PayloadAction<TUser | null>) => {
 			state.user = action.payload;
 		},
+		setError: (state, action: PayloadAction<string | null>) => {
+			state.errors = action.payload;
+		},
 	},
 	selectors: {
 		selectIsAuthChecked: (state: AuthState) => state.isAuthChecked,
 		selectUser: (state: AuthState) => state.user,
-		selectLoginError: (state: AuthState) => state.errors.login,
-		selectRegisterError: (state: AuthState) => state.errors.register,
-		selectUpdateError: (state: AuthState) => state.errors.update,
-		selectLogoutError: (state: AuthState) => state.errors.logout,
-		selectAuthError: (state: AuthState) => state.errors.auth,
+		selectError: (state: AuthState) => state.errors,
 	},
 });
 
 export const { setAuthChecked, setUser } = authSlice.actions;
-export const {
-	selectIsAuthChecked,
-	selectUser,
-	selectLoginError,
-	selectRegisterError,
-	selectUpdateError,
-	selectLogoutError,
-	selectAuthError,
-} = authSlice.selectors;
+export const { selectIsAuthChecked, selectUser, selectError } = authSlice.selectors;
 
 export default authSlice;
