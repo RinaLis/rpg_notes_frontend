@@ -1,3 +1,16 @@
+@font-face {
+	font-family: 'Amagro';
+	src: url('./assets/fonts/Amagro.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Metrica';
+	src: url('./assets/fonts/Metrica.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
 :root {
 	/* кастомные свойства шрифтов */
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -9,14 +22,25 @@
 	--color-black: #000;
 	--color-light: #dde4fd;
 	--color-white: #fff;
-	--gradient: linear-gradient(to bottom, #dac9af, #c0b19a, #978b79, #6f604b);
-
+	--gradient-header: linear-gradient(to bottom, #a78357, #d0a674, #d0a674, #d0a674, #a78357);
+	--gradient-input: linear-gradient(to right, #d0a674, #eec491, #fdd09a, #fdd09a, #eec491, #d0a674);
+	--gradient-button: linear-gradient(
+		to right,
+		#3a1f0c,
+		#6a4831,
+		#825f47,
+		#896951,
+		#825f47,
+		#6a4831,
+		#3a1f0c
+	);
+	--gradient-link: linear-gradient(to bottom, #423d39, #544d48, #645c56, #423d39);
+	--color-title: #3a2910;
 	/* кастомные свойства, которые будем использовать для темизации */
 	color-scheme: light dark;
 	color: rgba(255, 255, 255, 0.87);
-	background: var(--gradient);
-
-	--text-color: var(--color-white);
+	background: var(--color-light);
+	--text-color: var(--color-dark);
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -25,7 +49,6 @@
 }
 
 a {
-	font-weight: 500;
 	color: #646cff;
 	text-decoration: inherit;
 }

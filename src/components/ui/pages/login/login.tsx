@@ -1,17 +1,32 @@
 import { FC } from 'react';
+import { Input } from '@components';
+import { NavLink } from 'react-router-dom';
+import styles from './login.module.scss';
 
-export const LoginUI: FC = () => {
+type LoginUIProps = {
+	validate:
+		| {
+				login?: (value: string) => string | null;
+				email?: (value: string) => string | null;
+				password?: (value: string) => string | null;
+		  }
+		| undefined;
+};
+
+export const LoginUI: FC<LoginUIProps> = ({ validate = undefined }) => {
 	return (
-		<main>
-			<h1>Login</h1>
-			<div>
-				<form name="login" onSubmit={() => {}}>
-					<div>
-						<input />
-					</div>
-					<div>
-						<input />
-					</div>
+		<main className={styles.login}>
+			<div className={styles.loginForm}>
+				<h2 className={styles.loginTitle}>Вход</h2>
+				<form name="login" onSubmit={() => {}} className={styles.loginForm}>
+					<Input type="text" name="login" placeholder="Логин" validate={validate?.login} />
+					<Input type="email" name="email" placeholder="Email" validate={validate?.email} />
+					<Input
+						type="password"
+						name="password"
+						placeholder="Пароль"
+						validate={validate?.password}
+					/>
 					<div>
 						<button
 							type="submit"
@@ -19,9 +34,18 @@ export const LoginUI: FC = () => {
 								e.preventDefault();
 								alert('submit');
 							}}
+							className={styles.loginButton}
 						>
 							Войти
 						</button>
+					</div>
+					<div className={styles.loginLinkContainer}>
+						<div>
+							<NavLink to="/register">Регистрация</NavLink>
+						</div>
+						<div>
+							<NavLink to="/forgot-password">Забыли пароль?</NavLink>
+						</div>
 					</div>
 				</form>
 			</div>
