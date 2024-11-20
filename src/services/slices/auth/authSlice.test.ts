@@ -4,11 +4,7 @@ import authSlice, {
 	setUser,
 	selectIsAuthChecked,
 	selectUser,
-	selectLoginError,
-	selectRegisterError,
-	selectUpdateError,
-	selectLogoutError,
-	selectAuthError,
+	selectError,
 	AuthState,
 } from './auth.slice';
 
@@ -17,13 +13,7 @@ const { reducer } = authSlice;
 export const authSliceInitialState: AuthState = {
 	isAuthChecked: false,
 	user: null,
-	errors: {
-		login: null,
-		register: null,
-		update: null,
-		logout: null,
-		auth: null,
-	},
+	errors: null,
 };
 const stateWithCheckedAuth = {
 	...authSliceInitialState,
@@ -42,13 +32,7 @@ const stateWithUser = {
 
 const stateWithUserAndErrors = {
 	...stateWithUser,
-	errors: {
-		login: 'Login error',
-		register: 'Register error',
-		update: 'Update error',
-		logout: 'Logout',
-		auth: 'Auth error',
-	},
+	errors: 'error text',
 };
 
 describe('authSlice', () => {
@@ -84,20 +68,8 @@ describe('authSlice', () => {
 		it('should select user', () => {
 			expect(selectUser(state)).toEqual(user);
 		});
-		it('should select login error', () => {
-			expect(selectLoginError(state)).toEqual(stateWithUserAndErrors.errors.login);
-		});
-		it('should select register error', () => {
-			expect(selectRegisterError(state)).toEqual(stateWithUserAndErrors.errors.register);
-		});
-		it('should select update error', () => {
-			expect(selectUpdateError(state)).toEqual(stateWithUserAndErrors.errors.update);
-		});
-		it('should select logout error', () => {
-			expect(selectLogoutError(state)).toEqual(stateWithUserAndErrors.errors.logout);
-		});
-		it('should select auth error', () => {
-			expect(selectAuthError(state)).toEqual(stateWithUserAndErrors.errors.auth);
+		it('error text', () => {
+			expect(selectError(state)).toEqual(stateWithUserAndErrors.errors);
 		});
 	});
 });
