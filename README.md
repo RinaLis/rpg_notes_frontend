@@ -59,14 +59,26 @@ npm install
 npm run prepare
 ```
 
-Перед работой необходимо поменять строчку в файле .husky/pre-commit
-Для Windows
+Перед работой необходимо локально добавить файл прекоммита: 
+```
+npx husky add ./.husky/pre-commit
+```
+
+Далее проверить его содержимое
+
+Для Windows:
 ```
 #!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx lint-staged
 ```
-Для Linux
+Для Linux:
 ```
-#!/usr/bin/env sh
+#!/bin/bash
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx lint-staged
 ```
 
 Для запуска проекта в режиме разработки выполнить команду:
