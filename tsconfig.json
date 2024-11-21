@@ -18,6 +18,10 @@
     "types": ["node", "jest"],
     "baseUrl": ".",
     "paths": {
+      "@": ["/src"],
+			"@assets": ["/src/assets"],
+			"@utils": ["/src/utils"],
+			"@services": ["/src/services"],
       "@pages": ["src/pages"],
       "@components": ["src/components"],
       "@ui": ["src/components/ui"],
