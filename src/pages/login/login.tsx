@@ -1,16 +1,40 @@
 import React from 'react';
-
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { LoginUI } from '@ui-pages';
 
+// Схема валидации через yup
+const schema = yup
+	.object({
+		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
+		email: yup.string().email('Некорректный email').required('Введите email'),
+		password: yup
+			.string()
+			.min(6, 'Пароль должен быть не менее 6 символов')
+			.required('Введите пароль'),
+	})
+	.required();
+
+// Типизация формы, основанная на yup-схеме
+type FormValues = yup.InferType<typeof schema>;
+
 export const Login: React.FC = () => {
-	const validate = {
-		login: (value: string) =>
-			value.length < 3 ? 'Имя пользователя должно быть не менее 3 символов' : null,
+	// Инициализация react-hook-form с валидацией через yup
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<FormValues>({
+		resolver: yupResolver(schema),
+	});
 
-		email: (value: string) => (!/\S+@\S+\.\S+/.test(value) ? 'Введите корректный email' : null),
-
-		password: (value: string) =>
-			value.length < 6 ? 'Пароль должен быть не менее 6 символов' : null,
+	// Обработчик успешной отправки формы
+	const onSubmit: SubmitHandler<FormValues> = (data) => {
+		console.log('Форма отправлена:', data);
+		// alert('Форма успешно отправлена!');
+		reset();
 	};
-	return <LoginUI validate={validate} />;
+	return <LoginUI onSubmit={handleSubmit(onSubmit)} register={register} errors={errors} />;
 };

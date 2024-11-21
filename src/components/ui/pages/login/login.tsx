@@ -3,39 +3,38 @@ import { Input } from '@components';
 import { NavLink } from 'react-router-dom';
 import styles from './login.module.scss';
 
-type LoginUIProps = {
-	validate:
-		| {
-				login?: (value: string) => string | null;
-				email?: (value: string) => string | null;
-				password?: (value: string) => string | null;
-		  }
-		| undefined;
-};
+interface LoginUIProps {
+	onSubmit: (e: React.FormEvent) => void;
+	register: any;
+	errors: Record<string, any>;
+}
 
-export const LoginUI: FC<LoginUIProps> = ({ validate = undefined }) => {
+export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 	return (
 		<main className={styles.login}>
 			<div className={styles.loginForm}>
 				<h2 className={styles.loginTitle}>Вход</h2>
-				<form name="login" onSubmit={() => {}} className={styles.loginForm}>
-					<Input type="text" name="login" placeholder="Логин" validate={validate?.login} />
-					<Input type="email" name="email" placeholder="Email" validate={validate?.email} />
+				<form name="login" onSubmit={onSubmit} className={styles.loginForm}>
+					<Input
+						type="text"
+						placeholder="Логин"
+						register={register('login')}
+						error={errors.login?.message}
+					/>
+					<Input
+						type="email"
+						placeholder="Email"
+						register={register('email')}
+						error={errors.email?.message}
+					/>
 					<Input
 						type="password"
-						name="password"
 						placeholder="Пароль"
-						validate={validate?.password}
+						register={register('password')}
+						error={errors.password?.message}
 					/>
 					<div>
-						<button
-							type="submit"
-							onClick={(e) => {
-								e.preventDefault();
-								alert('submit');
-							}}
-							className={styles.loginButton}
-						>
+						<button type="submit" className={styles.loginButton}>
 							Войти
 						</button>
 					</div>
