@@ -59,6 +59,16 @@ npm install
 npm run prepare
 ```
 
+Перед работой необходимо поменять строчку в файле .husky/pre-commit
+Для Windows
+```
+#!/usr/bin/env sh
+```
+Для Linux
+```
+#!/usr/bin/env sh
+```
+
 Для запуска проекта в режиме разработки выполнить команду:
 
 ```
