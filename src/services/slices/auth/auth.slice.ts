@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TUser } from '@utils-types';
+import { UserDTO } from '@utils-types';
 
 export interface AuthState {
 	isAuthChecked: boolean;
-	user: TUser | null;
+	user: UserDTO | null;
 	errors: {
 		login: string | null;
 		register: string | null;
@@ -32,7 +32,7 @@ const authSlice = createSlice({
 		setAuthChecked: (state, action: PayloadAction<boolean>) => {
 			state.isAuthChecked = action.payload;
 		},
-		setUser: (state, action: PayloadAction<TUser | null>) => {
+		setUser: (state, action: PayloadAction<UserDTO | null>) => {
 			state.user = action.payload;
 		},
 	},
