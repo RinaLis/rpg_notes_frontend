@@ -36,7 +36,7 @@
 	);
 	--gradient-link: linear-gradient(to bottom, #423d39, #544d48, #645c56, #423d39);
 	--color-title: #3a2910;
-	/* кастомные свойства, которые будем использовать для темизации */
+	--color-text-button: #ffe3af; /* кастомные свойства, которые будем использовать для темизации */
 	color-scheme: light dark;
 	color: rgba(255, 255, 255, 0.87);
 	background: var(--color-light);
@@ -67,20 +67,6 @@ h1 {
 	line-height: 1.1;
 }
 
-button {
-	border-radius: 8px;
-	border: 1px solid transparent;
-	padding: 0.6em 1.2em;
-	font-size: 1em;
-	font-weight: 500;
-	font-family: inherit;
-	background-color: #1a1a1a;
-	cursor: pointer;
-	transition: border-color 0.25s;
-}
-button:hover {
-	border-color: #646cff;
-}
 button:focus,
 button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;

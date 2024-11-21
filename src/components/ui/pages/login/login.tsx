@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Input } from '@components';
+import { Input, Button } from '@components';
 import { NavLink } from 'react-router-dom';
 import styles from './login.module.scss';
 
@@ -33,11 +33,9 @@ export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 						register={register('password')}
 						error={errors.password?.message}
 					/>
-					<div>
-						<button type="submit" className={styles.loginButton}>
-							Войти
-						</button>
-					</div>
+					<Button type="submit" className={styles.loginButton}>
+						Войти
+					</Button>
 					<div className={styles.loginLinkContainer}>
 						<div>
 							<NavLink to="/register">Регистрация</NavLink>
