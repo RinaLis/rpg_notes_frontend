@@ -16,7 +16,6 @@ export const App: React.FC = () => {
 	const navigate = useNavigate();
 	// Определение старого фона при переходе по ссылке
 	const backgroundLocation = location.state?.background || null;
-	console.log('aaaaa');
 	const closeModal = () => {
 		navigate(-1); // возвращаемся назад
 	};
