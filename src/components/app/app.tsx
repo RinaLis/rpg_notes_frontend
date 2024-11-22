@@ -24,7 +24,6 @@ export const App: React.FC = () => {
 		<>
 			<AppHeader />
 			<Link to="/example">Go to Example Page</Link>
-
 			<Routes location={backgroundLocation || location}>
 				<Route path="/example" element={<ExamplePage />} />
 				<Route

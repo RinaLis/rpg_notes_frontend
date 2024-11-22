@@ -12,7 +12,7 @@ export default defineConfig({
 			'@components': '/src/components',
 			'@ui': '/src/components/ui',
 			'@pages': '/src/pages',
-			'@ui-pages': 'src/components/ui/pages',
+			'@ui-pages': '/src/components/ui/pages',
 			'@assets': '/src/assets',
 			'@hooks': '/src/hooks',
 			'@utils': '/src/utils',

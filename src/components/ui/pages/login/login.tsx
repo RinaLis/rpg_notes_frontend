@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './login-ui.module.scss';
+import styles from './login.module.scss';
 
 export const LoginUI: FC = () => {
 	return (

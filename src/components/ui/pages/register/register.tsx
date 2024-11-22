@@ -1,24 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './register-ui.module.scss';
+import VictorianSvg from '@assets/victorian.svg';
+import styles from './register.module.scss';
 
 export const RegisterUI: React.FC = () => {
 	return (
 		<main className={styles.registerSection}>
-			<h1 className={styles.registerSection__title}>РЕГИСТРАЦИЯ</h1>
+			<img className={styles.registerSection__img} src={VictorianSvg} alt="victorian" />
 			<div>
-				<form name="login" onSubmit={() => {}} className={styles.registerSection__formSection}>
+				<form className={styles.registerSection__formSection} name="login" onSubmit={() => {}}>
 					<div>
-						<input type="text" placeholder="Имя" />
+						<h1 className={styles.registerSection__title}>РЕГИСТРАЦИЯ</h1>
+						<input className={styles.registerSection__input} type="text" placeholder="Имя" />
 					</div>
 					<div>
-						<input type="text" placeholder="Email" />
+						<input className={styles.registerSection__input} type="text" placeholder="Email" />
 					</div>
 					<div>
-						<input placeholder="Пароль" />
+						<input className={styles.registerSection__input} placeholder="Пароль" />
 					</div>
 					<div>
-						<input placeholder="Подтверждение пароля" />
+						<input className={styles.registerSection__input} placeholder="Подтверждение пароля" />
 					</div>
 					<div>
 						<button
@@ -31,11 +33,9 @@ export const RegisterUI: React.FC = () => {
 						>
 							Регистрация
 						</button>
-						<div>
-							Зарегистрированы?
-							<Link to="/login">Войти</Link>
-						</div>
 					</div>
+					Зарегистрированы?
+					<Link to="/login">Войти</Link>
 				</form>
 			</div>
 		</main>
