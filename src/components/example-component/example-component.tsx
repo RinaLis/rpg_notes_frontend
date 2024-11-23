@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { ExampleComponentUI } from '@ui';
 
 export const ExampleComponent: React.FC = () => {

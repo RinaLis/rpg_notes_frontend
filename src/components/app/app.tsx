@@ -4,13 +4,6 @@ import { ExamplePage, Adventures, Login, Profile } from '@pages';
 import { AppHeader } from '@components';
 import { useDispatch } from '@store';
 import { requestGetUser, requestLoginUser } from 'src/services/slices/user.slice';
-import {
-	requestGetPlayers,
-	requestGetUserByLogin,
-	requestInviteUser,
-} from 'src/services/slices/players.slice';
-import { requestCreateHero, requestUpdateHero } from 'src/services/slices/heroes.slice';
-import { HeroCharacteristicsEnum } from '@utils-types';
 
 export const App: React.FC = () => {
 	const location = useLocation();
@@ -21,7 +14,6 @@ export const App: React.FC = () => {
 		navigate(-1); // возвращаемся назад
 	};
 	const dispatch = useDispatch();
-	// const {user} = useSelector(getUserState)
 
 	useEffect(() => {
 		dispatch(
@@ -37,18 +29,6 @@ export const App: React.FC = () => {
 		// 	name: 'Крейси',
 
 		// }));
-		dispatch(
-			requestUpdateHero({
-				id: '06987a0b-6351-44e3-9d25-65ab09d96b78',
-				name: 'Крейси',
-				characteristics: [
-					{
-						code: HeroCharacteristicsEnum.Age,
-						value: '28',
-					},
-				],
-			})
-		);
 	}, [dispatch]);
 	return (
 		<>
