@@ -6,7 +6,7 @@ export const userSliceConst = {
 		byToken: 'getByToken',
 		update: 'updateUser',
 		sendCode: 'sendCode',
-		reset: 'resetPassword'
+		reset: 'resetPassword',
 	},
 };
 

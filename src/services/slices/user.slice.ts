@@ -1,4 +1,11 @@
-import { getUserApi, loginUserApi, registerUserApi, resetPasswordApi, sendCodeApi, updateUserApi } from '@api';
+import {
+	getUserApi,
+	loginUserApi,
+	registerUserApi,
+	resetPasswordApi,
+	sendCodeApi,
+	updateUserApi,
+} from '@api';
 import { userSliceConst } from '@const';
 import { setCookie } from '@cookie';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
@@ -148,7 +155,7 @@ export const userSlice = createSlice({
 				state.user = null;
 				state.isLoading = false;
 				state.error = error.message as string;
-			})
+			});
 	},
 });
 
