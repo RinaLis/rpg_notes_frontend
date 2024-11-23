@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+
 import {
 	ExamplePage,
 	Adventures,
@@ -9,7 +10,8 @@ import {
 	ForgotPassword,
 	ResetPassword,
 } from '@pages';
-import { AppHeader } from '@components';
+import { AppHeaderUI } from '@ui';
+
 
 export const App: React.FC = () => {
 	const location = useLocation();
@@ -21,7 +23,7 @@ export const App: React.FC = () => {
 	};
 	return (
 		<>
-			<AppHeader />
+			<AppHeaderUI />
 			<Link to="/example">Go to Example Page</Link>
 			<Routes location={backgroundLocation || location}>
 				<Route path="/example" element={<ExamplePage />} />

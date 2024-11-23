@@ -1,20 +1,40 @@
-.loginSection {
+.login {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	height: 250px;
-	gap: 10px;
 
-	&__buttonsSection {
+	&Form {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		align-items: center;
+		width: 100%;
+		max-width: 446px;
 	}
 
-	&__button {
-		&:hover {
-			background-color: orange;
-		}
+	&Title {
+		font-family: 'Amagro', sans-serif;
+		font-weight: bold;
+		color: var(--color-title);
+		font-size: 24px;
+		text-align: center;
+	}
+
+	&ButtonContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&Button {
+		margin-block: 10px;
+	}
+
+	&InputContainer {
+		margin-block: 10px;
+	}
+
+	&LinkContainer {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
 	}
 }

@@ -1,0 +1,19 @@
+.button {
+	background-image: var(--gradient-button);
+
+	font-family: 'Amagro', sans-serif;
+	font-size: 24px;
+	color: var(--color-text-button);
+	text-shadow: #110909 0px 0 2px;
+	// -webkit-text-stroke: #0000004d 1px;
+
+	border: 1px solid #3a1f0c;
+	border-radius: 64px;
+	padding: 16px 20px;
+	cursor: pointer;
+
+	&:disabled {
+		background-color: #d6d6d6;
+		cursor: not-allowed;
+	}
+}
