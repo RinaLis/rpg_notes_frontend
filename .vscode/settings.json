@@ -1,0 +1,32 @@
+{
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always",
+		"source.fixAll": "always"
+	},
+	"editor.formatOnSave": true,
+	"eslint.codeActionsOnSave.mode": "all",
+	"eslint.validate": [
+		"vue",
+		"html",
+		"javascript",
+		"typescript",
+		"javascriptreact",
+		"typescriptreact"
+	],
+	"prettier.configPath": "./.prettierrc",
+	"prettier.experimentalTernaries": false,
+	"prettier.requireConfig": true,
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"editor.detectIndentation": false,
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"liveServer.settings.root": "/dist"
+}
