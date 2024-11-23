@@ -14,7 +14,7 @@ export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 		<main className={styles.login}>
 			<div className={styles.loginForm}>
 				<h2 className={styles.loginTitle}>Вход</h2>
-				<form name="login" onSubmit={onSubmit} className={styles.loginForm}>
+				<form name="login" onSubmit={onSubmit} className={styles.loginForm} noValidate>
 					<Input
 						type="text"
 						placeholder="Логин"

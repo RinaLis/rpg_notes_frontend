@@ -22,24 +22,27 @@
 	--color-black: #000;
 	--color-light: #dde4fd;
 	--color-white: #fff;
+	--bg-color: #d8b692;
+	--link-color: #095a70;
 	--gradient-header: linear-gradient(to bottom, #a78357, #d0a674, #d0a674, #d0a674, #a78357);
 	--gradient-input: linear-gradient(to right, #d0a674, #eec491, #fdd09a, #fdd09a, #eec491, #d0a674);
 	--gradient-button: linear-gradient(
 		to right,
-		#3a1f0c,
-		#6a4831,
-		#825f47,
-		#896951,
-		#825f47,
-		#6a4831,
-		#3a1f0c
+		#3a1f0c 0%,
+		#6a4831 17%,
+		#6f4d36 21%,
+		#825f47 35%,
+		#896951 52%,
+		#825f47 57%,
+		#6a4831 85%,
+		#3a1f0c 100%
 	);
 	--gradient-link: linear-gradient(to bottom, #423d39, #544d48, #645c56, #423d39);
 	--color-title: #3a2910;
 	--color-text-button: #ffe3af; /* кастомные свойства, которые будем использовать для темизации */
 	color-scheme: light dark;
 	color: rgba(255, 255, 255, 0.87);
-	background: var(--color-light);
+	/* background: var(--color-light); */
 	--text-color: var(--color-dark);
 
 	font-synthesis: none;
@@ -49,7 +52,7 @@
 }
 
 a {
-	color: #646cff;
+	color: var(--link-color);
 	text-decoration: inherit;
 }
 
@@ -60,6 +63,7 @@ body {
 	place-items: center;
 	min-width: 320px;
 	min-height: 100vh;
+	background-color: var(--bg-color);
 }
 
 h1 {

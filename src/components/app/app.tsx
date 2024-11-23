@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 import {
 	ExamplePage,
@@ -12,7 +12,6 @@ import {
 } from '@pages';
 import { AppHeaderUI } from '@ui';
 
-
 export const App: React.FC = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -24,26 +23,11 @@ export const App: React.FC = () => {
 	return (
 		<>
 			<AppHeaderUI />
-			<Link to="/example">Go to Example Page</Link>
 			<Routes location={backgroundLocation || location}>
 				<Route path="/example" element={<ExamplePage />} />
-				<Route
-					path="/login"
-					element={
-						// <ProtectedRoute>
-						<Login />
-						// <ProtectedRoute>
-					}
-				/>
+				<Route path="/login" element={<Login />} />
 				<Route path="/adventures" element={<Adventures />} />
-				<Route
-					path="/profile"
-					element={
-						// <ProtectedRoute>
-						<Profile />
-						// </ProtectedRoute>
-					}
-				/>
+				<Route path="/profile" element={<Profile />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/forgot-password" element={<ForgotPassword />} />
 				<Route path="/reset-password" element={<ResetPassword />} />

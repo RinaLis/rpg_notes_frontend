@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { LoginUI } from '@ui-pages';
 
 // Схема валидации через yup
-const schema = yup
+const schemaLogin = yup
 	.object({
 		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
 		email: yup.string().email('Некорректный email').required('Введите email'),
@@ -17,7 +17,7 @@ const schema = yup
 	.required();
 
 // Типизация формы, основанная на yup-схеме
-type FormValues = yup.InferType<typeof schema>;
+type FormValues = yup.InferType<typeof schemaLogin>;
 
 export const Login: React.FC = () => {
 	// Инициализация react-hook-form с валидацией через yup
@@ -27,13 +27,12 @@ export const Login: React.FC = () => {
 		reset,
 		formState: { errors },
 	} = useForm<FormValues>({
-		resolver: yupResolver(schema),
+		resolver: yupResolver(schemaLogin),
 	});
 
 	// Обработчик успешной отправки формы
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
 		console.log('Форма отправлена:', data);
-		// alert('Форма успешно отправлена!');
 		reset();
 	};
 	return <LoginUI onSubmit={handleSubmit(onSubmit)} register={register} errors={errors} />;
