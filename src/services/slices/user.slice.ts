@@ -1,4 +1,4 @@
-import { getUserApi, loginUserApi, registerUserApi, sendCodeApi, updateUserApi } from '@api';
+import { getUserApi, loginUserApi, registerUserApi, resetPasswordApi, sendCodeApi, updateUserApi } from '@api';
 import { userSliceConst } from '@const';
 import { setCookie } from '@cookie';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
@@ -39,6 +39,11 @@ export const requestUpdateUser = createAsyncThunk(
 export const requestSendCode = createAsyncThunk(
 	`${userSliceConst.name}/${userSliceConst.requests.sendCode}`,
 	sendCodeApi
+);
+
+export const resetPassword = createAsyncThunk(
+	`${userSliceConst.name}/${userSliceConst.requests.reset}`,
+	resetPasswordApi
 );
 
 export const userSlice = createSlice({
@@ -127,7 +132,23 @@ export const userSlice = createSlice({
 			.addCase(requestSendCode.fulfilled, (state) => {
 				state.isLoading = false;
 				state.error = null;
-			});
+			})
+			.addCase(resetPassword.pending, (state) => {
+				state.isLoading = true;
+				state.user = null;
+				state.error = null;
+			})
+			.addCase(resetPassword.fulfilled, (state, { payload }) => {
+				state.isLoading = false;
+				state.error = null;
+				setCookie('accessToken', payload.access_token);
+				localStorage.setItem('refreshToken', payload.refresh_token);
+			})
+			.addCase(resetPassword.rejected, (state, { error }) => {
+				state.user = null;
+				state.isLoading = false;
+				state.error = error.message as string;
+			})
 	},
 });
 
