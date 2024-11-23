@@ -15,7 +15,7 @@ export const AppHeaderUI: React.FC = () => {
 							clsx(styles.header_link, isActive && styles.header_link_active)
 						}
 					>
-						Все приключения
+						Приключения
 					</NavLink>
 				</div>
 				<div className={styles.header_logoContainer}>

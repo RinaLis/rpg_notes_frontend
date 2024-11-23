@@ -1,4 +1,3 @@
 export * from './example-component';
-export * from './app-header';
-export * from './input';
-export * from './button';
+export * from './ui/input';
+export * from './ui/button';
