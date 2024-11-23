@@ -245,17 +245,17 @@ export const getPostsByThreadApi = ({ thread_id, offset }: { thread_id: string; 
 	});
 
 export const getPostsByAdventureApi = ({
-	thread_id,
+	adventure_id,
 	offset,
 }: {
-	thread_id: string;
+	adventure_id: string;
 	offset: number;
 }) =>
-	requestWithRefresh<{ thread_id: string; count: number; offset: number }, PostListDTO>({
+	requestWithRefresh<{ adventure_id: string; count: number; offset: number }, PostListDTO>({
 		method: 'get',
 		url: '/posts/list_by_adventure',
 		params: {
-			thread_id,
+			adventure_id,
 			count: 20,
 			offset,
 		},
@@ -397,8 +397,8 @@ export const updateHeroApi = (data: UpdateHeroInputDTO) =>
 
 export const getHeroByIdApi = (hero_id: string) =>
 	requestWithRefresh<{ hero_id: string }, HeroWithCharacteristicsDTO>({
-		method: 'delete',
-		url: '/comments/delete',
+		method: 'get',
+		url: '/heroes/get_by_id',
 		params: {
 			hero_id,
 		},
