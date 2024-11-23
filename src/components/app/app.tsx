@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { ExamplePage, Adventures, Login, Profile } from '@pages';
+
+import {
+	ExamplePage,
+	Adventures,
+	Login,
+	Profile,
+	Register,
+	ForgotPassword,
+	ResetPassword,
+} from '@pages';
 import { AppHeaderUI } from '@ui';
+
 
 export const App: React.FC = () => {
 	const location = useLocation();
@@ -34,6 +44,9 @@ export const App: React.FC = () => {
 						// </ProtectedRoute>
 					}
 				/>
+				<Route path="/register" element={<Register />} />
+				<Route path="/forgot-password" element={<ForgotPassword />} />
+				<Route path="/reset-password" element={<ResetPassword />} />
 			</Routes>
 		</>
 	);
