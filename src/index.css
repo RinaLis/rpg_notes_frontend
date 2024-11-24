@@ -82,6 +82,7 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 	background-color: var(--bg-color);
+	font-size: 20px;
 }
 
 #root {
@@ -101,9 +102,16 @@ h2 {
 	color: var(--color-title);
 }
 
+h3 {
+	font-family: var(--metrika);
+	font-size: 20px;
+	text-align: center;
+	color: var(--color-title);
+	margin-block: 5px;
+}
+
 button {
 	background-image: var(--gradient-button);
-
 	font-family: var(--amagro);
 	font-size: 24px;
 	color: var(--color-text-button);

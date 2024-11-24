@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import VictorianSvg from '@assets/victorian.svg';
+import pen from '@assets/pen.svg';
 import { Button, Input } from '@components';
 import styles from './forgot-password.module.scss';
 
@@ -16,27 +17,32 @@ export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
 	errors,
 }) => {
 	return (
-		<main className={styles.forgotPasswordSection}>
-			<img className={styles.forgotPasswordSection__img} src={VictorianSvg} alt="victorian" />
-			<form
-				className={styles.forgotPasswordSection__formSection}
-				name="forgotPassword"
-				onSubmit={onSubmit}
-				noValidate
-			>
-				<h2 className={styles.forgotPasswordSection__title}>Восстановление пароля</h2>
-				<Input
-					type="email"
-					placeholder="Email"
-					register={register('email')}
-					error={errors.email?.message}
-				/>{' '}
-				<Button type="submit" className={styles.forgotPasswordSection__button}>
-					Восстановить
-				</Button>
-				<h3>Вспомнили пароль?</h3>
-				<Link to="/Login">Войти</Link>
-			</form>
+		<main className={styles.forgotPassword}>
+			<div className={styles.forgotPassword__formСontainer}>
+				<img className={styles.forgotPassword__img} src={VictorianSvg} alt="victorian" />
+				<form
+					className={styles.forgotPassword__form}
+					name="forgotPassword"
+					onSubmit={onSubmit}
+					noValidate
+				>
+					<h2 className={styles.forgotPassword__title}>Восстановление пароля</h2>
+					<Input
+						type="email"
+						placeholder="Email"
+						register={register('email')}
+						error={errors.email?.message}
+						icon={pen}
+					/>{' '}
+					<Button type="submit" className={styles.forgotPassword__button}>
+						Восстановить
+					</Button>
+					<div className={styles.forgotPassword__linkContainer}>
+						<h3>Вспомнили пароль?</h3>
+						<Link to="/Login">Войти</Link>
+					</div>
+				</form>
+			</div>
 		</main>
 	);
 };
