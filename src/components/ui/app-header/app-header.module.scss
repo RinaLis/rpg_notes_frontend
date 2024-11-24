@@ -6,7 +6,7 @@
 	padding-block: 15px;
 	background: var(--gradient-header);
 
-	&_menu {
+	&Menu {
 		display: flex;
 		justify-content: space-evenly;
 		width: 100%;
@@ -14,17 +14,24 @@
 		max-width: 680px;
 	}
 
-	&_logoContainer {
+	&LinkContainer {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&LogoContainer {
 		max-width: 70px;
 		max-height: 70px;
 	}
 
-	&_logo {
+	&Logo {
 		width: 100%;
 		transition: 0.3s;
 	}
 
-	&_link {
+	&Link {
 		font-family: 'Amagro', sans-serif;
 		font-weight: bold;
 		font-size: 20px;
@@ -33,7 +40,7 @@
 		background-image: var(--gradient-link);
 		transition: 0.3s;
 
-		&_active {
+		&Active {
 			text-decoration: underline;
 			text-decoration-color: #423d39;
 			text-underline-offset: 5px;
