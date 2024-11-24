@@ -26,4 +26,4 @@ tsconfig.tsbuildinfo
 *.njsproj
 *.sln
 *.sw?
-.husky/pre-commit
+
