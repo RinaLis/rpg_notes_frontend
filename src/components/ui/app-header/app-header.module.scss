@@ -6,7 +6,7 @@
 	padding-block: 15px;
 	background: var(--gradient-header);
 
-	&Menu {
+	&__menu {
 		display: flex;
 		justify-content: space-evenly;
 		width: 100%;
@@ -14,25 +14,25 @@
 		max-width: 680px;
 	}
 
-	&LinkContainer {
+	&__linkContainer {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		justify-content: center;
 	}
 
-	&LogoContainer {
+	&__logoContainer {
 		max-width: 70px;
 		max-height: 70px;
 	}
 
-	&Logo {
+	&__logo {
 		width: 100%;
-		transition: 0.3s;
 	}
 
-	&Link {
-		font-family: 'Amagro', sans-serif;
+	&__link {
+		font-family: var(--amagro);
 		font-weight: bold;
 		font-size: 20px;
 		color: transparent;
@@ -40,12 +40,11 @@
 		background-image: var(--gradient-link);
 		transition: 0.3s;
 
-		&Active {
+		&_active {
 			text-decoration: underline;
 			text-decoration-color: #423d39;
 			text-underline-offset: 5px;
 			text-decoration-thickness: 2px;
-			transition: 0.3s;
 		}
 
 		&:hover {

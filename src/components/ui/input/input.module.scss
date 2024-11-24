@@ -1,9 +1,3 @@
-.inputContainer {
-	position: relative;
-	width: 100%;
-	font-family: 'Metrika', sans-serif;
-}
-
 .input {
 	box-sizing: border-box;
 	width: 100%;
@@ -13,25 +7,31 @@
 	background: var(--gradient-input);
 	border: none;
 	border-radius: 40px;
-	font-family: 'Metrika', sans-serif;
+	font-family: var(--metrika);
 	font-size: 16px;
 	color: var(--color-text-input);
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 	outline: none;
 
+	&__container {
+		position: relative;
+		width: 100%;
+		font-family: var(--metrika);
+	}
+
+	&__error {
+		background: rgba(255, 0, 0, 0.247);
+	}
+
+	&__errorMessage {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		font-size: 14px;
+		color: rgb(134, 22, 22);
+	}
+
 	&::placeholder {
 		color: var(--color-text-input);
 	}
-}
-
-.inputError {
-	background: rgba(255, 0, 0, 0.247);
-}
-
-.errorMessage {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	font-size: 14px;
-	color: rgb(134, 22, 22);
 }

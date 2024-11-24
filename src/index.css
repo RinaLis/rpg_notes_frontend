@@ -15,6 +15,8 @@
 	/* кастомные свойства шрифтов */
 	line-height: 1.5;
 	font-weight: 400;
+	--metrika: 'Metrika', sans-serif;
+	--amagro: 'Amagro', sans-serif;
 
 	/* кастомные свойства палитры */
 	--color-black: #000;
@@ -57,7 +59,6 @@
 	/* кастомные свойства, которые будем использовать для темизации */
 	color-scheme: light dark;
 	color: rgba(255, 255, 255, 0.87);
-	/* background: var(--color-light); */
 	--text-color: var(--color-dark);
 
 	font-synthesis: none;
@@ -67,7 +68,7 @@
 }
 
 a {
-	font-family: 'Metrika', sans-serif;
+	font-family: var(--metrika);
 	color: var(--link-color);
 	text-decoration: inherit;
 }
@@ -90,6 +91,34 @@ body {
 h1 {
 	font-size: 3.2em;
 	line-height: 1.1;
+}
+
+h2 {
+	font-family: var(--amagro);
+	font-weight: bold;
+	font-size: 36px;
+	text-align: center;
+	color: var(--color-title);
+}
+
+button {
+	background-image: var(--gradient-button);
+
+	font-family: var(--amagro);
+	font-size: 24px;
+	color: var(--color-text-button);
+	text-shadow: #110909 0px 0 2px;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+	border: 1px solid #3a1f0c;
+	border-radius: 64px;
+	padding: 16px 40px;
+	cursor: pointer;
+}
+
+button:disabled {
+	background-color: #d6d6d6;
+	cursor: not-allowed;
 }
 
 button:focus,

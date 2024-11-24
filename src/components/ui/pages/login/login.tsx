@@ -13,10 +13,10 @@ interface LoginUIProps {
 export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 	return (
 		<main className={styles.login}>
-			<div className={styles.loginFormСontainer}>
-				<img className={styles.loginImg} src={VictorianSvg} alt="victorian" />
-				<form name="login" onSubmit={onSubmit} className={styles.loginForm} noValidate>
-					<h2 className={styles.loginTitle}>Вход</h2>
+			<div className={styles.login__formСontainer}>
+				<img className={styles.login__img} src={VictorianSvg} alt="victorian" />
+				<form name="login" onSubmit={onSubmit} className={styles.login__form} noValidate>
+					<h2>Вход</h2>
 					<Input
 						type="text"
 						placeholder="Логин"
@@ -35,10 +35,8 @@ export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 						register={register('password')}
 						error={errors.password?.message}
 					/>
-					<Button type="submit" className={styles.loginButton}>
-						Войти
-					</Button>
-					<div className={styles.loginLinkContainer}>
+					<Button type="submit">Войти</Button>
+					<div className={styles.login__linkContainer}>
 						<div>
 							<NavLink to="/register">Регистрация</NavLink>
 						</div>

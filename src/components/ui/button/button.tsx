@@ -1,7 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import { ButtonProps } from './type';
-import styles from './button.module.scss';
 
 export const Button: React.FC<ButtonProps> = ({
 	type = 'button', // Тип кнопки, по умолчанию обычная кнопка
@@ -14,7 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
 		<button
 			type={type}
 			onClick={onClick}
-			className={clsx(styles.button, className)} // Применяем стили, переданные через className
+			className={clsx('button', className)} // Применяем стили, переданные через className
 			disabled={disabled} // Включаем/выключаем кнопку
 		>
 			{children}
