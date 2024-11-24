@@ -13,32 +13,32 @@ export const ResetPasswordUI: React.FC<ResetPasswordUIProps> = ({ onSubmit, regi
 	return (
 		<main className={styles.resetPasswordSection}>
 			<img className={styles.resetPasswordSection__img} src={VictorianSvg} alt="victorian" />
-			<form
-				className={styles.resetPasswordSection__formSection}
-				name="resetPassword"
-				onSubmit={onSubmit}
-			>
-				<h2 className={styles.resetPasswordSection__title}>Восстановление пароля</h2>
-				<Input
-					type="password"
-					placeholder="Введите новый пароль"
-					register={register('password')}
-					error={errors.password?.message}
-				/>
-				<Input
-					type="text"
-					placeholder="Подтверждение пароля"
-					register={register('confirmPassword')}
-					error={errors.confirmPassword?.message}
-				/>
-				<Input
-					type="text"
-					placeholder="Введите код из письма"
-					register={register('сode')}
-					error={errors.сode?.message}
-				/>
-				<Button className={styles.resetPasswordSection__button}>Сохранить</Button>
-			</form>
+			<div className={styles.resetPasswordSection__formSection}>
+				<form name="resetPassword" onSubmit={onSubmit} noValidate>
+					<h2 className={styles.resetPasswordSection__title}>Восстановление пароля</h2>
+					<Input
+						type="password"
+						placeholder="Введите новый пароль"
+						register={register('password')}
+						error={errors.password?.message}
+					/>
+					<Input
+						type="text"
+						placeholder="Подтверждение пароля"
+						register={register('confirmPassword')}
+						error={errors.confirmPassword?.message}
+					/>
+					<Input
+						type="text"
+						placeholder="Введите код из письма"
+						register={register('confirm')}
+						error={errors.confirm?.message}
+					/>
+					<Button type="submit" className={styles.resetPasswordSection__button}>
+						Сохранить
+					</Button>
+				</form>
+			</div>
 		</main>
 	);
 };

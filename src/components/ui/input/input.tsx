@@ -7,7 +7,11 @@ export const Input: React.FC<InputProps> = ({ label, type, placeholder, register
 	return (
 		<div className={styles.inputContainer}>
 			{/* Отображение метки, если она задана */}
-			{label && <label htmlFor={register.name}>{label}</label>}
+			{label && (
+				<label htmlFor={register.name} className={styles.label}>
+					{label}
+				</label>
+			)}
 			<input
 				name={register.name}
 				ref={register.ref}
@@ -15,10 +19,10 @@ export const Input: React.FC<InputProps> = ({ label, type, placeholder, register
 				onBlur={register.onBlur}
 				type={type}
 				placeholder={placeholder}
-				className={clsx('input-field', { 'input-error': error })}
+				className={clsx(styles.input, { [styles.inputError]: error })}
 			/>
 			{/* Сообщение об ошибке, если она есть */}
-			{error && <span className="error-message">{error}</span>}
+			{error && <span className={styles.errorMessage}>{error}</span>}
 		</div>
 	);
 };

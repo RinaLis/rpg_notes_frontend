@@ -14,38 +14,36 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 	return (
 		<main className={styles.registerSection}>
 			<img className={styles.registerSection__img} src={VictorianSvg} alt="victorian" />
-			<div className={styles.registerSection__formSection}>
-				<form name="Register" onSubmit={onSubmit} noValidate>
-					<h1 className={styles.registerSection__title}>Регистрация</h1>
-					<Input
-						type="text"
-						placeholder="Логин"
-						register={register('login')}
-						error={errors.login?.message}
-					/>
-					<Input
-						type="email"
-						placeholder="Email"
-						register={register('email')}
-						error={errors.email?.message}
-					/>
-					<Input
-						type="password"
-						placeholder="Пароль"
-						register={register('password')}
-						error={errors.password?.message}
-					/>
-					<Input
-						type="text"
-						placeholder="Подтверждение пароля"
-						register={register('confirmPassword')}
-						error={errors.confirmPassword?.message}
-					/>
-					<Button type="submit">Регистрация</Button>
-					Зарегистрированы?
-					<Link to="/login">Войти</Link>
-				</form>
-			</div>
+			<form name="Register" onSubmit={onSubmit} noValidate>
+				<h1 className={styles.registerSection__title}>Регистрация</h1>
+				<Input
+					type="text"
+					placeholder="Логин"
+					register={register('login')}
+					error={errors.login?.message}
+				/>
+				<Input
+					type="email"
+					placeholder="Email"
+					register={register('email')}
+					error={errors.email?.message}
+				/>
+				<Input
+					type="password"
+					placeholder="Пароль"
+					register={register('password')}
+					error={errors.password?.message}
+				/>
+				<Input
+					type="text"
+					placeholder="Подтверждение пароля"
+					register={register('confirmPassword')}
+					error={errors.confirmPassword?.message}
+				/>
+				<Button type="submit">Регистрация</Button>
+				Зарегистрированы?
+				<Link to="/login">Войти</Link>
+			</form>
 		</main>
 	);
 };

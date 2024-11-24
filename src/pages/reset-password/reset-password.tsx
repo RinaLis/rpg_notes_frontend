@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { ResetPasswordUI } from '@ui-pages';
 
 // Схема валидации через yup
-const schemaLogin = yup
+const schemaReset = yup
 	.object({
 		password: yup
 			.string()
@@ -15,16 +15,16 @@ const schemaLogin = yup
 			.string()
 			.oneOf([yup.ref('password')], 'Пароли не совпадают')
 			.required('Повторите пароль'),
-		code: yup
+		confirm: yup
 			.string()
 			.min(3, 'Код должен быть не менее 3 символов')
-			// .max(9, 'Код должен быть не более 9 символов')
+			.max(9, 'Код должен быть не более 9 символов')
 			.required('Введите код из письма'),
 	})
 	.required();
 
 // Типизация формы, основанная на yup-схеме
-type FormValues = yup.InferType<typeof schemaLogin>;
+type FormValues = yup.InferType<typeof schemaReset>;
 export const ResetPassword: React.FC = () => {
 	// Инициализация react-hook-form с валидацией через yup
 	const {
@@ -33,7 +33,7 @@ export const ResetPassword: React.FC = () => {
 		reset,
 		formState: { errors },
 	} = useForm<FormValues>({
-		resolver: yupResolver(schemaLogin),
+		resolver: yupResolver(schemaReset),
 	});
 
 	// Обработчик успешной отправки формы

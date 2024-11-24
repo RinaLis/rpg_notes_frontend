@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Input, Button } from '@components';
 import { NavLink } from 'react-router-dom';
+import VictorianSvg from '@assets/victorian.svg';
 import styles from './login.module.scss';
 
 interface LoginUIProps {
@@ -12,9 +13,10 @@ interface LoginUIProps {
 export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 	return (
 		<main className={styles.login}>
-			<div className={styles.loginForm}>
-				<h2 className={styles.loginTitle}>Вход</h2>
+			<div className={styles.loginFormСontainer}>
+				<img className={styles.loginImg} src={VictorianSvg} alt="victorian" />
 				<form name="login" onSubmit={onSubmit} className={styles.loginForm} noValidate>
+					<h2 className={styles.loginTitle}>Вход</h2>
 					<Input
 						type="text"
 						placeholder="Логин"

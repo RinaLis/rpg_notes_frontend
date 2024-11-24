@@ -5,27 +5,39 @@
 	font-style: normal;
 }
 @font-face {
-	font-family: 'Metrica';
-	src: url('./assets/fonts/Metrica.ttf');
+	font-family: 'Metrika';
+	src: url('./assets/fonts/Metrika.otf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 :root {
 	/* кастомные свойства шрифтов */
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
 
 	/* кастомные свойства палитры */
-	--color-dark: #1e1e1e;
 	--color-black: #000;
-	--color-light: #dde4fd;
 	--color-white: #fff;
 	--bg-color: #d8b692;
 	--link-color: #095a70;
-	--gradient-header: linear-gradient(to bottom, #a78357, #d0a674, #d0a674, #d0a674, #a78357);
-	--gradient-input: linear-gradient(to right, #d0a674, #eec491, #fdd09a, #fdd09a, #eec491, #d0a674);
+	--gradient-header: linear-gradient(
+		to bottom,
+		#a78357 1%,
+		#d0a674 28%,
+		#d0a674 50%,
+		#d0a674 69%,
+		#a78357 100%
+	);
+	--gradient-input: linear-gradient(
+		to right,
+		#d0a674 9%,
+		#eec491 23%,
+		#fdd09a 38%,
+		#fdd09a 61%,
+		#eec491 78%,
+		#d0a674 93%
+	);
 	--gradient-button: linear-gradient(
 		to right,
 		#3a1f0c 0%,
@@ -39,7 +51,10 @@
 	);
 	--gradient-link: linear-gradient(to bottom, #423d39, #544d48, #645c56, #423d39);
 	--color-title: #3a2910;
-	--color-text-button: #ffe3af; /* кастомные свойства, которые будем использовать для темизации */
+	--color-text-button: #ffe3af;
+	--color-text-input: #5b401a;
+
+	/* кастомные свойства, которые будем использовать для темизации */
 	color-scheme: light dark;
 	color: rgba(255, 255, 255, 0.87);
 	/* background: var(--color-light); */
@@ -52,6 +67,7 @@
 }
 
 a {
+	font-family: 'Metrika', sans-serif;
 	color: var(--link-color);
 	text-decoration: inherit;
 }
