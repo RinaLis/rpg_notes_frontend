@@ -77,9 +77,14 @@ body {
 	display: flex;
 	flex-direction: column;
 	place-items: center;
+	width: 100%;
 	min-width: 320px;
 	min-height: 100vh;
 	background-color: var(--bg-color);
+}
+
+#root {
+	width: 100%;
 }
 
 h1 {

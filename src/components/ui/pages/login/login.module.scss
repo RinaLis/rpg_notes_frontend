@@ -1,10 +1,12 @@
 .login {
 	display: flex;
 	justify-content: center;
-	height: 90vh;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
 	background-image: url('@assets/images/bg.jpg');
 	background-size: cover;
-	background-repeat: no-repeat;
+	background-position: center;
 
 	&FormСontainer {
 		position: relative;
@@ -15,7 +17,6 @@
 		width: 610px;
 		height: 700px;
 		min-width: 100px;
-		margin-block-start: 100px;
 	}
 	&Title {
 		font-family: 'Amagro', sans-serif;
