@@ -41,7 +41,6 @@ export const ResetPasswordUI: React.FC<ResetPasswordUIProps> = ({ onSubmit, regi
 						placeholder="Введите код из письма"
 						register={register('confirm')}
 						error={errors.confirm?.message}
-						icon={pen}
 					/>
 					<Button type="submit" className={styles.resetPasswordSection__button}>
 						Сохранить
