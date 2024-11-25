@@ -1,0 +1,54 @@
+.input {
+	box-sizing: border-box;
+	width: 100%;
+	height: 64px;
+	margin-block: 10px;
+	padding: 12px 20px;
+	background: var(--gradient-input);
+	border: none;
+	border-radius: 40px;
+	font-family: var(--metrika);
+	font-size: 16px;
+	color: var(--color-text-input);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	outline: none;
+
+	&__container {
+		position: relative;
+		width: 100%;
+		font-family: var(--metrika);
+	}
+
+	&__icon {
+		position: absolute;
+		right: 25px;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+		font-size: 16px; /* Размер иконки */
+	}
+
+	&__error {
+		background: rgba(255, 0, 0, 0.247);
+	}
+
+	&__errorMessage {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		font-size: 14px;
+		color: rgb(134, 22, 22);
+	}
+
+	&::placeholder {
+		color: var(--color-text-input);
+	}
+}
+
+// еслии есть необходимость убрать стандартное заполнение полей
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s ease-in-out 0s;
+}
