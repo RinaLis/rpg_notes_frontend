@@ -3,15 +3,18 @@
 	width: 100%;
 	height: 64px;
 	margin-block: 10px;
-	padding: 12px 20px;
+	padding-right: 20px;
 	background: var(--gradient-input);
 	border: none;
 	border-radius: 40px;
-	font-family: var(--metrika);
-	font-size: 16px;
-	color: var(--color-text-input);
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 	outline: none;
+	display: grid;
+	grid-template-columns: 1fr 25px; // 25px размер контенера иконки
+	gap: 15px;
+	align-items: center;
+	font-size: 16px;
+	cursor: text;
 
 	&__container {
 		position: relative;
@@ -19,13 +22,44 @@
 		font-family: var(--metrika);
 	}
 
+	&__field {
+		padding-left: 25px;
+		appearance: none;
+		background-color: transparent;
+		border: none;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-family: inherit;
+		font-size: inherit;
+		height: 100%;
+		color: var(--color-text-input);
+
+		&:focus-visible {
+			outline: none;
+		}
+		&:-webkit-autofill::first-line,
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active {
+			transition: background-color 5000s ease-in-out 0s;
+			color: var(--color-text-input);
+			appearance: none;
+			outline: none;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: var(--color-text-input);
+			font-size: inherit;
+			font-family: inherit;
+		}
+	}
+
 	&__icon {
-		position: absolute;
-		right: 25px;
-		top: 50%;
-		transform: translateY(-50%);
 		cursor: pointer;
-		font-size: 16px; /* Размер иконки */
+	}
+
+	&__label {
+		font-size: 16px;
+		color: var(--color-text-input);
 	}
 
 	&__error {
@@ -43,12 +77,4 @@
 	&::placeholder {
 		color: var(--color-text-input);
 	}
-}
-
-// еслии есть необходимость убрать стандартное заполнение полей
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-	transition: background-color 5000s ease-in-out 0s;
 }
