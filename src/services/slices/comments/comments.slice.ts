@@ -1,7 +1,12 @@
-import { createCommentApi, deleteCommentApi, getCommentsByPostApi, updateCommentApi } from '@api';
 import { commentsSliceConst } from '@const';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { CommentDTO } from '@utils-types';
+import {
+	requestCreateComment,
+	requestDeleteComment,
+	requestGetCommentsByPost,
+	requestUpdateComment,
+} from './actions';
 
 export interface CommentsState {
 	isLoading: boolean;
@@ -14,26 +19,6 @@ export const initialState: CommentsState = {
 	comments: null,
 	error: null,
 };
-
-export const requestCreateComment = createAsyncThunk(
-	`${commentsSliceConst.name}/${commentsSliceConst.requests.create}`,
-	createCommentApi
-);
-
-export const requestGetCommentsByPost = createAsyncThunk(
-	`${commentsSliceConst.name}/${commentsSliceConst.requests.byPost}`,
-	getCommentsByPostApi
-);
-
-export const requestUpdateComment = createAsyncThunk(
-	`${commentsSliceConst.name}/${commentsSliceConst.requests.update}`,
-	updateCommentApi
-);
-
-export const requestDeleteComment = createAsyncThunk(
-	`${commentsSliceConst.name}/${commentsSliceConst.requests.delete}`,
-	deleteCommentApi
-);
 
 export const commentsSlice = createSlice({
 	name: commentsSliceConst.name,

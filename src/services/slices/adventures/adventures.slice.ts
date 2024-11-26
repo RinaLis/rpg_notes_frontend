@@ -1,50 +1,27 @@
-import {
-	createAdventureApi,
-	deleteAdventureApi,
-	getAdventureApi,
-	getUserAdventuresApi,
-	updateAdventureApi,
-} from '@api';
 import { adventuresSliceConst } from '@const';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { AdventureDTO } from '@utils-types';
+import {
+	requestCreateAdventure,
+	requestDeleteAdventure,
+	requestGetAdventure,
+	requestUpdateAdventure,
+	requestUserAdventures,
+} from './actions';
 
 export interface AdventuresState {
 	isLoading: boolean;
 	adventures: AdventureDTO[] | null;
 	currentAdventure: AdventureDTO | null;
+	createdAdventure: AdventureDTO | null;
 	error: string | null;
 }
-
-export const requestUserAdventures = createAsyncThunk(
-	`${adventuresSliceConst.name}/${adventuresSliceConst.requests.byUser}`,
-	getUserAdventuresApi
-);
-
-export const requestCreateAdventure = createAsyncThunk(
-	`${adventuresSliceConst.name}/${adventuresSliceConst.requests.create}`,
-	createAdventureApi
-);
-
-export const requestGetAdventure = createAsyncThunk(
-	`${adventuresSliceConst.name}/${adventuresSliceConst.requests.byId}`,
-	getAdventureApi
-);
-
-export const requestUpdateAdventure = createAsyncThunk(
-	`${adventuresSliceConst.name}/${adventuresSliceConst.requests.update}`,
-	updateAdventureApi
-);
-
-export const requestDeleteAdventure = createAsyncThunk(
-	`${adventuresSliceConst.name}/${adventuresSliceConst.requests.delete}`,
-	deleteAdventureApi
-);
 
 export const initialState: AdventuresState = {
 	isLoading: false,
 	adventures: null,
 	currentAdventure: null,
+	createdAdventure: null,
 	error: null,
 };
 
@@ -55,12 +32,14 @@ export const adventuresSlice = createSlice({
 	selectors: {
 		getAdventures: (sliceState) => sliceState.adventures,
 		getCurrentAdventure: (sliceState) => sliceState.currentAdventure,
+		getCreatedAdventure: (sliceState) => sliceState.createdAdventure,
 	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(requestUserAdventures.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
+				state.adventures = null;
 			})
 			.addCase(requestUserAdventures.rejected, (state, { error }) => {
 				state.isLoading = false;
@@ -75,21 +54,23 @@ export const adventuresSlice = createSlice({
 			.addCase(requestCreateAdventure.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
+				state.createdAdventure = null;
 			})
 			.addCase(requestCreateAdventure.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message as string;
-				state.currentAdventure = null;
+				state.createdAdventure = null;
 			})
 			.addCase(requestCreateAdventure.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.currentAdventure = payload;
+				state.createdAdventure = payload;
 				state.adventures = state.adventures ? [...state.adventures, payload] : [payload];
 			})
 			.addCase(requestGetAdventure.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
+				state.currentAdventure = null;
 			})
 			.addCase(requestGetAdventure.rejected, (state, { error }) => {
 				state.isLoading = false;

@@ -1,12 +1,12 @@
-import {
-	deleteUserInAdventureApi,
-	getAdventureUsersApi,
-	getUserByLoginApi,
-	inviteUserInAdventureApi,
-} from '@api';
 import { playersSliceConst } from '@const';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { PlayerDTO, UserDTO } from '@utils-types';
+import {
+	requestDeletePlayer,
+	requestGetPlayers,
+	requestGetUserByLogin,
+	requestInviteUser,
+} from './actions';
 
 export interface PlayersState {
 	isLoading: boolean;
@@ -14,26 +14,6 @@ export interface PlayersState {
 	invitedUser: UserDTO | null;
 	error: string | null;
 }
-
-export const requestGetUserByLogin = createAsyncThunk(
-	`${playersSliceConst.name}/${playersSliceConst.requests.byLogin}`,
-	getUserByLoginApi
-);
-
-export const requestInviteUser = createAsyncThunk(
-	`${playersSliceConst.name}/${playersSliceConst.requests.invite}`,
-	inviteUserInAdventureApi
-);
-
-export const requestDeletePlayer = createAsyncThunk(
-	`${playersSliceConst.name}/${playersSliceConst.requests.delete}`,
-	deleteUserInAdventureApi
-);
-
-export const requestGetPlayers = createAsyncThunk(
-	`${playersSliceConst.name}/${playersSliceConst.requests.byAdventure}`,
-	getAdventureUsersApi
-);
 
 export const initialState: PlayersState = {
 	isLoading: false,

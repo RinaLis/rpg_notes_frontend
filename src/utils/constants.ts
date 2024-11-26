@@ -2,6 +2,7 @@ export const userSliceConst = {
 	name: 'user',
 	requests: {
 		login: 'login',
+		logout: 'logout',
 		register: 'register',
 		byToken: 'getByToken',
 		update: 'updateUser',

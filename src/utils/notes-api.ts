@@ -47,9 +47,18 @@ export const registerUserApi = (data: SignupInputDTO) =>
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
 		},
-	});
+	})
+		.then((res) => {
+			localStorage.setItem('accessToken', res.access_token);
+			localStorage.setItem('refreshToken', res.refresh_token);
+		})
+		.catch((err) => {
+			localStorage.removeItem('accessToken');
+			localStorage.removeItem('refreshToken');
+			return Promise.reject(err);
+		});
 
-export const loginUserApi = (data: LoginInputDTO): Promise<TokensOutputDTO> =>
+export const loginUserApi = (data: LoginInputDTO) =>
 	request<LoginInputDTO, TokensOutputDTO>({
 		method: 'post',
 		url: '/auth/login',
@@ -57,12 +66,32 @@ export const loginUserApi = (data: LoginInputDTO): Promise<TokensOutputDTO> =>
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
 		},
+	})
+		.then((res) => {
+			localStorage.setItem('accessToken', res.access_token);
+			localStorage.setItem('refreshToken', res.refresh_token);
+		})
+		.catch((err) => {
+			localStorage.removeItem('accessToken');
+			localStorage.removeItem('refreshToken');
+			return Promise.reject(err);
+		});
+
+export const logoutUserApi = (): Promise<void> =>
+	new Promise((resolve) => {
+		localStorage.removeItem('accessToken');
+		localStorage.removeItem('refreshToken');
+		resolve();
 	});
 
 export const getUserApi = () =>
 	requestWithRefresh<{}, UserDTO>({
 		method: 'get',
 		url: '/users/get_self',
+	}).catch((err) => {
+		localStorage.removeItem('accessToken');
+		localStorage.removeItem('refreshToken');
+		return err;
 	});
 
 export const getUserByLoginApi = (login: string) =>
@@ -99,6 +128,9 @@ export const resetPasswordApi = (data: RecoveryPasswordInputDTO) =>
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
 		},
+	}).then((res) => {
+		localStorage.setItem('accessToken', res.access_token);
+		localStorage.setItem('refreshToken', res.refresh_token);
 	});
 
 export const getUserAdventuresApi = () =>

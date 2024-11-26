@@ -1,12 +1,18 @@
-import { createHeroApi, getHeroByIdApi, getHeroesByAdventureAndUserApi, updateHeroApi } from '@api';
 import { heroesSliceConst } from '@const';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { HeroWithCharacteristicsDTO } from '@utils-types';
+import {
+	requestCreateHero,
+	requestGetById,
+	requestGetHeroesByAdventureAndUser,
+	requestUpdateHero,
+} from './actions';
 
 export interface HeroesState {
 	isLoading: boolean;
 	heroes: HeroWithCharacteristicsDTO[] | null;
 	currentHero: HeroWithCharacteristicsDTO | null;
+	createdHero: HeroWithCharacteristicsDTO | null;
 	error: string | null;
 }
 
@@ -14,28 +20,9 @@ export const initialState: HeroesState = {
 	isLoading: false,
 	heroes: null,
 	currentHero: null,
+	createdHero: null,
 	error: null,
 };
-
-export const requestCreateHero = createAsyncThunk(
-	`${heroesSliceConst.name}/${heroesSliceConst.requests.create}`,
-	createHeroApi
-);
-
-export const requestGetHeroesByAdventureAndUser = createAsyncThunk(
-	`${heroesSliceConst.name}/${heroesSliceConst.requests.byAdventure}`,
-	getHeroesByAdventureAndUserApi
-);
-
-export const requestUpdateHero = createAsyncThunk(
-	`${heroesSliceConst.name}/${heroesSliceConst.requests.update}`,
-	updateHeroApi
-);
-
-export const requestGetById = createAsyncThunk(
-	`${heroesSliceConst.name}/${heroesSliceConst.requests.byId}`,
-	getHeroByIdApi
-);
 
 export const heroesSlice = createSlice({
 	name: heroesSliceConst.name,
@@ -50,16 +37,18 @@ export const heroesSlice = createSlice({
 			.addCase(requestCreateHero.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
+				state.createdHero = null;
 			})
 			.addCase(requestCreateHero.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message as string;
+				state.createdHero = null;
 				state.heroes = null;
 			})
 			.addCase(requestCreateHero.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.currentHero = payload;
+				state.createdHero = payload;
 				state.heroes = state.heroes ? [...state.heroes, payload] : [payload];
 			})
 			.addCase(requestGetHeroesByAdventureAndUser.pending, (state) => {
@@ -94,10 +83,12 @@ export const heroesSlice = createSlice({
 			.addCase(requestGetById.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
+				state.currentHero = null;
 			})
 			.addCase(requestGetById.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message as string;
+				state.currentHero = null;
 			})
 			.addCase(requestGetById.fulfilled, (state, { payload }) => {
 				state.isLoading = false;

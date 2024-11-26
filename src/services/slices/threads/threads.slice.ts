@@ -1,18 +1,19 @@
-import {
-	createThreadApi,
-	deleteThreadApi,
-	getThreadApi,
-	getThreadsByAdventureApi,
-	updateThreadApi,
-} from '@api';
 import { threadsSliceConst } from '@const';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { ThreadDTO } from '@utils-types';
+import {
+	requestCreateThread,
+	requestDeleteThread,
+	requestGetThreadById,
+	requestGetThreadsByAdventure,
+	requestUpdateThread,
+} from './actions';
 
 export interface ThreadsState {
 	isLoading: boolean;
 	threads: ThreadDTO[] | null;
 	currentThread: ThreadDTO | null;
+	createdThread: ThreadDTO | null;
 	error: string | null;
 }
 
@@ -20,33 +21,9 @@ export const initialState: ThreadsState = {
 	isLoading: false,
 	threads: null,
 	currentThread: null,
+	createdThread: null,
 	error: null,
 };
-
-export const requestCreateThread = createAsyncThunk(
-	`${threadsSliceConst.name}/${threadsSliceConst.requests.create}`,
-	createThreadApi
-);
-
-export const requestGetThreadsByAdventure = createAsyncThunk(
-	`${threadsSliceConst.name}/${threadsSliceConst.requests.byAdventure}`,
-	getThreadsByAdventureApi
-);
-
-export const requestGetThreadById = createAsyncThunk(
-	`${threadsSliceConst.name}/${threadsSliceConst.requests.byId}`,
-	getThreadApi
-);
-
-export const requestUpdateThread = createAsyncThunk(
-	`${threadsSliceConst.name}/${threadsSliceConst.requests.update}`,
-	updateThreadApi
-);
-
-export const requestDeleteThread = createAsyncThunk(
-	`${threadsSliceConst.name}/${threadsSliceConst.requests.delete}`,
-	deleteThreadApi
-);
 
 export const threadsSlice = createSlice({
 	name: threadsSliceConst.name,
@@ -61,16 +38,17 @@ export const threadsSlice = createSlice({
 			.addCase(requestCreateThread.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
+				state.createdThread = null;
 			})
 			.addCase(requestCreateThread.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message as string;
-				state.currentThread = null;
+				state.createdThread = null;
 			})
 			.addCase(requestCreateThread.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.currentThread = payload;
+				state.createdThread = payload;
 				state.threads = state.threads ? [...state.threads, payload] : [payload];
 			})
 			.addCase(requestGetThreadsByAdventure.pending, (state) => {

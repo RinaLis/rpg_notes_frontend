@@ -1,19 +1,20 @@
-import {
-	createPostApi,
-	deletePostApi,
-	getPostApi,
-	getPostsByAdventureApi,
-	getPostsByThreadApi,
-	updatePostApi,
-} from '@api';
 import { postsSliceConst } from '@const';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { PostDTO } from '@utils-types';
+import {
+	requestCreatePost,
+	requestDeletePost,
+	requestGetPostById,
+	requestGetPostsByAdventure,
+	requestGetPostsByThread,
+	requestUpdatePost,
+} from './actions';
 
 export interface PostsState {
 	isLoading: boolean;
 	posts: PostDTO[] | null;
 	currentPost: PostDTO | null;
+	createdPost: PostDTO | null;
 	error: string | null;
 }
 
@@ -21,38 +22,9 @@ export const initialState: PostsState = {
 	isLoading: false,
 	posts: null,
 	currentPost: null,
+	createdPost: null,
 	error: null,
 };
-
-export const requestCreatePost = createAsyncThunk(
-	`${postsSliceConst.name}/${postsSliceConst.requests.create}`,
-	createPostApi
-);
-
-export const requestGetPostsByAdventure = createAsyncThunk(
-	`${postsSliceConst.name}/${postsSliceConst.requests.byAdventure}`,
-	getPostsByAdventureApi
-);
-
-export const requestGetPostsByThread = createAsyncThunk(
-	`${postsSliceConst.name}/${postsSliceConst.requests.byThread}`,
-	getPostsByThreadApi
-);
-
-export const requestGetPostById = createAsyncThunk(
-	`${postsSliceConst.name}/${postsSliceConst.requests.byId}`,
-	getPostApi
-);
-
-export const requestUpdatePost = createAsyncThunk(
-	`${postsSliceConst.name}/${postsSliceConst.requests.update}`,
-	updatePostApi
-);
-
-export const requestDeletePost = createAsyncThunk(
-	`${postsSliceConst.name}/${postsSliceConst.requests.delete}`,
-	deletePostApi
-);
 
 export const postsSlice = createSlice({
 	name: postsSliceConst.name,
@@ -67,16 +39,17 @@ export const postsSlice = createSlice({
 			.addCase(requestCreatePost.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
+				state.createdPost = null;
 			})
 			.addCase(requestCreatePost.rejected, (state, { error }) => {
 				state.isLoading = false;
 				state.error = error.message as string;
-				state.currentPost = null;
+				state.createdPost = null;
 			})
 			.addCase(requestCreatePost.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.error = null;
-				state.currentPost = payload;
+				state.createdPost = payload;
 				state.posts = state.posts ? [...state.posts, payload] : [payload];
 			})
 			.addCase(requestGetPostsByAdventure.pending, (state) => {
@@ -108,6 +81,7 @@ export const postsSlice = createSlice({
 			.addCase(requestGetPostById.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
+				state.currentPost = null;
 			})
 			.addCase(requestGetPostById.rejected, (state, { error }) => {
 				state.isLoading = false;

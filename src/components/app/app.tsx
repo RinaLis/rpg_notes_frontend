@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { ExamplePage, Adventures, Login, Profile } from '@pages';
 import { AppHeader } from '@components';
-import { useDispatch } from '@store';
-import { requestGetUser, requestLoginUser } from 'src/services/slices/user.slice';
+import { useAppDispatch } from '@store';
+import { requestLoginUser } from 'src/services/slices/user/actions';
 
 export const App: React.FC = () => {
 	const location = useLocation();
@@ -13,7 +13,7 @@ export const App: React.FC = () => {
 	const closeModal = () => {
 		navigate(-1); // возвращаемся назад
 	};
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		dispatch(
@@ -21,14 +21,7 @@ export const App: React.FC = () => {
 				email: 'anpast2018@gmail.com',
 				password: '1234567890',
 			})
-		).then(() => {
-			dispatch(requestGetUser());
-		});
-		// dispatch(requestCreateHero({
-		// 	adventure_id: '8ce57dde-1893-4ee6-b21b-fdafc467fc57',
-		// 	name: 'Крейси',
-
-		// }));
+		);
 	}, [dispatch]);
 	return (
 		<>
