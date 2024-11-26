@@ -12,7 +12,7 @@ export default defineConfig({
 			'@components': '/src/components',
 			'@ui': '/src/components/ui',
 			'@pages': '/src/pages',
-			'@ui-pages': 'src/components/ui/pages',
+			'@ui-pages': '/src/components/ui/pages',
 			'@assets': '/src/assets',
 			'@hooks': '/src/hooks',
 			'@utils': '/src/utils',
@@ -23,10 +23,13 @@ export default defineConfig({
 			'@store': 'src/services/store.ts',
 		},
 	},
-
 	test: {
 		globals: true,
 		environment: 'jsdom',
 		setupFiles: ['src/__tests__/setup.ts'],
+	},
+	server: {
+		host: '127.0.0.1',
+		port: 8000,
 	},
 });

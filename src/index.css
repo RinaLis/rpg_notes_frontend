@@ -1,68 +1,135 @@
+@font-face {
+	font-family: 'Amagro';
+	src: url('./assets/fonts/Amagro.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Metrika';
+	src: url('./assets/fonts/Metrika.otf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+	/* кастомные свойства шрифтов */
+	line-height: 1.5;
+	font-weight: 400;
+	--metrika: 'Metrika', sans-serif;
+	--amagro: 'Amagro', sans-serif;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(to bottom, #DAC9AF, #C0B19A, #978B79, #6F604B);
+	/* кастомные свойства палитры */
+	--color-black: #000;
+	--color-white: #fff;
+	--bg-color: #d8b692;
+	--link-color: #095a70;
+	--gradient-header: linear-gradient(
+		to bottom,
+		#a78357 1%,
+		#d0a674 28%,
+		#d0a674 50%,
+		#d0a674 69%,
+		#a78357 100%
+	);
+	--gradient-input: linear-gradient(
+		to right,
+		#d0a674 9%,
+		#eec491 23%,
+		#fdd09a 38%,
+		#fdd09a 61%,
+		#eec491 78%,
+		#d0a674 93%
+	);
+	--gradient-button: linear-gradient(
+		to right,
+		#3a1f0c 0%,
+		#6a4831 17%,
+		#6f4d36 21%,
+		#825f47 35%,
+		#896951 52%,
+		#825f47 57%,
+		#6a4831 85%,
+		#3a1f0c 100%
+	);
+	--gradient-link: linear-gradient(to bottom, #423d39, #544d48, #645c56, #423d39);
+	--color-title: #3a2910;
+	--color-text-button: #ffe3af;
+	--color-text-input: #5b401a;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	/* кастомные свойства, которые будем использовать для темизации */
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	--text-color: var(--color-dark);
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+	font-family: var(--metrika);
+	color: var(--link-color);
+	text-decoration: inherit;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	place-items: center;
+	width: 100%;
+	min-width: 320px;
+	min-height: 100vh;
+	background-color: var(--bg-color);
+	font-size: 20px;
+}
+
+#root {
+	width: 100%;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+	font-size: 3.2em;
+	line-height: 1.1;
+}
+
+h2 {
+	font-family: var(--amagro);
+	font-weight: bold;
+	font-size: 36px;
+	text-align: center;
+	color: var(--color-title);
+}
+
+h3 {
+	font-family: var(--metrika);
+	font-size: 20px;
+	text-align: center;
+	color: var(--color-title);
+	margin-block: 5px;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+	background-image: var(--gradient-button);
+	font-family: var(--amagro);
+	font-size: 24px;
+	color: var(--color-text-button);
+	text-shadow: #110909 0px 0 2px;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+	border: 1px solid #3a1f0c;
+	border-radius: 64px;
+	padding: 16px 40px;
+	cursor: pointer;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:disabled {
+	background-color: #d6d6d6;
+	cursor: not-allowed;
+}
+
+button:focus,
+button:focus-visible {
+	outline: 4px auto -webkit-focus-ring-color;
 }
