@@ -54,6 +54,7 @@
 	}
 
 	&__icon {
+		color: var(--color-icon);
 		cursor: pointer;
 	}
 
@@ -74,7 +75,7 @@
 		color: rgb(134, 22, 22);
 	}
 
-	&::placeholder {
+	::placeholder {
 		color: var(--color-text-input);
 	}
 }
