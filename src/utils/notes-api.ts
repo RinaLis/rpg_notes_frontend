@@ -47,9 +47,18 @@ export const registerUserApi = (data: SignupInputDTO) =>
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
 		},
-	});
+	})
+		.then((res) => {
+			localStorage.setItem('accessToken', res.access_token);
+			localStorage.setItem('refreshToken', res.refresh_token);
+		})
+		.catch((err) => {
+			localStorage.removeItem('accessToken');
+			localStorage.removeItem('refreshToken');
+			return Promise.reject(err);
+		});
 
-export const loginUserApi = (data: LoginInputDTO): Promise<TokensOutputDTO> =>
+export const loginUserApi = (data: LoginInputDTO) =>
 	request<LoginInputDTO, TokensOutputDTO>({
 		method: 'post',
 		url: '/auth/login',
@@ -57,12 +66,32 @@ export const loginUserApi = (data: LoginInputDTO): Promise<TokensOutputDTO> =>
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
 		},
+	})
+		.then((res) => {
+			localStorage.setItem('accessToken', res.access_token);
+			localStorage.setItem('refreshToken', res.refresh_token);
+		})
+		.catch((err) => {
+			localStorage.removeItem('accessToken');
+			localStorage.removeItem('refreshToken');
+			return Promise.reject(err);
+		});
+
+export const logoutUserApi = (): Promise<void> =>
+	new Promise((resolve) => {
+		localStorage.removeItem('accessToken');
+		localStorage.removeItem('refreshToken');
+		resolve();
 	});
 
 export const getUserApi = () =>
 	requestWithRefresh<{}, UserDTO>({
 		method: 'get',
 		url: '/users/get_self',
+	}).catch((err) => {
+		localStorage.removeItem('accessToken');
+		localStorage.removeItem('refreshToken');
+		return err;
 	});
 
 export const getUserByLoginApi = (login: string) =>
@@ -99,6 +128,9 @@ export const resetPasswordApi = (data: RecoveryPasswordInputDTO) =>
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
 		},
+	}).then((res) => {
+		localStorage.setItem('accessToken', res.access_token);
+		localStorage.setItem('refreshToken', res.refresh_token);
 	});
 
 export const getUserAdventuresApi = () =>
@@ -245,17 +277,17 @@ export const getPostsByThreadApi = ({ thread_id, offset }: { thread_id: string; 
 	});
 
 export const getPostsByAdventureApi = ({
-	thread_id,
+	adventure_id,
 	offset,
 }: {
-	thread_id: string;
+	adventure_id: string;
 	offset: number;
 }) =>
-	requestWithRefresh<{ thread_id: string; count: number; offset: number }, PostListDTO>({
+	requestWithRefresh<{ adventure_id: string; count: number; offset: number }, PostListDTO>({
 		method: 'get',
 		url: '/posts/list_by_adventure',
 		params: {
-			thread_id,
+			adventure_id,
 			count: 20,
 			offset,
 		},
@@ -397,8 +429,8 @@ export const updateHeroApi = (data: UpdateHeroInputDTO) =>
 
 export const getHeroByIdApi = (hero_id: string) =>
 	requestWithRefresh<{ hero_id: string }, HeroWithCharacteristicsDTO>({
-		method: 'delete',
-		url: '/comments/delete',
+		method: 'get',
+		url: '/heroes/get_by_id',
 		params: {
 			hero_id,
 		},

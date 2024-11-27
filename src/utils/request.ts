@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { RefreshTokenInputDTO, TokensOutputDTO } from '@utils-types';
-import { getCookie, setCookie } from '@cookie';
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -10,7 +9,7 @@ api.interceptors.response.use(
 	function (response) {
 		if (response.data) {
 			if (response.status === 200 || response.status === 201) {
-				return response;
+				return Promise.resolve(response);
 			}
 			return Promise.reject(response);
 		}
@@ -18,18 +17,26 @@ api.interceptors.response.use(
 		return Promise.reject(response);
 	},
 	function (error) {
-		return Promise.reject(error);
+		// TODO: Оставить только 1 часть, когда поправят бэк
+		if (error.response.data.detail[0].msg) {
+			const newError = {
+				...error,
+				message: error.response.data.detail[0].msg,
+			};
+			return Promise.reject(newError);
+		}
+		const newError = {
+			...error,
+			message: error.response.data.detail,
+		};
+		return Promise.reject(newError);
 	}
 );
 
 export const request = async <T, U>(options: AxiosRequestConfig<T>): Promise<U> =>
 	api(options)
-		.then((res) => {
-			return res.data;
-		})
-		.catch((error) => {
-			return error;
-		});
+		.then((res) => res.data)
+		.catch((error) => Promise.reject(error));
 
 export const refreshToken = (): Promise<TokensOutputDTO> =>
 	api({
@@ -43,30 +50,34 @@ export const refreshToken = (): Promise<TokensOutputDTO> =>
 		} as RefreshTokenInputDTO,
 	}).then((refreshData) => {
 		localStorage.setItem('refreshToken', refreshData.data.refresh_token);
-		setCookie('accessToken', refreshData.data.access_token);
+		localStorage.setItem('accessToken', refreshData.data.access_token);
 		return refreshData.data;
 	});
 
 export const requestWithRefresh = async <T, U>(options: AxiosRequestConfig<T>): Promise<U> => {
-	const axiosConfig = {
+	const axiosConfig: AxiosRequestConfig<T> = {
 		...options,
 		headers: {
 			...options.headers,
-			authorization: `Bearer ${getCookie('accessToken')}`,
+			authorization: `Bearer ${localStorage.getItem('accessToken')}`,
 		},
 	};
-	try {
-		const res = await api(axiosConfig);
-		return res.data;
-	} catch (err) {
-		if ((err as { message: string }).message === 'jwt expired') {
-			const refreshData = await refreshToken();
-			if (axiosConfig.headers) {
-				(axiosConfig.headers as { [key: string]: string }).authorization = refreshData.access_token;
+	return api(axiosConfig)
+		.then((res) => res.data)
+		.catch((error) => {
+			if ((error as { message: string }).message === 'jwt expired') {
+				return refreshToken()
+					.then((refreshData) => {
+						if (axiosConfig.headers) {
+							(axiosConfig.headers as { [key: string]: string }).authorization =
+								refreshData.access_token;
+						}
+						api(axiosConfig)
+							.then((res) => res.data)
+							.catch((err) => Promise.reject(err));
+					})
+					.catch((err) => Promise.reject(err));
 			}
-			const res = await api(axiosConfig);
-			return res.data;
-		}
-		return Promise.reject(err);
-	}
+			return Promise.reject(error);
+		});
 };

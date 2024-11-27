@@ -23,6 +23,7 @@
       "@ui": ["src/components/ui"],
       "@ui-pages": ["src/components/ui/pages"],
       "@utils-types": ["src/utils/types"],
+      "@const": ["src/utils/constants"],
       "@api": ["src/utils/notes-api.ts"],
       "@cookie": ["src/utils/cookie.ts"],
       "@hooks": ["src/hooks"],

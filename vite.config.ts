@@ -16,6 +16,7 @@ export default defineConfig({
 			'@assets': '/src/assets',
 			'@hooks': '/src/hooks',
 			'@utils': '/src/utils',
+			'@const': '/src/utils/constants',
 			'@api': 'src/utils/notes-api.ts',
 			'@services': '/src/services',
 			'@slices': 'src/services/slices',

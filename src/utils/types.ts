@@ -137,11 +137,8 @@ export interface CreateHeroInputDTO {
 	adventure_id: string;
 	/** Имя */
 	name: string;
-	/**
-	 * Аватарка
-	 * @format uuid4
-	 */
-	image: string;
+	/** Аватарка */
+	image?: string | null;
 	/**
 	 * Характеристики
 	 * @default []
@@ -300,7 +297,7 @@ export interface HeroDTO {
 	 */
 	user_in_adventure_id: string;
 	/** Аватар */
-	avatar?: string | null;
+	image?: string | null;
 	/** Используется */
 	is_used: boolean;
 }
@@ -325,7 +322,7 @@ export interface HeroWithCharacteristicsDTO {
 	 */
 	user_in_adventure_id: string;
 	/** Аватар */
-	avatar?: string | null;
+	image?: string | null;
 	/** Используется */
 	is_used: boolean;
 	/**
@@ -602,11 +599,8 @@ export interface UpdateHeroInputDTO {
 	id: string;
 	/** Имя */
 	name: string;
-	/**
-	 * Аватарка
-	 * @format uuid4
-	 */
-	image: string;
+	/** Аватарка */
+	image?: string | null;
 	/**
 	 * Характеристики
 	 * @default []
