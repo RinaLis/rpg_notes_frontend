@@ -21,40 +21,58 @@
 	/* кастомные свойства палитры */
 	--color-black: #000;
 	--color-white: #fff;
-	--bg-color: #d8b692;
-	--link-color: #095a70;
-	--gradient-header: linear-gradient(
-		to bottom,
-		#a78357 1%,
-		#d0a674 28%,
-		#d0a674 50%,
-		#d0a674 69%,
-		#a78357 100%
-	);
-	--gradient-input: linear-gradient(
-		to right,
-		#d0a674 9%,
-		#eec491 23%,
-		#fdd09a 38%,
-		#fdd09a 61%,
-		#eec491 78%,
-		#d0a674 93%
-	);
-	--gradient-button: linear-gradient(
-		to right,
-		#3a1f0c 0%,
-		#6a4831 17%,
-		#6f4d36 21%,
-		#825f47 35%,
-		#896951 52%,
-		#825f47 57%,
-		#6a4831 85%,
-		#3a1f0c 100%
-	);
-	--gradient-link: linear-gradient(to bottom, #423d39, #544d48, #645c56, #423d39);
+	--color-bg: #d8b692;
+	--color-bg-modal: #d8b692;
+	--color-bg-photo: #ba9a74;
+	--color-link: #095a70;
+	--color-link-active: #1081a0;
+	--color-text: #3a2910;
 	--color-title: #3a2910;
 	--color-text-button: #ffe3af;
 	--color-text-input: #5b401a;
+	--color-icon: #3a281b;
+	--gradient-header: linear-gradient(
+		to bottom,
+		rgb(167, 131, 87) 1%,
+		rgba(208, 167, 116, 0.9) 28%,
+		rgba(208, 167, 116, 0.6) 50%,
+		rgba(208, 167, 116, 0.9) 69%,
+		rgb(167, 131, 87) 100%
+	);
+	--gradient-input: linear-gradient(
+		to right,
+		rgba(208, 167, 116, 0.75) 9%,
+		rgba(238, 196, 145, 0.6) 23%,
+		rgba(253, 208, 154, 0.6) 38%,
+		rgba(253, 208, 154, 0.6) 61%,
+		rgba(253, 208, 154, 0.6) 78%,
+		rgba(208, 167, 116, 0.75) 93%
+	);
+	/* При исполльзовании градиента не забудьте потом вставить в стили компонента прозрачность 33%
+P.s. как вы уже заметили прозрачность наше всё))) */
+	--gradient-input-grey: linear-gradient(
+		to right,
+		rgba(58, 31, 12, 0.76) 0%,
+		rgba(106, 72, 49, 0.93) 17%,
+		rgb(111, 77, 54) 21%,
+		rgb(130, 95, 71) 35%,
+		rgb(137, 105, 81) 52%,
+		rgb(130, 95, 71) 57%,
+		rgba(106, 72, 49, 0.93) 85%,
+		rgba(58, 31, 12, 0.76) 100%
+	);
+	--gradient-button: linear-gradient(
+		to right,
+		rgba(58, 31, 12, 0.76) 0%,
+		rgba(106, 72, 49, 0.93) 17%,
+		rgb(111, 77, 54) 21%,
+		rgb(130, 95, 71) 35%,
+		rgb(137, 105, 81) 52%,
+		rgb(130, 95, 71) 57%,
+		rgba(106, 72, 49, 0.93) 85%,
+		rgba(58, 31, 12, 0.76) 100%
+	);
+	--gradient-link: linear-gradient(to bottom, #423d39 0%, #544d48 28%, #645c56 49%, #423d39 71%);
 
 	/* кастомные свойства, которые будем использовать для темизации */
 	color-scheme: light dark;
@@ -69,8 +87,12 @@
 
 a {
 	font-family: var(--metrika);
-	color: var(--link-color);
+	color: var(--color-link);
 	text-decoration: inherit;
+}
+
+a:active {
+	color: var(--color-link-active);
 }
 
 body {
@@ -81,7 +103,7 @@ body {
 	width: 100%;
 	min-width: 320px;
 	min-height: 100vh;
-	background-color: var(--bg-color);
+	background-color: var(--color-bg);
 	font-size: 20px;
 }
 
@@ -117,15 +139,14 @@ button {
 	color: var(--color-text-button);
 	text-shadow: #110909 0px 0 2px;
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
-	border: 1px solid #3a1f0c;
+	border: 1px solid rgba(58, 31, 12, 0.23);
 	border-radius: 64px;
 	padding: 16px 40px;
 	cursor: pointer;
 }
 
 button:disabled {
-	background-color: #d6d6d6;
+	opacity: 0.5;
 	cursor: not-allowed;
 }
 
