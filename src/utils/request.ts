@@ -17,6 +17,14 @@ api.interceptors.response.use(
 		return Promise.reject(response);
 	},
 	function (error) {
+		// TODO: Оставить только 1 часть, когда поправят бэк
+		if (error.response.data.detail[0].msg) {
+			const newError = {
+				...error,
+				message: error.response.data.detail[0].msg,
+			};
+			return Promise.reject(newError);
+		}
 		const newError = {
 			...error,
 			message: error.response.data.detail,
