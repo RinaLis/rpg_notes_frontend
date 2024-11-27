@@ -15,4 +15,24 @@
 		display: flex;
 		flex-direction: column;
 	}
+	// это тот самый класс внутри которого лежит SVG
+	&__frame {
+		// размеры позиционирование на странице или внутри других элементов и тд пишем тут
+		width: 500px;
+		height: 500px;
+		fill: red;
+		// при желании можно теней бахнуть
+		-webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+		filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+		// можно крутить вертеть
+		transform: rotateY(180deg);
+
+		// это сам SVG для него главное прописать ширину и высоту
+		// fill можно регулировать и из обертки
+
+		& svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
 }
