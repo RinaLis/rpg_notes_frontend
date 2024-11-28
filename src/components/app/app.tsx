@@ -11,6 +11,7 @@ import {
 	Register,
 	ForgotPassword,
 	ResetPassword,
+	Page404,
 } from '@pages';
 import { AppHeaderUI } from '@ui';
 import { requestGetAdventure, requestUserAdventures } from 'src/services/slices/adventures/actions';
@@ -69,6 +70,7 @@ export const App: React.FC = () => {
 				<Route path="/register" element={<Register />} />
 				<Route path="/forgot-password" element={<ForgotPassword />} />
 				<Route path="/reset-password" element={<ResetPassword />} />
+				<Route path="*" element={<Page404 />} />
 			</Routes>
 		</div>
 	);
