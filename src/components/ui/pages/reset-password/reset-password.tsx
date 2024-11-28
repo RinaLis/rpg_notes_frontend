@@ -1,8 +1,9 @@
 import React from 'react';
-import VictorianSvg from '@assets/victorian.svg';
-import pen from '@assets/pen.svg';
+import { Link } from 'react-router-dom';
+import eyeInput from '@assets/eyeInput.svg';
 import { Button, Input } from '@components';
-import styles from './reset-password.module.scss';
+import clsx from 'clsx';
+import styles from '../common.module.scss';
 
 interface ResetPasswordUIProps {
 	onSubmit: (e: React.FormEvent) => void;
@@ -12,40 +13,44 @@ interface ResetPasswordUIProps {
 
 export const ResetPasswordUI: React.FC<ResetPasswordUIProps> = ({ onSubmit, register, errors }) => {
 	return (
-		<main className={styles.resetPassword}>
-			<div className={styles.resetPassword__formСontainer}>
-				<img className={styles.resetPassword__img} src={VictorianSvg} alt="victorian" />
-				<form
-					name="resetPassword"
-					onSubmit={onSubmit}
-					className={styles.resetPassword__form}
-					noValidate
-				>
-					<h2 className={styles.resetPassword__title}>Восстановление пароля</h2>
-					<Input
-						type="password"
-						placeholder="Введите новый пароль"
-						register={register('password')}
-						error={errors.password?.message}
-						icon={pen}
-					/>
-					<Input
-						type="text"
-						placeholder="Подтвердите пароль"
-						register={register('confirmPassword')}
-						error={errors.confirmPassword?.message}
-						icon={pen}
-					/>
-					<Input
-						type="text"
-						placeholder="Введите код из письма"
-						register={register('confirm')}
-						error={errors.confirm?.message}
-					/>
-					<Button type="submit" className={styles.resetPasswordSection__button}>
-						Сохранить
-					</Button>
-				</form>
+		<main className={clsx(styles.page, styles.page_fixed, styles.page_centered)}>
+			<div className={styles.container}>
+				<div className={styles.content}>
+					<h2 className={styles.content__title}>Восстановление пароля</h2>
+					<form name="resetPassword" onSubmit={onSubmit} className={styles.authForm} noValidate>
+						<Input
+							type="password"
+							placeholder="Введите новый пароль"
+							register={register('password')}
+							error={errors.password?.message}
+							icon={eyeInput}
+						/>
+						<Input
+							type="text"
+							placeholder="Подтвердите пароль"
+							register={register('confirmPassword')}
+							error={errors.confirmPassword?.message}
+							icon={eyeInput}
+						/>
+						<Input
+							type="text"
+							placeholder="Введите код из письма"
+							register={register('confirm')}
+							error={errors.confirm?.message}
+						/>
+						<Button type="submit" className={styles.button}>
+							Сохранить
+						</Button>
+						<div className={styles.authForm__linkContainer}>
+							<div className={styles.question}>
+								<div className={styles.queston__text}>Вспомнили пароль?</div>
+								<Link to="/Login" className={styles.question__link}>
+									Войти
+								</Link>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</main>
 	);
