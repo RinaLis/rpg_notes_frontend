@@ -3,7 +3,7 @@ import { Input, Button } from '@components';
 import { Link } from 'react-router-dom';
 
 import eyeInput from '@assets/eyeInput.svg';
-import pen from '@assets/pen.svg';
+
 import clsx from 'clsx';
 import styles from '../common.module.scss';
 
@@ -60,43 +60,4 @@ export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 			</div>
 		</main>
 	);
-	// return (
-	// 	<main className={styles.container}>
-	// 		<div className={styles.login__formСontainer}>
-	// 			<form name="login" onSubmit={onSubmit} className={styles.login__form} noValidate>
-	// 				<h2>Вход</h2>
-	// 				<Input
-	// 					type="text"
-	// 					placeholder="Логин"
-	// 					register={register('login')}
-	// 					error={errors.login?.message}
-	// 					icon={pen}
-	// 				/>
-	// 				<Input
-	// 					type="email"
-	// 					placeholder="Email"
-	// 					register={register('email')}
-	// 					error={errors.email?.message}
-	// 					icon={pen}
-	// 				/>
-	// 				<Input
-	// 					type="password"
-	// 					placeholder="Пароль"
-	// 					register={register('password')}
-	// 					error={errors.password?.message}
-	// 					icon={eyeInput}
-	// 				/>
-	// 				<Button type="submit">Войти</Button>
-	// 				<div className={styles.login__linkContainer}>
-	// 					<div>
-	// 						<NavLink to="/register">Регистрация</NavLink>
-	// 					</div>
-	// 					<div>
-	// 						<NavLink to="/forgot-password">Забыли пароль?</NavLink>
-	// 					</div>
-	// 				</div>
-	// 			</form>
-	// 		</div>
-	// 	</main>
-	// );
 };
