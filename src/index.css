@@ -12,6 +12,7 @@
 }
 
 :root {
+	box-sizing: border-box;
 	/* кастомные свойства шрифтов */
 	line-height: 1.5;
 	font-weight: 400;
@@ -137,4 +138,11 @@ button {
 button:focus,
 button:active {
 	outline: none;
+}
+
+/* что бы падинги не таращили */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
