@@ -1,18 +1,30 @@
 .exampleSection {
-	display: flex;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: auto;
 	align-items: center;
-	height: 300px;
-	background-color: #f0f0f0;
+	grid-gap: 10px;
+	justify-content: center;
 
 	&__title {
 		font-size: 30px;
 		color: #000;
-		background-color: cadetblue;
-		width: 200px;
+		text-align: center;
 	}
+
+	&__img {
+		width: 150px;
+	}
+
+	&__text {
+		margin: 0px;
+		color: #000;
+		text-align: center;
+	}
+
 	&__content {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		align-items: flex-end;
+		gap: 10px;
 	}
 }
