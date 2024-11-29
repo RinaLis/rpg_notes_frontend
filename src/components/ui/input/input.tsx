@@ -10,17 +10,22 @@ export const Input: React.FC<InputProps> = ({
 	register,
 	error,
 	icon,
+	сlassNameCustom,
 }) => {
 	return (
-		<div className={styles.input__container}>
+		<div className={clsx(styles.input__container, сlassNameCustom || null)}>
 			{/* Отображение метки, если она задана */}
 			{label && (
 				<label htmlFor={register.name} className={styles.input__label}>
 					{label}
 				</label>
 			)}
-			{/* обертка для стилей инпута */}
-			<div className={clsx(styles.input, { [styles.input__error]: error })}>
+			{/* обертка для общих стилей инпута */}
+			<div
+				className={clsx(styles.input, styles.input__wrapper, {
+					[styles.input__error]: error,
+				})}
+			>
 				<input
 					name={register.name}
 					ref={register.ref}

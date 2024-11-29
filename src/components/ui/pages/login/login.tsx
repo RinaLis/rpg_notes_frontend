@@ -18,7 +18,13 @@ export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 			<div className={styles.login__formСontainer}>
 				<img className={styles.login__img} src={VictorianSvg} alt="victorian" />
 				<form name="login" onSubmit={onSubmit} className={styles.login__form} noValidate>
-					<h2>Вход</h2>
+					<Input
+						type="text"
+						placeholder="Название"
+						register={register('name')}
+						error={errors.name?.message}
+						сlassNameCustom={styles.customInput__container}
+					/>
 					<Input
 						type="text"
 						placeholder="Логин"

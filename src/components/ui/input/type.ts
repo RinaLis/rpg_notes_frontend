@@ -7,4 +7,5 @@ export type InputProps = {
 	type?: string; // Тип поля ввода (text, email, password и т.д.)
 	placeholder?: string; // Подсказка в поле
 	icon?: React.ReactNode; // Иконка
+	сlassNameCustom?: string;
 };
