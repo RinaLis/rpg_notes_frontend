@@ -19,7 +19,13 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 			<div className={styles.container}>
 				<div className={styles.content}>
 					<h2 className={styles.content__title}>Регистрация</h2>
-					<form name="register" onSubmit={onSubmit} className={styles.authForm} noValidate>
+					<form
+						name="register"
+						onSubmit={onSubmit}
+						className={styles.authForm}
+						noValidate
+						style={{ gap: 10 }}
+					>
 						<Input
 							type="text"
 							placeholder="Логин"
@@ -47,7 +53,7 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							icon={eyeInput}
 						/>
 						<Button className={styles.button} type="submit">
-							Регистрация
+							✨Регистрация✨
 						</Button>
 						<div className={styles.authForm__linkContainer}>
 							<div className={styles.question}>
