@@ -16,6 +16,7 @@ import { AppHeaderUI } from '@ui';
 import { requestGetAdventure, requestUserAdventures } from 'src/services/slices/adventures/actions';
 import { requestCreateThread } from 'src/services/slices/threads/actions';
 import { ThreadType } from '@utils-types';
+import styles from './app.module.scss';
 
 export const App: React.FC = () => {
 	const location = useLocation();
@@ -58,7 +59,7 @@ export const App: React.FC = () => {
 	}, [dispatch]);
 
 	return (
-		<>
+		<div className={styles.app}>
 			<AppHeaderUI />
 			<Routes location={backgroundLocation || location}>
 				<Route path="/example" element={<ExamplePage />} />
@@ -69,6 +70,6 @@ export const App: React.FC = () => {
 				<Route path="/forgot-password" element={<ForgotPassword />} />
 				<Route path="/reset-password" element={<ResetPassword />} />
 			</Routes>
-		</>
+		</div>
 	);
 };
