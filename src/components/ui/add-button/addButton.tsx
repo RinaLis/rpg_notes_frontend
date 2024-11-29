@@ -28,8 +28,8 @@ export const AddButton: React.FC<AddButtonProps> = ({ attachment, onClick }) => 
 };
 
 // Пример вызова компонента
+
 // 	<AddButton
 // 		attachment="Добавить игрока"
 // 		onClick={() => {}}
 // 	/>
-// </div>
