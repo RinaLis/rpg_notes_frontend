@@ -51,18 +51,21 @@
 	}
 }
 
-//стили для кастомного инпута
+//стили для инпута ввода инфы
 
+// обертка инпута (input__container)
 .customInput__container {
-	// обертка инпута (input__container)
 	background-image: var(--gradient-input-grey);
-	opacity: 0.33;
+	border-radius: 40px;
+
+	// стили второй обертки инпута (input)
 	& :nth-child(1) {
-		// стили второй обертки инпута (input)
+		height: 100%;
+		margin-block: 0;
 		background: none;
+
+		// стили поля инпута (input__field)
 		& :nth-child(1) {
-			// стили поля инпута (input__field)
-			// background-color: yellow;
 		}
 	}
 }
