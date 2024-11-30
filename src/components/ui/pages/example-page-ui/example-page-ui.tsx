@@ -5,6 +5,7 @@ import { ExampleComponent } from 'src/components/example-component';
 // и ипортируем из нужного svg файла
 import { ReactComponent as Frame } from '@assets/frame.svg';
 import styles from './example-page-ui.module.scss';
+import { Preloader } from '../../preloader/preloader';
 
 export const ExamplePageUI: React.FC = () => (
 	// здесь пишем верстку страницы
@@ -22,6 +23,9 @@ export const ExamplePageUI: React.FC = () => (
 			<div className={styles.exampleSection__frame}>
 				<Frame />
 			</div>
+		</section>
+		<section className={styles.exampleSection}>
+			<Preloader title="Посидите у костра, ваши приключения загружаются" />
 		</section>
 	</>
 );
