@@ -12,6 +12,7 @@
 }
 
 :root {
+	box-sizing: border-box;
 	/* кастомные свойства шрифтов */
 	line-height: 1.5;
 	font-weight: 400;
@@ -48,18 +49,17 @@
 		rgba(253, 208, 154, 0.6) 78%,
 		rgba(208, 167, 116, 0.75) 93%
 	);
-	/* При исполльзовании градиента не забудьте потом вставить в стили компонента прозрачность 33%
-P.s. как вы уже заметили прозрачность наше всё))) */
+
 	--gradient-input-grey: linear-gradient(
 		to right,
-		rgba(58, 31, 12, 0.76) 0%,
-		rgba(106, 72, 49, 0.93) 17%,
-		rgb(111, 77, 54) 21%,
-		rgb(130, 95, 71) 35%,
-		rgb(137, 105, 81) 52%,
-		rgb(130, 95, 71) 57%,
-		rgba(106, 72, 49, 0.93) 85%,
-		rgba(58, 31, 12, 0.76) 100%
+		rgba(58, 31, 12, 0.2508) 0%,
+		rgba(106, 72, 49, 0.3069) 17%,
+		rgb(111, 77, 54, 0.33) 21%,
+		rgb(130, 95, 71, 0.33) 35%,
+		rgb(137, 105, 81, 0.33) 52%,
+		rgb(130, 95, 71, 0.33) 57%,
+		rgba(106, 72, 49, 0.3069) 85%,
+		rgba(58, 31, 12, 0.2508) 100%
 	);
 	--gradient-button: linear-gradient(
 		to right,
@@ -97,14 +97,7 @@ a:active {
 
 body {
 	margin: 0;
-	display: flex;
-	flex-direction: column;
-	place-items: center;
-	width: 100%;
-	min-width: 320px;
-	min-height: 100vh;
 	background-color: var(--color-bg);
-	font-size: 20px;
 }
 
 #root {
@@ -131,26 +124,24 @@ h3 {
 	color: var(--color-title);
 	margin-block: 5px;
 }
-
+/* все стили кнопки перенесла в  common.module.scss 
+ставьте кнопкам классы и пользуйтесь 
+	тут только сброс стилей по умолчанию */
 button {
-	background-image: var(--gradient-button);
-	font-family: var(--amagro);
-	font-size: 24px;
-	color: var(--color-text-button);
-	text-shadow: #110909 0px 0 2px;
-	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-	border: 1px solid rgba(58, 31, 12, 0.23);
-	border-radius: 64px;
-	padding: 16px 40px;
-	cursor: pointer;
-}
-
-button:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
+	appearance: none;
+	border: none;
+	background: none;
+	padding: 0;
 }
 
 button:focus,
-button:focus-visible {
-	outline: 4px auto -webkit-focus-ring-color;
+button:active {
+	outline: none;
+}
+
+/* что бы падинги не таращили */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
