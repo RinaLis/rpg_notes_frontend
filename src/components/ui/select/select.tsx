@@ -36,7 +36,7 @@ export const Select: React.FC<SelectProps> = ({
 			closeMenuOnScroll
 			closeMenuOnSelect
 			controlShouldRenderValue
-			// isClearable // чтобы добавить кнопку очистки
+			// isClearable // чтобы добавить кнопку очистки выбора
 			// menuIsOpen // для того что бы стилить выпадающий список можно использовать этот параметр
 			components={{ DropdownIndicator: CustomDropdownIndicator }}
 		/>
