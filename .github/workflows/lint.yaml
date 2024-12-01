@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - develop
+      - pre-dev
   pull_request:
     branches:
       - main
       - develop
+      - pre-dev
 
 jobs:
   lint:
