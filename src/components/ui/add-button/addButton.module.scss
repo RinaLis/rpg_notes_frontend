@@ -21,11 +21,17 @@
 		align-items: center;
 		justify-content: center;
 		margin-inline-end: 10px;
+		flex-shrink: 0;
 
 		// если будет иконка, то before убираем
 		&::before {
-			content: '+';
-			font-size: 2rem;
+			content: '';
+			background-image: url('@assets/plus.svg');
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			width: 20px;
+			height: 20px;
 			transition: 0.3s;
 		}
 	}
