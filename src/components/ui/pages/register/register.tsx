@@ -6,6 +6,7 @@ import eyeInput from '@assets/eyeInput.svg';
 import { Button, Input } from '@components';
 import clsx from 'clsx';
 import styles from '../common.module.scss';
+import { InputNames } from '../../input/type';
 
 interface RegisterUIProps {
 	onSubmit: (e: React.FormEvent) => void;
@@ -25,12 +26,14 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							placeholder="Логин"
 							register={register('login')}
 							error={errors.login?.message}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Input
 							type="email"
 							placeholder="Email"
 							register={register('email')}
 							error={errors.email?.message}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Input
 							type="password"
@@ -38,6 +41,7 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							register={register('password')}
 							error={errors.password?.message}
 							icon={eyeInput}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Input
 							type="text"
@@ -45,6 +49,7 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							register={register('confirmPassword')}
 							error={errors.confirmPassword?.message}
 							icon={eyeInput}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Button className={styles.button} type="submit">
 							Регистрация

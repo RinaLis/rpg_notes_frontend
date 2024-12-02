@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Input } from '@components';
 import clsx from 'clsx';
 import styles from '../common.module.scss';
+import { InputNames } from '../../input/type';
 
 interface ForgotPasswordUIProps {
 	onSubmit: (e: React.FormEvent) => void;
@@ -27,6 +28,7 @@ export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
 							placeholder="Email"
 							register={register('email')}
 							error={errors.email?.message}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Button type="submit" className={styles.button}>
 							Восстановить
