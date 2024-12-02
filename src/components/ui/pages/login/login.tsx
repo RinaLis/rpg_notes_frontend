@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Input, Button } from '@components';
 import { Link } from 'react-router-dom';
 
-import eyeInput from '@assets/eyeInput.svg';
+import eyeInput from '@assets/icons/eyeInput.svg';
 
 import clsx from 'clsx';
 import styles from '../common.module.scss';

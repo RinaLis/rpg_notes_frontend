@@ -1,28 +1,20 @@
-import eyeInput from '@assets/eyeInput.svg';
-import basket from '@assets/basket.svg';
-import pen from '@assets/pen.svg';
-import send from '@assets/send.svg';
-import annotation from '@assets/annotation.svg';
-import logo from '@assets/logo.svg';
-import newLogo from '@assets/newLogo.svg';
-import logoUser from '@assets/logoUser.svg';
-import adventuresPic1 from '@assets/images/adventuresPic1.png';
-import adventuresPic2 from '@assets/images/adventuresPic2.png';
-import adventuresPic3 from '@assets/images/adventuresPic3.png';
-import adventuresPicEmpty from '@assets/images/adventuresPicEmpty.png';
+import eyeInput from '@assets/icons/eyeInput.svg';
+import basket from '@assets/icons/basket.svg';
+import pen from '@assets/icons/pen.svg';
+import send from '@assets/icons/send.svg';
+import annotation from '@assets/icons/annotation.svg';
+import logo from '@assets/icons/logo.svg';
+import newLogo from '@assets/icons/newLogo.svg';
 import sadFace from '@assets/images/sadFace.png';
-import dragonPic from '@assets/images/dragonPic.png';
-import dragonPic2 from '@assets/images/dragonPic2.png';
-import beautifulCubes from '@assets/beautifulCubes.svg';
-import cubes from '@assets/cubes.svg';
-import itemPic from '@assets/images/itemPic.png';
-import logoThreads from '@assets/images/logoThreads.png';
-import postPic from '@assets/images/postPic.png';
+import createAdventuresBackground from '@assets/images/createAdventuresBackground.png';
+import adventuresBackground from '@assets/images/adventuresBackground.png';
+import beautifulCubes from '@assets/images/beautifulCubes.png';
+import cubes from '@assets/images/cubes.png';
 import styles from './example-page-ui.module.scss';
 
 export const ExamplePageUI: React.FC = () => (
 	<>
-		<section>
+		<section className={styles.exampleSection}>
 			<div className={styles.exampleSection__title}>icons</div>
 			<div className={styles.exampleSection}>
 				<div className={styles.exampleSection__content}>
@@ -59,40 +51,24 @@ export const ExamplePageUI: React.FC = () => (
 					<img className={styles.exampleSection__img} src={newLogo} alt="newLogo" />
 				</div>
 				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>logoUser</p>
-					<img className={styles.exampleSection__img} src={logoUser} alt="logoUser" />
-				</div>
-				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>adventuresPic1</p>
-					<img className={styles.exampleSection__img} src={adventuresPic1} alt="adventuresPic1" />
-				</div>
-				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>adventuresPic2</p>
-					<img className={styles.exampleSection__img} src={adventuresPic2} alt="adventuresPic2" />
-				</div>
-				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>adventuresPic3</p>
-					<img className={styles.exampleSection__img} src={adventuresPic3} alt="adventuresPic3" />
-				</div>
-				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>adventuresPicEmpty</p>
-					<img
-						className={styles.exampleSection__img}
-						src={adventuresPicEmpty}
-						alt="adventuresPicEmpty"
-					/>
-				</div>
-				<div className={styles.exampleSection__content}>
 					<p className={styles.exampleSection__text}>sadFace</p>
 					<img className={styles.exampleSection__img} src={sadFace} alt="sadFace" />
 				</div>
 				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>dragonPic</p>
-					<img className={styles.exampleSection__img} src={dragonPic} alt="dragonPic" />
+					<p className={styles.exampleSection__text}>createAdventuresBackground</p>
+					<img
+						className={styles.exampleSection__img}
+						src={createAdventuresBackground}
+						alt="createAdventuresBackground"
+					/>
 				</div>
 				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>dragonPic2</p>
-					<img className={styles.exampleSection__img} src={dragonPic2} alt="dragonPic2" />
+					<p className={styles.exampleSection__text}>adventuresBackground</p>
+					<img
+						className={styles.exampleSection__img}
+						src={adventuresBackground}
+						alt="adventuresBackground"
+					/>
 				</div>
 				<div className={styles.exampleSection__content}>
 					<p className={styles.exampleSection__text}>beautifulCubes</p>
@@ -101,18 +77,6 @@ export const ExamplePageUI: React.FC = () => (
 				<div className={styles.exampleSection__content}>
 					<p className={styles.exampleSection__text}>cubes</p>
 					<img className={styles.exampleSection__img} src={cubes} alt="cubes" />
-				</div>
-				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>itemPic</p>
-					<img className={styles.exampleSection__img} src={itemPic} alt="itemPic" />
-				</div>
-				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>logoThreads</p>
-					<img className={styles.exampleSection__img} src={logoThreads} alt="logoThreads" />
-				</div>
-				<div className={styles.exampleSection__content}>
-					<p className={styles.exampleSection__text}>postPic</p>
-					<img className={styles.exampleSection__img} src={postPic} alt="postPic" />
 				</div>
 			</div>
 		</section>
