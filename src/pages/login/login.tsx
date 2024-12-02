@@ -7,10 +7,6 @@ import { LoginUI } from '@ui-pages';
 // Схема валидации через yup
 const schemaLogin = yup
 	.object({
-		name: yup
-			.string()
-			.max(20, 'Название должно быть не более 20 символов')
-			.required('Введите название'),
 		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
 		email: yup.string().email('Некорректный email').required('Введите email'),
 		password: yup
