@@ -7,6 +7,8 @@
 	--box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
 	--control-height: 40px;
 	--option-height: 40px;
+	--font-family: var(--metrika);
+	--font-size: 16px;
 
 	background-color: transparent;
 
@@ -62,7 +64,7 @@
 		&__value-container {
 			position: relative;
 			width: 100%;
-			font-family: var(--metrika);
+			font-family: var(--font-family);
 		}
 
 		// текст пока не выбрано значение
@@ -72,8 +74,8 @@
 			background-color: transparent;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			font-family: inherit;
-			font-size: inherit;
+			font-family: var(--font-family);
+			font-size: var(--font-size);
 			display: flex;
 			justify-content: center;
 			color: var(--color-text-input);
@@ -87,8 +89,8 @@
 			background-color: transparent;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			font-family: inherit;
-			font-size: inherit;
+			font-family: var(--font-family);
+			font-size: var(--font-size);
 			display: flex;
 			justify-content: center;
 			color: var(--color-text-input);
@@ -114,8 +116,8 @@
 			border-radius: var(--border-radius);
 			overflow: hidden;
 			text-overflow: ellipsis;
-			font-family: inherit;
-			font-size: inherit;
+			font-family: var(--font-family);
+			font-size: var(--font-size);
 			height: var(--option-height);
 			display: flex;
 			align-items: center;
