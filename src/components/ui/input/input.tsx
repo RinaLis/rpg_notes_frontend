@@ -23,7 +23,7 @@ export const Input: React.FC<InputProps> = ({
 			{/* обертка для общих стилей инпута */}
 			<div
 				className={clsx(styles[`${сlassNameCustom}`], {
-					[styles.input__error]: error,
+					[styles[`${сlassNameCustom}__error`]]: error,
 				})}
 			>
 				<input

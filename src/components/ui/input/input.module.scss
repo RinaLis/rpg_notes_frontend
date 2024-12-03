@@ -65,7 +65,7 @@
 	}
 
 	&__error {
-		background: rgba(255, 0, 0, 0.247);
+		border: 3px solid var(--color-accent);
 	}
 
 	&__errorMessage {
@@ -73,7 +73,7 @@
 		top: 100%;
 		left: 0;
 		font-size: 14px;
-		color: rgb(134, 22, 22);
+		color: var(--color-accent);
 	}
 
 	::placeholder {
@@ -148,7 +148,7 @@
 	}
 
 	&__error {
-		background: rgba(255, 0, 0, 0.247);
+		border: 3px solid var(--color-accent);
 	}
 
 	&__errorMessage {
@@ -156,7 +156,7 @@
 		top: 110%;
 		left: 0;
 		font-size: 14px;
-		color: rgb(134, 22, 22);
+		color: var(--color-accent);
 	}
 
 	::placeholder {
