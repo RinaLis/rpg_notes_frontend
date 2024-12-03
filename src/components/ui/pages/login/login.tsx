@@ -26,7 +26,7 @@ export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 							placeholder="Логин"
 							register={register('login')}
 							error={errors.login?.message}
-							сlassNameCustom={InputNames.auth}
+							сlassNameCustom={InputNames.info}
 						/>
 						<Input
 							type="email"
