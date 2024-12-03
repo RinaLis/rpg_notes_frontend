@@ -6,9 +6,10 @@ import annotation from '@assets/icons/annotation.svg';
 import logo from '@assets/icons/logo.svg';
 import newLogo from '@assets/icons/newLogo.svg';
 import sadFace from '@assets/images/sadFace.png';
-import createAdventuresBackground from '@assets/images/createAdventuresBackground.png';
 import adventuresBackground from '@assets/images/adventuresBackground.png';
+import allAdventuresBackground from '@assets/images/allAdventuresBackground.png';
 import beautifulCubes from '@assets/images/beautifulCubes.png';
+import createAdventuresBackground from '@assets/images/createAdventuresBackground.png';
 import cubes from '@assets/images/cubes.png';
 import styles from './example-page-ui.module.scss';
 
@@ -77,6 +78,14 @@ export const ExamplePageUI: React.FC = () => (
 				<div className={styles.exampleSection__content}>
 					<p className={styles.exampleSection__text}>cubes</p>
 					<img className={styles.exampleSection__img} src={cubes} alt="cubes" />
+				</div>
+				<div className={styles.exampleSection__content}>
+					<p className={styles.exampleSection__text}>allAdventuresBackground</p>
+					<img
+						className={styles.exampleSection__img}
+						src={allAdventuresBackground}
+						alt="allAdventuresBackground"
+					/>
 				</div>
 			</div>
 		</section>
