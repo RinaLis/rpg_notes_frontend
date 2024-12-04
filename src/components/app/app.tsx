@@ -39,6 +39,15 @@ const AdventureLayout = () => {
 	);
 };
 
+const CenterBlock = () => {
+	return (
+		<div>
+			<p>центральный блок</p>
+			<Outlet />
+		</div>
+	);
+};
+
 export const App: React.FC = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -86,7 +95,7 @@ export const App: React.FC = () => {
 				<Route path="/example" element={<ExamplePage />} />
 				<Route path="/adventures" element={<Adventures />} />
 				<Route path="/:adventure_id/create-hero" element={<CreateHero />} />
-				<Route path="/:adventure_id/invite" element={<Invite />} />
+				<Route path="/:adventure_id/invite" element={<CenterBlock />} />
 				<Route path="/profile" element={<Profile />} />
 
 				<Route path="/auth" element={<AuthLayout />}>
