@@ -1,30 +1,47 @@
 .exampleSection {
-	display: grid;
-	grid-template-columns: auto;
-	align-items: center;
-	grid-gap: 10px;
+	display: flex;
 	justify-content: center;
+	align-items: center;
+	height: 300px;
+	background-color: #f0f0f0;
 
 	&__title {
 		font-size: 30px;
 		color: #000;
-		text-align: center;
+		background-color: cadetblue;
+		width: 200px;
 	}
-
-	&__img {
-		width: 150px;
-	}
-
-	&__text {
-		margin: 0px;
-		color: #000;
-		text-align: center;
-	}
-
 	&__content {
 		display: flex;
-		flex-direction: row;
-		align-items: flex-end;
-		gap: 10px;
+		flex-direction: column;
 	}
+	// это тот самый класс внутри которого лежит SVG
+	&__frame {
+		// размеры позиционирование на странице или внутри других элементов и тд пишем тут
+		width: 500px;
+		height: 500px;
+		fill: red;
+		// при желании можно теней бахнуть
+		-webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+		filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+		// можно крутить вертеть
+		transform: rotateY(180deg);
+
+		// это сам SVG для него главное прописать ширину и высоту
+		// fill можно регулировать и из обертки
+
+		& svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&__select {
+		width: 200px;
+		margin: 50px;
+	}
+}
+
+.selectContainer {
+	width: 200px;
+	margin: 50px;
 }
