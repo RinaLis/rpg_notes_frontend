@@ -6,3 +6,4 @@ export * from './ui/add-button';
 export * from './ui/modal';
 export * from './ui/modal-overlay';
 export * from './ui/app-header';
+export * from './ui/select';
