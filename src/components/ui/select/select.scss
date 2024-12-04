@@ -1,0 +1,135 @@
+// вложенные стили для компонента Select
+// для повышения специфичности стилей
+// иначе вылазят некоторые стили от библиотеки react-select
+
+.customSelect {
+	--border-radius: 16px;
+	--box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+	--control-height: 40px;
+	--option-height: 40px;
+	--font-family: var(--metrika);
+	--font-size: 16px;
+
+	background-color: transparent;
+
+	.customSelect {
+		// то как выглядит закрытый селект - поле и иконка
+		&__control {
+			width: 100%;
+			height: var(--control-height);
+			background: var(--gradient-input);
+			border-radius: var(--border-radius);
+			box-shadow: var(--box-shadow);
+			display: grid;
+			// текст и иконка
+			grid-template-columns: 1fr 25px;
+			cursor: pointer;
+
+			// модификатор контрола при фокусе на селекте
+			&--is-focused {
+			}
+			// при открытом селекте
+			&--menu-is-open {
+				border-radius: var(--border-radius);
+
+				// иконка дропдауна в контроле при открытом селекте
+				.customSelect__dropdown-indicator {
+					transform: rotate(180deg);
+				}
+			}
+		}
+		// контейнер иконок в контроле
+		&__indicators {
+			// padding-right: 10px;
+		}
+
+		// разделитель между текстом и иконкой в контроле
+		&__indicator-separator {
+			display: none;
+		}
+		// иконка дропдауна в контроле
+		&__dropdown-indicator {
+			color: var(--color-icon); // цвет иконки
+			cursor: pointer;
+			transition: transform 0.3s;
+		}
+		// иконка очистки выбора в контроле
+		&__clear-indicator {
+			position: absolute;
+			left: 7px;
+		}
+
+		//контейнер с текстами в контроле
+		// при настройке селекта на мульти-выбор может быть несколько элементов текста внутри
+		&__value-container {
+			position: relative;
+			width: 100%;
+			font-family: var(--font-family);
+		}
+
+		// текст пока не выбрано значение
+		&__placeholder {
+			height: 100%;
+			padding-left: 10px; // отступ изза иконки
+			background-color: transparent;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			font-family: var(--font-family);
+			font-size: var(--font-size);
+			display: flex;
+			justify-content: center;
+			color: var(--color-text-input);
+		}
+
+		// сам элемент который выбран в селекте (то что заменит текст в контроле при выборе)
+		// при настройке селекта на мульти-выбор таких элементов может быть несколько
+		&__single-value {
+			height: 100%;
+			padding-left: 10px; // отступ изза иконки
+			background-color: transparent;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			font-family: var(--font-family);
+			font-size: var(--font-size);
+			display: flex;
+			justify-content: center;
+			color: var(--color-text-input);
+		}
+
+		// выпадающий контейнер с опциями
+		&__menu {
+			background: var(--gradient-input);
+			border-radius: var(--border-radius);
+			box-shadow: var(--box-shadow);
+			text-align: center;
+			margin-top: 5px;
+
+			// список опций
+			&-list {
+				border-radius: inherit;
+			}
+		}
+		// одна опция в списке
+		&__option {
+			background: inherit;
+			border: none;
+			border-radius: var(--border-radius);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			font-family: var(--font-family);
+			font-size: var(--font-size);
+			height: var(--option-height);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--color-text-input);
+			cursor: pointer;
+
+			// модификатор опции при наведении
+			&--is-focused {
+				background: var(--gradient-input-grey);
+				box-shadow: var(--box-shadow);
+			}
+		}
+	}
+}
