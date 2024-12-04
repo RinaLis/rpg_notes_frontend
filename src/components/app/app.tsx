@@ -18,7 +18,12 @@ import { requestCreateThread } from 'src/services/slices/threads/actions';
 import { ThreadType } from '@utils-types';
 import styles from './app.module.scss';
 
-const Modal = () => <div>Модальное окно</div>;
+type ModalProps = {
+	children: React.ReactNode;
+	onClose: () => void;
+};
+
+const Modal: React.FC<ModalProps> = ({ children, onClose }) => <div>Модальное окно</div>;
 const CreateHero = () => <div>элемент описывает экран создания персонажа</div>;
 const Invite = () => <div>элемент описывает содержимое модального окна приглашения персонаж</div>;
 const Main = () => <div>элемент описывает основной контент главной страницы приключения</div>;
@@ -39,7 +44,7 @@ const AdventureLayout = () => {
 	);
 };
 
-const CenterBlock = () => {
+const CenterBlock = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<div>
 			<p>центральный блок</p>
@@ -95,7 +100,14 @@ export const App: React.FC = () => {
 				<Route path="/example" element={<ExamplePage />} />
 				<Route path="/adventures" element={<Adventures />} />
 				<Route path="/:adventure_id/create-hero" element={<CreateHero />} />
-				<Route path="/:adventure_id/invite" element={<CenterBlock />} />
+				<Route
+					path="/:adventure_id/invite"
+					element={
+						<CenterBlock>
+							<Invite />
+						</CenterBlock>
+					}
+				/>
 				<Route path="/profile" element={<Profile />} />
 
 				<Route path="/auth" element={<AuthLayout />}>
@@ -112,7 +124,14 @@ export const App: React.FC = () => {
 
 			{backgroundLocation && (
 				<Routes>
-					<Route path="/:adventure_id/invite" element={<Modal />} />
+					<Route
+						path="/:adventure_id/invite"
+						element={
+							<Modal onClose={closeModal}>
+								<Invite />
+							</Modal>
+						}
+					/>
 				</Routes>
 			)}
 		</div>
