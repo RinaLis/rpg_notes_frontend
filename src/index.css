@@ -74,6 +74,17 @@
 	);
 	--gradient-link: linear-gradient(to bottom, #423d39 0%, #544d48 28%, #645c56 49%, #423d39 71%);
 
+	--gradient-beige-soft: linear-gradient(
+		90deg,
+		#a78357 1%,
+		#d0a674 28%,
+		#d0a674 49.5%,
+		#d0a674 69.5%,
+		#a78357 99.5%
+	);
+
+	--gradient-darker: linear-gradient(90deg, #896951 0%, #a88064 39%, #a88064 65.5%, #896951 97.5%);
+
 	/* кастомные свойства, которые будем использовать для темизации */
 	color-scheme: light dark;
 	color: rgba(255, 255, 255, 0.87);
