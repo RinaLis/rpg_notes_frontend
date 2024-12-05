@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { InputProps } from './type';
+import { InputNames, InputProps } from './type';
 import styles from './input.module.scss';
 
 export const Input: React.FC<InputProps> = ({
@@ -10,17 +10,22 @@ export const Input: React.FC<InputProps> = ({
 	register,
 	error,
 	icon,
+	сlassNameCustom = InputNames.info,
 }) => {
 	return (
-		<div className={styles.input__container}>
+		<div className={clsx(styles[`${сlassNameCustom}__container`])}>
 			{/* Отображение метки, если она задана */}
 			{label && (
-				<label htmlFor={register.name} className={styles.input__label}>
+				<label htmlFor={register.name} className={styles[`${сlassNameCustom}__label`]}>
 					{label}
 				</label>
 			)}
-			{/* обертка для стилей инпута */}
-			<div className={clsx(styles.input, { [styles.input__error]: error })}>
+			{/* обертка для общих стилей инпута */}
+			<div
+				className={clsx(styles[`${сlassNameCustom}`], {
+					[styles[`${сlassNameCustom}__error`]]: error,
+				})}
+			>
 				<input
 					name={register.name}
 					ref={register.ref}
@@ -28,12 +33,14 @@ export const Input: React.FC<InputProps> = ({
 					onBlur={register.onBlur}
 					type={type}
 					placeholder={placeholder}
-					className={styles.input__field}
+					className={clsx(styles[`${сlassNameCustom}__field`])}
 				/>
-				{typeof icon === 'string' && <img src={icon} alt="icon" className={styles.input__icon} />}
+				{typeof icon === 'string' && (
+					<img src={icon} alt="icon" className={clsx(styles[`${сlassNameCustom}__icon`])} />
+				)}
 			</div>
 
-			{error && <span className={styles.input__errorMessage}>{error}</span>}
+			{error && <span className={clsx(styles[`${сlassNameCustom}__errorMessage`])}>{error}</span>}
 		</div>
 	);
 };

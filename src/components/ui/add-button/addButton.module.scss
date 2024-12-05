@@ -1,0 +1,56 @@
+// Общие стили кнопки
+.addButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 1rem;
+	color: var(--color-text);
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+	// Стилии для контейнера с иконкой, его по Машиной инструкции и надо стилить
+	&__iconContainer {
+		width: 40px;
+		height: 40px;
+		border: 2px solid #000000;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-inline-end: 10px;
+		flex-shrink: 0;
+
+		// если будет иконка, то before убираем
+		&::before {
+			content: '';
+			background-image: url('@assets/plus.svg');
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			width: 20px;
+			height: 20px;
+			transition: 0.3s;
+		}
+	}
+	// На всякий случай класс для иконки (если она будет)
+	// &__icon {
+	// 	width: 20px;
+	// 	height: 20px;
+	// }
+
+	// Стили для вложения внутри контейнера (в данном случае текст, но может быть что угодно)
+	&__attachment {
+		font-family: var(--EBGaramond);
+		font-size: 20px;
+	}
+
+	&:hover {
+		cursor: pointer;
+		::before {
+			transform: rotate(90deg) scale(1.3);
+		}
+	}
+}

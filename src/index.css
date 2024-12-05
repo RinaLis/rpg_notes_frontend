@@ -10,6 +10,12 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'EBGaramond';
+	src: url('./assets/fonts/EBGaramond-ExtraBold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
 
 :root {
 	box-sizing: border-box;
@@ -18,6 +24,7 @@
 	font-weight: 400;
 	--metrika: 'Metrika', sans-serif;
 	--amagro: 'Amagro', sans-serif;
+	--EBGaramond: 'EBGaramond', serif;
 
 	/* кастомные свойства палитры */
 	--color-black: #000;
@@ -31,6 +38,7 @@
 	--color-title: #3a2910;
 	--color-text-button: #ffe3af;
 	--color-text-input: #5b401a;
+	--color-accent: #b50707;
 	--color-icon: #3a281b;
 	--gradient-header: linear-gradient(
 		to bottom,
