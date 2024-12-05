@@ -30,7 +30,7 @@ export const HeroListUI: React.FC<HeroListUIProps> = ({ master, heroes, onAdd })
 				</div>
 				{onAdd && (
 					<div className={clsx(styles.heroes__add)}>
-						<AddButton attachment="Добавить героя" onClick={onAdd} />
+						<AddButton attachment="Добавить игрока" onClick={onAdd} />
 					</div>
 				)}
 			</div>
