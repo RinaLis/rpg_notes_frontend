@@ -11,7 +11,6 @@ export const HeroList: React.FC = () => {
 	const onAddHero = () => {
 		navigate(`invite`, { state: { background: location } }); // вместо 'invite' нужен нормальный путь
 	};
-	//
 
 	const currentUser = useAppSelector(userDataSelector);
 	const currentAdventure = useAppSelector(getCurrentAdventure);
