@@ -19,6 +19,11 @@
 
 :root {
 	box-sizing: border-box;
+
+	/* размеры элементов */
+	--header-height: 100px;
+	--aside-width: 440px;
+
 	/* кастомные свойства шрифтов */
 	line-height: 1.5;
 	font-weight: 400;

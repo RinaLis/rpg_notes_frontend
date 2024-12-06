@@ -7,3 +7,5 @@ export * from './hero-plate';
 export * from './input';
 export * from './preloader';
 export * from './select';
+export * from './arrow-button';
+export * from './aside-panel';
