@@ -88,7 +88,8 @@ export const AdventureChecks: React.FC = () => {
 	}
 
 	// если герои есть и хоть один из них используется
-	if (usersHeroes.some((hero) => hero.is_used)) {
+	// или если юзер мастер
+	if (usersHeroes.some((hero) => hero.is_used) || currentAdventure.owner.id === currentUser.id) {
 		return <Outlet />;
 	}
 	return <Navigate replace to={`/${id}/create-hero`} state={{ from: location }} />;
