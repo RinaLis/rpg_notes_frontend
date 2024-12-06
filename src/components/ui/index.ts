@@ -11,3 +11,4 @@ export * from './preloader';
 export * from './select';
 export * from './arrow-button';
 export * from './aside-panel';
+export * from './auth-layout';
