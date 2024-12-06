@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import eyeInput from '@assets/eyeInput.svg';
+import eyeInput from '@assets/icons/eyeInput.svg';
 
 import { Button, Input } from '@ui';
 import clsx from 'clsx';
