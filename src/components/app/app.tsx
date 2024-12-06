@@ -51,13 +51,15 @@ const CenterBlock = ({ children }: { children: React.ReactNode }) => {
 
 export const App: React.FC = () => {
 	const location = useLocation();
-	const navigate = useNavigate();
+
 	// Определение старого фона при переходе по ссылке
 	const backgroundLocation = location.state?.background || null;
+
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const closeModal = () => {
 		navigate(-1); // возвращаемся назад
 	};
-	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		dispatch(

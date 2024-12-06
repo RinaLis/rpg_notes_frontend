@@ -34,9 +34,9 @@ export const ExamplePageUI: React.FC = () => (
 				// принимает объект выбранной опции или null если опция снята
 				onChange={(option) => {
 					if (option) {
-						console.log(option);
+						// console.log(option);
 					} else {
-						console.log('clear');
+						// console.log('clear');
 					}
 				}}
 				// placeholder - текст в пустом поле

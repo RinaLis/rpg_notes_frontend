@@ -2,13 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Input } from '@ui';
 import clsx from 'clsx';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
 import { InputNames } from '../../input/type';
 
+interface FormValues {
+	email: string;
+}
+
 interface ForgotPasswordUIProps {
 	onSubmit: (e: React.FormEvent) => void;
-	register: any;
-	errors: Record<string, any>;
+	register: UseFormRegister<FormValues>;
+	errors: FieldErrors<FormValues>;
 }
 
 export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({

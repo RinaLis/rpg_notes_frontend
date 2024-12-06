@@ -5,13 +5,19 @@ import { Link } from 'react-router-dom';
 import eyeInput from '@assets/icons/eyeInput.svg';
 
 import clsx from 'clsx';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
 import { InputNames } from '../../input/type';
 
+interface FormValues {
+	login: string;
+	email: string;
+	password: string;
+}
 interface LoginUIProps {
 	onSubmit: (e: React.FormEvent) => void;
-	register: any;
-	errors: Record<string, any>;
+	register: UseFormRegister<FormValues>;
+	errors: FieldErrors<FormValues>;
 }
 
 export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
