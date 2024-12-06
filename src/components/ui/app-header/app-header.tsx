@@ -7,24 +7,28 @@ import styles from './app-header.module.scss';
 export const AppHeaderUI: React.FC = () => {
 	return (
 		<header className={styles.header}>
-			<nav className={styles.menu}>
-				<div className={styles.menu_part_left}>
+			<nav className={styles.header__menu}>
+				<div className={styles.header__linkContainer}>
 					<NavLink
 						to="/adventures"
-						className={({ isActive }) => clsx(styles.link, isActive && styles.link_active)}
+						className={({ isActive }) =>
+							clsx(styles.header__link, isActive && styles.header__link_active)
+						}
 					>
-						Все приключения
+						Приключения
 					</NavLink>
 				</div>
-				<div className={styles.logo}>
-					<NavLink to="/">
-						<img src={logo} alt="logo" />
+				<div className={styles.header__logoContainer}>
+					<NavLink to="/login">
+						<img src={logo} alt="logo" className={styles.header__logo} />
 					</NavLink>
 				</div>
-				<div className={styles.menu_part_right}>
+				<div className={styles.header__linkContainer}>
 					<NavLink
 						to="/profile"
-						className={({ isActive }) => clsx(styles.link, isActive && styles.link_active)}
+						className={({ isActive }) =>
+							clsx(styles.header__link, isActive && styles.header__link_active)
+						}
 					>
 						Личный кабинет
 					</NavLink>

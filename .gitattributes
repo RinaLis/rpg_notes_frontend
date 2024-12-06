@@ -2,8 +2,8 @@
 * text=auto
 
 # Force CRLF line endings for specific file types
-*.ts text eol=crlf
-*.tsx text eol=crlf
-*.js text eol=crlf
-*.scss text eol=crlf
-*.html text eol=crlf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
