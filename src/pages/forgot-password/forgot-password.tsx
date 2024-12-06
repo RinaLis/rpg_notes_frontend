@@ -24,7 +24,7 @@ export const ForgotPassword: React.FC = () => {
 		resolver: yupResolver(schemaForgot),
 	});
 	const isLoading = useAppSelector(isAuthCheckedSelector);
-	const responseErrors = useAppSelector(userErrorSelector);
+	const responseError = useAppSelector(userErrorSelector);
 	const dispatch = useAppDispatch();
 	// Обработчик успешной отправки формы
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -32,17 +32,17 @@ export const ForgotPassword: React.FC = () => {
 	};
 	// Сброс формы при успешной отправке кода
 	React.useEffect(() => {
-		if (!isLoading && !responseErrors) {
+		if (!isLoading && !responseError) {
 			reset();
 		}
-	}, [isLoading, responseErrors, reset]);
+	}, [isLoading, responseError, reset]);
 
 	return (
 		<ForgotPasswordUI
 			onSubmit={handleSubmit(onSubmit)}
 			register={register}
 			errors={errors}
-			error={responseErrors}
+			error={responseError}
 		/>
 	);
 };

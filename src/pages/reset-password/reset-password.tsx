@@ -22,7 +22,7 @@ export const ResetPassword: React.FC = () => {
 	});
 
 	const isLoading = useAppSelector(isAuthCheckedSelector);
-	const responseErrors = useAppSelector(userErrorSelector);
+	const responseError = useAppSelector(userErrorSelector);
 	const dispatch = useAppDispatch();
 	// Обработчик успешной отправки формы
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -31,16 +31,16 @@ export const ResetPassword: React.FC = () => {
 
 	// Сброс формы при успешной смене пароля
 	useEffect(() => {
-		if (!isLoading && !responseErrors) {
+		if (!isLoading && !responseError) {
 			reset();
 		}
-	}, [isLoading, responseErrors, reset]);
+	}, [isLoading, responseError, reset]);
 	return (
 		<ResetPasswordUI
 			onSubmit={handleSubmit(onSubmit)}
 			register={register}
 			errors={errors}
-			error={responseErrors}
+			error={responseError}
 		/>
 	);
 };

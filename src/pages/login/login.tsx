@@ -28,7 +28,7 @@ export const Login: React.FC = () => {
 
 	const user = useAppSelector(userDataSelector);
 	const isLoading = useAppSelector(isAuthCheckedSelector);
-	const responseErrors = useAppSelector(userErrorSelector);
+	const responseError = useAppSelector(userErrorSelector);
 	const dispatch = useAppDispatch();
 	// Обработчик успешной отправки формы
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -36,17 +36,17 @@ export const Login: React.FC = () => {
 	};
 	// Сброс формы при успешном входе
 	useEffect(() => {
-		if (!isLoading && !responseErrors && user) {
+		if (!isLoading && !responseError && user) {
 			reset();
 		}
-	}, [isLoading, responseErrors, user, reset]);
+	}, [isLoading, responseError, user, reset]);
 
 	return (
 		<LoginUI
 			onSubmit={handleSubmit(onSubmit)}
 			register={register}
 			errors={errors}
-			error={responseErrors}
+			error={responseError}
 		/>
 	);
 };

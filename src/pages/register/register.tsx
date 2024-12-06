@@ -26,7 +26,7 @@ export const Register: React.FC = () => {
 		resolver: yupResolver(schemaRegister),
 	});
 
-	const responseErrors = useAppSelector(userErrorSelector);
+	const responseError = useAppSelector(userErrorSelector);
 	const user = useAppSelector(userDataSelector);
 	const isLoading = useAppSelector(isAuthCheckedSelector);
 	const dispatch = useAppDispatch();
@@ -36,17 +36,17 @@ export const Register: React.FC = () => {
 	};
 	// Сброс формы при успешной регистрации
 	useEffect(() => {
-		if (!isLoading && !responseErrors && user) {
+		if (!isLoading && !responseError && user) {
 			reset();
 		}
-	}, [isLoading, responseErrors, user, reset]);
+	}, [isLoading, responseError, user, reset]);
 
 	return (
 		<RegisterUI
 			onSubmit={handleSubmit(onSubmit)}
 			register={register}
 			errors={errors}
-			error={responseErrors}
+			error={responseError}
 		/>
 	);
 };
