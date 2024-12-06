@@ -179,10 +179,10 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		width: 250px; // это для теста потом при первой вставке поменять на 100%
-		height: 250px; // это для теста потом при первой вставке поменять на 100%
-		// width: 100%;
-		// height: 100%;
+		min-width: 50px;
+		min-height: 50px;
+		width: 100%; // принимает размеры родителя
+		height: 100%;
 		background-color: var(--color-bg-photo); /* Коричневый цвет */
 		border-radius: 19px;
 		cursor: pointer;
@@ -194,7 +194,7 @@
 			position: absolute;
 			transition: opacity 0.3s ease;
 			pointer-events: none;
-			transform: rotate(45deg) translate(-50%, -50%);
+			transform: rotate(45deg);
 			text-shadow: 2px 1px 2px hwb(0 0% 100% / 0.5);
 		}
 	}
