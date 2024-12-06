@@ -1,21 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAppDispatch } from '@store';
-import { requestLoginUser } from 'src/services/slices/user/actions';
-import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
-import {
-	ExamplePage,
-	Adventures,
-	Login,
-	Profile,
-	Register,
-	ForgotPassword,
-	ResetPassword,
-} from '@pages';
-import { AdventureLayout, AppHeaderUI, AuthLayout } from '@ui';
-import { requestGetAdventure, requestUserAdventures } from 'src/services/slices/adventures/actions';
-import { requestCreateThread } from 'src/services/slices/threads/actions';
-import { ThreadType } from '@utils-types';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+
+import { Adventures, Login, Profile, Register, ForgotPassword, ResetPassword } from '@pages';
+import { AdventureLayout, AppHeaderUI, AuthLayout, CenterLayout } from '@ui';
+
 import { Modal, ProtectedRoute } from '@components';
 import styles from './app.module.scss';
 import { AdventureChecks } from '../adventure-checks';
@@ -25,22 +15,12 @@ const CreateHero = () => <div>элемент описывает экран со�
 const Invite = () => <div>элемент описывает содержимое модального окна приглашения персонаж</div>;
 const Main = () => <div>элемент описывает основной контент главной страницы приключения</div>;
 
-const CenterBlock = ({ children }: { children: React.ReactNode }) => {
-	return (
-		<div>
-			<p>центральный блок</p>
-			<Outlet />
-		</div>
-	);
-};
-
 export const App: React.FC = () => {
 	const location = useLocation();
 
 	// Определение старого фона при переходе по ссылке
 	const backgroundLocation = location.state?.background || null;
 
-	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const closeModal = () => {
 		navigate(-1); // возвращаемся назад
@@ -50,17 +30,6 @@ export const App: React.FC = () => {
 		<div className={styles.app}>
 			<AppHeaderUI />
 			<Routes location={backgroundLocation || location}>
-				<Route
-					path="/adventures"
-					element={
-						<ProtectedRoute>
-							<Adventures />
-						</ProtectedRoute>
-					}
-				/>
-
-				<Route path="/profile" element={<Profile />} />
-
 				<Route
 					path="/auth"
 					// все роуты внутри только для неавторизованных пользователей
@@ -75,7 +44,6 @@ export const App: React.FC = () => {
 					<Route path="forgot-password" element={<ForgotPassword />} />
 					<Route path="reset-password" element={<ResetPassword />} />
 				</Route>
-
 				<Route
 					path="/adventure/:adventure_id"
 					// все роуты внутри только для авторизованных пользователей
@@ -97,6 +65,26 @@ export const App: React.FC = () => {
 						<Route path="invite" element={<Invite />} />
 					</Route>
 				</Route>
+
+				<Route
+					path="/adventures"
+					element={
+						<ProtectedRoute>
+							<Adventures />
+						</ProtectedRoute>
+					}
+				/>
+
+				<Route
+					path="/profile"
+					element={
+						<ProtectedRoute>
+							<CenterLayout>
+								<Profile />
+							</CenterLayout>
+						</ProtectedRoute>
+					}
+				/>
 			</Routes>
 
 			{backgroundLocation && (
@@ -104,7 +92,15 @@ export const App: React.FC = () => {
 					<Route
 						path="/adventure/:adventure_id/invite"
 						element={
-							<Modal onClose={closeModal} title="Заголовок">
+							<Modal onClose={closeModal} title="Пригласить игрока">
+								<Invite />
+							</Modal>
+						}
+					/>
+					<Route
+						path="/adventure/:adventure_id/addthread"
+						element={
+							<Modal onClose={closeModal} title="Создать тред">
 								<Invite />
 							</Modal>
 						}
