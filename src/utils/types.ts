@@ -371,18 +371,19 @@ export enum OauthType {
 /** PlayerDTO */
 export interface PlayerDTO {
 	/**
-	 * Id пользователя
+	 * Id связки в базе: пользователь-приключение
 	 * @format uuid4
 	 */
 	id: string;
+	/**
+	 * Id приключения
+	 * @format uuid4
+	 */
+	adventure_id: string;
+	/** Пользователь */
+	user: UserDTO;
 	/** Персонажи игрока */
 	heroes: HeroDTO[];
-}
-
-/** PlayersByAdventureOutputDTO */
-export interface PlayersByAdventureOutputDTO {
-	/** Игроки */
-	players: PlayerDTO[];
 }
 
 /** PostDTO */
