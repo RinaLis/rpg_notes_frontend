@@ -12,4 +12,5 @@ export type InputProps = {
 export enum InputNames {
 	auth = 'auth', // для инпутов авторизации
 	info = 'info', // для инпутов информации
+	photo = 'photo', // для инпутов фото
 }
