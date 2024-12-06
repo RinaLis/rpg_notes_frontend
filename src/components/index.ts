@@ -4,3 +4,4 @@ export * from './hero-list';
 
 export * from './adventure-layout';
 export * from './modal';
+export * from './protected-route';
