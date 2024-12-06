@@ -11,6 +11,7 @@ import { InputNames } from '../../input/type';
 
 interface FormValues {
 	login: string;
+	name: string;
 	email: string;
 	password: string;
 	confirmPassword: string;
@@ -19,9 +20,10 @@ interface RegisterUIProps {
 	onSubmit: (e: React.FormEvent) => void;
 	register: UseFormRegister<FormValues>;
 	errors: FieldErrors<FormValues>;
+	error: string | null;
 }
 
-export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, errors }) => {
+export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, errors, error }) => {
 	return (
 		<form name="register" onSubmit={onSubmit} className={styles.authForm} noValidate>
 			<h2 className={styles.authForm__title}>Регистрация</h2>
@@ -37,6 +39,13 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 				placeholder="Email"
 				register={register('email')}
 				error={errors.email?.message}
+				сlassNameCustom={InputNames.auth}
+			/>
+			<Input
+				type="text"
+				placeholder="Имя"
+				register={register('name')}
+				error={errors.login?.message}
 				сlassNameCustom={InputNames.auth}
 			/>
 			<Input
@@ -58,6 +67,7 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 			<Button className={styles.button} type="submit">
 				Регистрация
 			</Button>
+			<div className={styles.authForm__error}>{error && <span>{error}</span>}</div>
 			<div className={styles.authForm__linkContainer}>
 				<div className={styles.question}>
 					<div className={styles.question__text}>Зарегистрированы?</div>

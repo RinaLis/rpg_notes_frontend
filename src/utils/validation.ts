@@ -12,6 +12,7 @@ export const schemaLogin = yup
 
 export const schemaRegister = yup
 	.object({
+		name: yup.string().required('Введите имя'),
 		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
 		email: yup.string().email('Некорректный email').required('Введите email'),
 		password: yup
