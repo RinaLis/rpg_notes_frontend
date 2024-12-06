@@ -14,3 +14,4 @@ export * from './aside-panel';
 export * from './auth-layout';
 export * from './hero-list';
 export * from './adventure-layout';
+export * from './center-layout';
