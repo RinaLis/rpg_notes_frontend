@@ -36,7 +36,7 @@ export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
 						<div className={styles.authForm__linkContainer}>
 							<div className={styles.question}>
 								<div className={styles.queston__text}>Вспомнили пароль?</div>
-								<Link to="/Login" className={styles.question__link}>
+								<Link to="/auth/Login" className={styles.question__link}>
 									Войти
 								</Link>
 							</div>

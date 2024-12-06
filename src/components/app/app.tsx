@@ -16,14 +16,10 @@ import { AppHeaderUI } from '@ui';
 import { requestGetAdventure, requestUserAdventures } from 'src/services/slices/adventures/actions';
 import { requestCreateThread } from 'src/services/slices/threads/actions';
 import { ThreadType } from '@utils-types';
+import { Modal } from '@components';
 import styles from './app.module.scss';
 
-type ModalProps = {
-	children: React.ReactNode;
-	onClose: () => void;
-};
-
-const Modal: React.FC<ModalProps> = ({ children, onClose }) => <div>Модальное окно</div>;
+// элементы описывают страницы приложения их необходимо выделить в отдельные компоненты
 const CreateHero = () => <div>элемент описывает экран создания персонажа</div>;
 const Invite = () => <div>элемент описывает содержимое модального окна приглашения персонаж</div>;
 const Main = () => <div>элемент описывает основной контент главной страницы приключения</div>;
@@ -127,7 +123,7 @@ export const App: React.FC = () => {
 					<Route
 						path="/:adventure_id/invite"
 						element={
-							<Modal onClose={closeModal}>
+							<Modal onClose={closeModal} title="Заголовок">
 								<Invite />
 							</Modal>
 						}

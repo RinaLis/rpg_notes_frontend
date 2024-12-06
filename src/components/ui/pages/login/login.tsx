@@ -49,12 +49,12 @@ export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 						</Button>
 						<div className={styles.authForm__linkContainer}>
 							<div className={styles.question}>
-								<Link to="/register" className={styles.question__link}>
+								<Link to="/auth/register" className={styles.question__link}>
 									Регистрация
 								</Link>
 							</div>
 							<div className={styles.question}>
-								<Link to="/forgot-password" className={styles.question__link}>
+								<Link to="/auth/forgot-password" className={styles.question__link}>
 									Забыли пароль?
 								</Link>
 							</div>
