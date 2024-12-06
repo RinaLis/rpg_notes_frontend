@@ -4,16 +4,10 @@ import { ForgotPasswordUI } from '@ui-pages';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
-// Схема валидации через yup
-const schema = yup
-	.object({
-		email: yup.string().email('Некорректный email').required('Введите email'),
-	})
-	.required();
+import { schemaForgot } from '../../utils/validation';
 
 // Типизация формы, основанная на yup-схеме
-type FormValues = yup.InferType<typeof schema>;
+type FormValues = yup.InferType<typeof schemaForgot>;
 
 export const ForgotPassword: React.FC = () => {
 	// Инициализация react-hook-form с валидацией через yup
@@ -23,7 +17,7 @@ export const ForgotPassword: React.FC = () => {
 		reset,
 		formState: { errors },
 	} = useForm<FormValues>({
-		resolver: yupResolver(schema),
+		resolver: yupResolver(schemaForgot),
 	});
 
 	// Обработчик успешной отправки формы
