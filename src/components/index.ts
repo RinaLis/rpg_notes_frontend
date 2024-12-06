@@ -1,3 +1,4 @@
 export * from './example-component';
 export * from './aside-panel';
 export * from './modal';
+export * from './protected-route';
