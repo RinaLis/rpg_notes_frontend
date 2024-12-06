@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@components';
+import { Button } from '@ui';
 // import { ReactComponent as Icon } from '@assets/eyeinput.svg'; ← тут надо вставить актуальный SVG
 
 import styles from './addButton.module.scss';

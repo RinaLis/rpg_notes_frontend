@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import eyeInput from '@assets/eyeInput.svg';
 
-import { Button, Input } from '@components';
+import { Button, Input } from '@ui';
 import clsx from 'clsx';
 import styles from '../common.module.scss';
 import { InputNames } from '../../input/type';

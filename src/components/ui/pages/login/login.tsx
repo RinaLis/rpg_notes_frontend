@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Input, Button } from '@components';
+import { Input, Button } from '@ui';
 import { Link } from 'react-router-dom';
 
 import eyeInput from '@assets/eyeInput.svg';
