@@ -1,23 +1,29 @@
 @font-face {
 	font-family: 'Amagro';
-	src: url('./assets/fonts/Amagro.ttf');
-	font-weight: normal;
+	src: url('assets/fonts/Amagro-bold.woff2') format('woff2');
+	font-weight: bold;
 	font-style: normal;
+	font-display: swap;
 }
 @font-face {
 	font-family: 'Metrika';
-	src: url('./assets/fonts/Metrika.otf') format('truetype');
-	font-weight: normal;
+	src: url('./assets/fonts/Metrika-Regular.woff2') format('woff2');
+	font-weight: bold;
 	font-style: normal;
+	font-display: swap;
 }
 @font-face {
 	font-family: 'EBGaramond';
-	src: url('./assets/fonts/EBGaramond-ExtraBold.ttf');
+	src: url('./assets/fonts/EBGaramond-ExtraBold.woff2') format('woff2');
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
 }
 
 :root {
+	--vh: 1vh; /* Фоллбэк */
+	--vw: 1vw; /* Фоллбэк */
+
 	box-sizing: border-box;
 	/* кастомные свойства шрифтов */
 	line-height: 1.5;
@@ -152,4 +158,10 @@ button:active {
 *::before,
 *::after {
 	box-sizing: border-box;
+}
+
+@supports (height: 100dvh) {
+	:root {
+		--vh: 1dvh; /* Если поддерживается dvh */
+	}
 }
