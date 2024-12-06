@@ -29,6 +29,7 @@ export const playersSlice = createSlice({
 	selectors: {
 		getPlayers: (sliceState) => sliceState.players,
 		getInvitedUser: (sliceState) => sliceState.invitedUser,
+		getPlayersIsLoading: (sliceState) => sliceState.isLoading,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -90,6 +91,6 @@ export const playersSlice = createSlice({
 
 export { initialState as playersInitialState };
 
-export const { getPlayers, getInvitedUser } = playersSlice.selectors;
+export const { getPlayers, getInvitedUser, getPlayersIsLoading } = playersSlice.selectors;
 
 export default playersSlice.reducer;

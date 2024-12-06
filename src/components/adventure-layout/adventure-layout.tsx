@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useParams } from 'react-router-dom';
+import { Navigate, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@store';
 import { requestGetAdventure } from 'src/services/slices/adventures/actions';
 import { isAuthCheckedSelector, userDataSelector } from 'src/services/slices/user/user.slice';
@@ -11,22 +11,28 @@ import {
 } from 'src/services/slices/adventures/adventures.slice';
 
 import { requestGetThreadsByAdventure } from 'src/services/slices/threads/actions';
-import { ExamplePage } from '../../pages/example-page';
-import { AdventureLayoutUI, AdventureLayoutUIProps } from '../ui/adventure-layout';
+import { Page404 } from '@pages';
+import { requestGetPlayers } from 'src/services/slices/players/actions';
+import { getPlayers, getPlayersIsLoading } from 'src/services/slices/players/players.slice';
+import { AdventureLayoutUI } from '../ui/adventure-layout';
 
-export const AdventureLayout: React.FC<AdventureLayoutUIProps> = ({ children }) => {
-	const { id } = useParams<{ id: string }>(); // id должен называться  быть  как в путях в роуте
+export const AdventureLayout: React.FC = () => {
+	const location = useLocation();
+	const { adventure_id: id } = useParams<{ adventure_id: string }>(); // id должен называться  быть  как в путях в роуте
 	const dispatch = useAppDispatch();
 	const currentUser = useAppSelector(userDataSelector);
 	const userLoading = useAppSelector(isAuthCheckedSelector);
 	const adventureLoading = useAppSelector(getAdventuresIsLoading);
 	const currentAdventure = useAppSelector(getCurrentAdventure);
+	const players = useAppSelector(getPlayers);
+	const playersIsLoading = useAppSelector(getPlayersIsLoading);
+	const usersHeroes = players?.find((player) => player.id === currentUser?.id)?.heroes || null;
 
-	// запрос приключения по id
 	useEffect(() => {
 		if (!id) {
 			return;
 		}
+		// запрос приключения по id
 		dispatch(requestGetAdventure(id));
 	}, [dispatch, id]);
 
@@ -49,11 +55,17 @@ export const AdventureLayout: React.FC<AdventureLayoutUIProps> = ({ children }) 
 		}
 	}, [dispatch, currentAdventure?.id]);
 
+	useEffect(() => {
+		if (currentAdventure?.id) {
+			dispatch(requestGetPlayers(currentAdventure?.id));
+		}
+	}, [dispatch, currentAdventure?.id]);
+
 	if (!id) {
-		return <ExamplePage />; // заменить на страницу 404
+		return <Page404 />;
 	}
 
-	if (userLoading || adventureLoading) {
+	if (userLoading || adventureLoading || playersIsLoading) {
 		// заменить на загрузку
 		return (
 			<div>
@@ -61,10 +73,28 @@ export const AdventureLayout: React.FC<AdventureLayoutUIProps> = ({ children }) 
 			</div>
 		);
 	}
-
+	// если приключение не найдено
 	if (!currentAdventure) {
-		return <div>Adventure not found</div>; // заменить на страницу 404
+		return <Page404 text="Приключение не найдено" />;
 	}
 
-	return <AdventureLayoutUI>{children}</AdventureLayoutUI>;
+	// можно будет убрать как будет защищенный путь
+	if (!currentUser) {
+		return <Page404 text="Пользователь не найден" />;
+	}
+
+	// если списка для героев нет
+	if (usersHeroes === null) {
+		return <Page404 text="Кажется вас еще не пригласили в это приключение" />;
+	}
+
+	// если герои есть и хоть один из них используется
+	if (usersHeroes.some((hero) => hero.is_used)) {
+		return (
+			<AdventureLayoutUI>
+				<Outlet />
+			</AdventureLayoutUI>
+		);
+	}
+	return <Navigate replace to={`/${id}/create-hero`} state={{ from: location }} />;
 };
