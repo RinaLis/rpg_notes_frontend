@@ -14,7 +14,7 @@ export interface CommentsState {
 	error: string | null;
 }
 
-export const initialState: CommentsState = {
+const initialState: CommentsState = {
 	isLoading: false,
 	comments: null,
 	error: null,

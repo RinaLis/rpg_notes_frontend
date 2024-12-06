@@ -17,7 +17,7 @@ export interface ThreadsState {
 	error: string | null;
 }
 
-export const initialState: ThreadsState = {
+const initialState: ThreadsState = {
 	isLoading: false,
 	threads: null,
 	currentThread: null,

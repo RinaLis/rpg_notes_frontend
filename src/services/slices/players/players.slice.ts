@@ -15,7 +15,7 @@ export interface PlayersState {
 	error: string | null;
 }
 
-export const initialState: PlayersState = {
+const initialState: PlayersState = {
 	isLoading: false,
 	players: null,
 	invitedUser: null,
