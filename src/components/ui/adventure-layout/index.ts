@@ -1,2 +1,1 @@
-export { AdventureLayoutUI } from './adventure-layout';
-export * from './type';
+export { AdventureLayout } from './adventure-layout';

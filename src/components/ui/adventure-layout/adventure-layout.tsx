@@ -1,9 +1,8 @@
 import { HeroList } from 'src/components/hero-list';
 import { Outlet } from 'react-router-dom';
 import { AsideLayoutUI } from '../aside-layout';
-import { AdventureLayoutUIProps } from './type';
 
-export const AdventureLayoutUI: React.FC<AdventureLayoutUIProps> = ({ children }) => {
+export const AdventureLayout: React.FC = () => {
 	return (
 		<AsideLayoutUI asideChildren={<HeroList />}>
 			<Outlet />
