@@ -1,16 +1,13 @@
-import { useAppSelector, useAppDispatch } from '@store';
+import { useAppDispatch, useAppSelector } from '@store';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Preloader } from '@ui';
 import { useEffect } from 'react';
 import { getUserApi } from '@api';
-
-type ProtectedRouteProps = {
-	onlyUnAuth: boolean;
-	children: React.ReactElement;
-};
+import { getUserState } from 'src/services/slices/user/user.slice';
+import { ProtectedRouteProps } from './type';
 
 export const ProtectedRoute = ({ onlyUnAuth, children }: ProtectedRouteProps) => {
-	const { isLoading, user } = useAppSelector((store) => store.UserState);
+	const { isLoading, user } = useAppSelector((state) => getUserState(state));
 	const dispatch = useAppDispatch();
 	const location = useLocation();
 
