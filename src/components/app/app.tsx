@@ -12,26 +12,18 @@ import {
 	ForgotPassword,
 	ResetPassword,
 } from '@pages';
-import { AppHeaderUI, AuthLayout } from '@ui';
+import { AdventureLayout, AppHeaderUI, AuthLayout } from '@ui';
 import { requestGetAdventure, requestUserAdventures } from 'src/services/slices/adventures/actions';
 import { requestCreateThread } from 'src/services/slices/threads/actions';
 import { ThreadType } from '@utils-types';
-import { Modal } from '@components';
+import { Modal, ProtectedRoute } from '@components';
 import styles from './app.module.scss';
+import { AdventureChecks } from '../adventure-checks';
 
 // элементы описывают страницы приложения их необходимо выделить в отдельные компоненты
 const CreateHero = () => <div>элемент описывает экран создания персонажа</div>;
 const Invite = () => <div>элемент описывает содержимое модального окна приглашения персонаж</div>;
 const Main = () => <div>элемент описывает основной контент главной страницы приключения</div>;
-
-const AdventureLayout = () => {
-	return (
-		<div>
-			<p>общий лейаут всех страниц, связанных с конкретным приключением</p>
-			<Outlet />
-		</div>
-	);
-};
 
 const CenterBlock = ({ children }: { children: React.ReactNode }) => {
 	return (
@@ -59,29 +51,31 @@ export const App: React.FC = () => {
 			requestLoginUser({
 				email: 'anpast2018@gmail.com',
 				password: '1234567890',
+				// email: 'mash@mash.ma',
+				// password: '<string>',
 			})
 		);
-		// запрос всех приключений юзера
-		dispatch(requestUserAdventures());
+		// // запрос всех приключений юзера
+		// dispatch(requestUserAdventures());
 
-		// запорс приключения по id , существующий id
-		dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc57'));
+		// // запорс приключения по id , существующий id
+		// dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc57'));
 
-		// несуществующий id но где должны быть цифры там цифры , а где буквы там буквы
-		// работает нормально, ошибка в сторе
-		dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc58'));
+		// // несуществующий id но где должны быть цифры там цифры , а где буквы там буквы
+		// // работает нормально, ошибка в сторе
+		// dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc58'));
 
-		// несуществующий id но вместо последней цифры стоит буква
-		// бек нам возращает 422, это ловит костыль в request.ts
-		dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc5q'));
-		// cоздать тред в приключении
-		dispatch(
-			requestCreateThread({
-				adventure_id: '8ce57dde-1893-4ee6-b21b-fdafc467fc57',
-				name: 'test',
-				type: ThreadType.Public,
-			})
-		);
+		// // несуществующий id но вместо последней цифры стоит буква
+		// // бек нам возращает 422, это ловит костыль в request.ts
+		// dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc5q'));
+		// // cоздать тред в приключении
+		// dispatch(
+		// 	requestCreateThread({
+		// 		adventure_id: '8ce57dde-1893-4ee6-b21b-fdafc467fc57',
+		// 		name: 'test',
+		// 		type: ThreadType.Public,
+		// 	})
+		// );
 	}, [dispatch]);
 
 	return (
@@ -90,7 +84,7 @@ export const App: React.FC = () => {
 			<Routes location={backgroundLocation || location}>
 				<Route path="/example" element={<ExamplePage />} />
 				<Route path="/adventures" element={<Adventures />} />
-				<Route path="/:adventure_id/create-hero" element={<CreateHero />} />
+
 				<Route
 					path="/:adventure_id/invite"
 					element={
@@ -101,15 +95,39 @@ export const App: React.FC = () => {
 				/>
 				<Route path="/profile" element={<Profile />} />
 
-				<Route path="/auth" element={<AuthLayout />}>
+				<Route
+					path="/auth"
+					// все роуты внутри только для неавторизованных пользователей
+					element={
+						<ProtectedRoute onlyUnAuth>
+							<AuthLayout />
+						</ProtectedRoute>
+					}
+				>
 					<Route path="login" element={<Login />} />
 					<Route path="register" element={<Register />} />
 					<Route path="forgot-password" element={<ForgotPassword />} />
 					<Route path="reset-password" element={<ResetPassword />} />
 				</Route>
 
-				<Route path="/:adventure_id" element={<AdventureLayout />}>
-					<Route path="main" element={<Main />} />
+				<Route
+					path="/adventure/:adventure_id"
+					// все роуты внутри только для авторизованных пользователей
+					// проверка приключения и что пользователь в нем участвует
+					element={
+						<ProtectedRoute>
+							<AdventureChecks />
+						</ProtectedRoute>
+					}
+				>
+					<Route path="create-hero" element={<CreateHero />} />
+					<Route
+						path=""
+						// элементы внутри этого роута будут отображаться внутри AdventureLayout
+						element={<AdventureLayout />}
+					>
+						<Route path="" element={<Main />} />
+					</Route>
 				</Route>
 			</Routes>
 
