@@ -58,7 +58,7 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							<div className={styles.question}>
 								<div className={styles.question__text}>Зарегистрированы?</div>
 
-								<Link to="/login" className={styles.question__link}>
+								<Link to="/auth/login" className={styles.question__link}>
 									Войти
 								</Link>
 							</div>
