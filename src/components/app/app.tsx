@@ -54,36 +54,6 @@ export const App: React.FC = () => {
 		navigate(-1); // возвращаемся назад
 	};
 
-	// useEffect(() => {
-	// 	dispatch(
-	// 		requestLoginUser({
-	// 			email: 'anpast2018@gmail.com',
-	// 			password: '1234567890',
-	// 		})
-	// 	);
-	// 	// запрос всех приключений юзера
-	// 	dispatch(requestUserAdventures());
-
-	// 	// запорс приключения по id , существующий id
-	// 	dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc57'));
-
-	// 	// несуществующий id но где должны быть цифры там цифры , а где буквы там буквы
-	// 	// работает нормально, ошибка в сторе
-	// 	dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc58'));
-
-	// 	// несуществующий id но вместо последней цифры стоит буква
-	// 	// бек нам возращает 422, это ловит костыль в request.ts
-	// 	dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc5q'));
-	// 	// cоздать тред в приключении
-	// 	dispatch(
-	// 		requestCreateThread({
-	// 			adventure_id: '8ce57dde-1893-4ee6-b21b-fdafc467fc57',
-	// 			name: 'test',
-	// 			type: ThreadType.Public,
-	// 		})
-	// 	);
-	// }, [dispatch]);
-
 	return (
 		<div className={styles.app}>
 			<AppHeaderUI />
