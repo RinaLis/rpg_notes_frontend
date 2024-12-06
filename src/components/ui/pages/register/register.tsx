@@ -5,13 +5,20 @@ import eyeInput from '@assets/eyeInput.svg';
 
 import { Button, Input } from '@components';
 import clsx from 'clsx';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
 import { InputNames } from '../../input/type';
 
+interface FormValues {
+	login: string;
+	email: string;
+	password: string;
+	confirmPassword: string;
+}
 interface RegisterUIProps {
 	onSubmit: (e: React.FormEvent) => void;
-	register: any;
-	errors: Record<string, any>;
+	register: UseFormRegister<FormValues>;
+	errors: FieldErrors<FormValues>;
 }
 
 export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, errors }) => {

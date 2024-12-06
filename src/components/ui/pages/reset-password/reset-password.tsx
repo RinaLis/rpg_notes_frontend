@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 import eyeInput from '@assets/eyeInput.svg';
 import { Button, Input } from '@components';
 import clsx from 'clsx';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
 import { InputNames } from '../../input/type';
 
+interface FormValues {
+	password: string;
+	confirmPassword: string;
+	confirmCode: string;
+}
 interface ResetPasswordUIProps {
 	onSubmit: (e: React.FormEvent) => void;
-	register: any;
-	errors: Record<string, any>;
+	register: UseFormRegister<FormValues>;
+	errors: FieldErrors<FormValues>;
 }
 
 export const ResetPasswordUI: React.FC<ResetPasswordUIProps> = ({ onSubmit, register, errors }) => {
@@ -38,8 +44,8 @@ export const ResetPasswordUI: React.FC<ResetPasswordUIProps> = ({ onSubmit, regi
 						<Input
 							type="text"
 							placeholder="Введите код из письма"
-							register={register('confirm')}
-							error={errors.confirm?.message}
+							register={register('confirmCode')}
+							error={errors.confirmCode?.message}
 							сlassNameCustom={InputNames.auth}
 						/>
 						<Button type="submit" className={styles.button}>

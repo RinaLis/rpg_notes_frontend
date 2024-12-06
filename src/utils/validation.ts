@@ -36,7 +36,7 @@ export const schemaReset = yup
 			.string()
 			.oneOf([yup.ref('password')], 'Пароли не совпадают')
 			.required('Повторите пароль'),
-		confirm: yup
+		confirmCode: yup
 			.string()
 			.min(3, 'Код должен быть не менее 3 символов')
 			.max(9, 'Код должен быть не более 9 символов')
