@@ -1,0 +1,95 @@
+.plate {
+	--height: 64px;
+	--text-color: var(--color-text-input);
+	--hero-font: var(--amagro);
+	--player-font: var(--metrika);
+	--hero-font-size: 24px;
+	--player-font-size: 16px;
+	--hero-display: block;
+	--avatar-after-content: none;
+	width: 100%;
+	height: var(--height);
+	display: grid;
+	grid-template-columns: var(--height) 1fr;
+	justify-content: center;
+	position: relative;
+	border-radius: calc(var(--height) / 2);
+	overflow: hidden;
+	background: var(--gradient-beige-soft); // возможно тут другой бэкграунд
+	box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.55);
+
+	&_master {
+		--player-font: var(--amagro);
+		--player-font-size: 24px;
+		--hero-display: none;
+	}
+
+	&_dead {
+		background: var(--gradient-darker);
+		--text-color: var(--color-text-input);
+		--avatar-after-content: url(@assets/skull.svg);
+	}
+
+	&__avatar {
+		width: var(--height); // что бы был круглый
+		height: 100%;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		border: 2px solid var(--color-text-input);
+		position: relative;
+
+		&::after {
+			content: var(--avatar-after-content);
+			position: absolute;
+			padding: 10px;
+			width: 100%;
+			height: 100%;
+			opacity: 0.3;
+			background: rgb(0, 0, 0);
+		}
+	}
+	&__image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		position: relative;
+	}
+
+	&__text {
+		height: 100%;
+		padding-inline: 10px 30px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
+
+	&__heroName {
+		width: 100%;
+		font-family: var(--hero-font);
+		font-size: var(--hero-font-size);
+		line-height: 1;
+		text-align: center;
+		color: var(--text-color);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		display: var(--hero-display);
+	}
+	&__playerName {
+		width: 100%;
+		font-family: var(--player-font);
+		font-size: var(--player-font-size);
+		line-height: 1;
+		text-align: center;
+		color: var(--text-color);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}

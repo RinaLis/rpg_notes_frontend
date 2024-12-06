@@ -1,23 +1,41 @@
 @font-face {
 	font-family: 'Amagro';
-	src: url('./assets/fonts/Amagro.ttf');
-	font-weight: normal;
+	src: url('assets/fonts/Amagro-bold.woff2') format('woff2');
+	font-weight: bold;
 	font-style: normal;
+	font-display: swap;
 }
 @font-face {
 	font-family: 'Metrika';
-	src: url('./assets/fonts/Metrika.otf') format('truetype');
+	src: url('./assets/fonts/Metrika-Regular.woff2') format('woff2');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'EBGaramond';
+	src: url('./assets/fonts/EBGaramond-ExtraBold.woff2') format('woff2');
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
 }
 
 :root {
+	--vh: 1vh; /* Фоллбэк */
+	--vw: 1vw; /* Фоллбэк */
+
 	box-sizing: border-box;
+
+	/* размеры элементов */
+	--header-height: 100px;
+	--aside-width: 440px;
+
 	/* кастомные свойства шрифтов */
 	line-height: 1.5;
 	font-weight: 400;
 	--metrika: 'Metrika', sans-serif;
 	--amagro: 'Amagro', sans-serif;
+	--EBGaramond: 'EBGaramond', serif;
 
 	/* кастомные свойства палитры */
 	--color-black: #000;
@@ -31,6 +49,7 @@
 	--color-title: #3a2910;
 	--color-text-button: #ffe3af;
 	--color-text-input: #5b401a;
+	--color-accent: #b50707;
 	--color-icon: #3a281b;
 	--gradient-header: linear-gradient(
 		to bottom,
@@ -49,18 +68,17 @@
 		rgba(253, 208, 154, 0.6) 78%,
 		rgba(208, 167, 116, 0.75) 93%
 	);
-	/* При исполльзовании градиента не забудьте потом вставить в стили компонента прозрачность 33%
-P.s. как вы уже заметили прозрачность наше всё))) */
+
 	--gradient-input-grey: linear-gradient(
 		to right,
-		rgba(58, 31, 12, 0.76) 0%,
-		rgba(106, 72, 49, 0.93) 17%,
-		rgb(111, 77, 54) 21%,
-		rgb(130, 95, 71) 35%,
-		rgb(137, 105, 81) 52%,
-		rgb(130, 95, 71) 57%,
-		rgba(106, 72, 49, 0.93) 85%,
-		rgba(58, 31, 12, 0.76) 100%
+		rgba(58, 31, 12, 0.2508) 0%,
+		rgba(106, 72, 49, 0.3069) 17%,
+		rgb(111, 77, 54, 0.33) 21%,
+		rgb(130, 95, 71, 0.33) 35%,
+		rgb(137, 105, 81, 0.33) 52%,
+		rgb(130, 95, 71, 0.33) 57%,
+		rgba(106, 72, 49, 0.3069) 85%,
+		rgba(58, 31, 12, 0.2508) 100%
 	);
 	--gradient-button: linear-gradient(
 		to right,
@@ -74,6 +92,17 @@ P.s. как вы уже заметили прозрачность наше вс�
 		rgba(58, 31, 12, 0.76) 100%
 	);
 	--gradient-link: linear-gradient(to bottom, #423d39 0%, #544d48 28%, #645c56 49%, #423d39 71%);
+
+	--gradient-beige-soft: linear-gradient(
+		90deg,
+		#a78357 1%,
+		#d0a674 28%,
+		#d0a674 49.5%,
+		#d0a674 69.5%,
+		#a78357 99.5%
+	);
+
+	--gradient-darker: linear-gradient(90deg, #896951 0%, #a88064 39%, #a88064 65.5%, #896951 97.5%);
 
 	/* кастомные свойства, которые будем использовать для темизации */
 	color-scheme: light dark;
@@ -145,4 +174,10 @@ button:active {
 *::before,
 *::after {
 	box-sizing: border-box;
+}
+
+@supports (height: 100dvh) {
+	:root {
+		--vh: 1dvh; /* Если поддерживается dvh */
+	}
 }

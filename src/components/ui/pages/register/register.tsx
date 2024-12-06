@@ -1,16 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import eyeInput from '@assets/eyeInput.svg';
+import eyeInput from '@assets/icons/eyeInput.svg';
 
-import { Button, Input } from '@components';
+import { Button, Input } from '@ui';
 import clsx from 'clsx';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
+import { InputNames } from '../../input/type';
 
+interface FormValues {
+	login: string;
+	email: string;
+	password: string;
+	confirmPassword: string;
+}
 interface RegisterUIProps {
 	onSubmit: (e: React.FormEvent) => void;
-	register: any;
-	errors: Record<string, any>;
+	register: UseFormRegister<FormValues>;
+	errors: FieldErrors<FormValues>;
 }
 
 export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, errors }) => {
@@ -25,12 +33,14 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							placeholder="Логин"
 							register={register('login')}
 							error={errors.login?.message}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Input
 							type="email"
 							placeholder="Email"
 							register={register('email')}
 							error={errors.email?.message}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Input
 							type="password"
@@ -38,6 +48,7 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							register={register('password')}
 							error={errors.password?.message}
 							icon={eyeInput}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Input
 							type="text"
@@ -45,6 +56,7 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							register={register('confirmPassword')}
 							error={errors.confirmPassword?.message}
 							icon={eyeInput}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Button className={styles.button} type="submit">
 							Регистрация
@@ -53,7 +65,7 @@ export const RegisterUI: React.FC<RegisterUIProps> = ({ onSubmit, register, erro
 							<div className={styles.question}>
 								<div className={styles.question__text}>Зарегистрированы?</div>
 
-								<Link to="/login" className={styles.question__link}>
+								<Link to="/auth/login" className={styles.question__link}>
 									Войти
 								</Link>
 							</div>

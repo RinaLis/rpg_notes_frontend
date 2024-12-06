@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Input } from '@components';
+import { Button, Input } from '@ui';
 import clsx from 'clsx';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
+import { InputNames } from '../../input/type';
+
+interface FormValues {
+	email: string;
+}
 
 interface ForgotPasswordUIProps {
 	onSubmit: (e: React.FormEvent) => void;
-	register: any;
-	errors: Record<string, any>;
+	register: UseFormRegister<FormValues>;
+	errors: FieldErrors<FormValues>;
 }
 
 export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
@@ -27,6 +33,7 @@ export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
 							placeholder="Email"
 							register={register('email')}
 							error={errors.email?.message}
+							сlassNameCustom={InputNames.auth}
 						/>
 						<Button type="submit" className={styles.button}>
 							Восстановить
@@ -34,7 +41,7 @@ export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
 						<div className={styles.authForm__linkContainer}>
 							<div className={styles.question}>
 								<div className={styles.queston__text}>Вспомнили пароль?</div>
-								<Link to="/Login" className={styles.question__link}>
+								<Link to="/auth/Login" className={styles.question__link}>
 									Войти
 								</Link>
 							</div>
