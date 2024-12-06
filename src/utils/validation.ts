@@ -2,7 +2,6 @@ import * as yup from 'yup';
 
 export const schemaLogin = yup
 	.object({
-		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
 		email: yup.string().email('Некорректный email').required('Введите email'),
 		password: yup
 			.string()
