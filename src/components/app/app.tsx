@@ -12,7 +12,7 @@ import {
 	ForgotPassword,
 	ResetPassword,
 } from '@pages';
-import { AppHeaderUI } from '@ui';
+import { AppHeaderUI, AuthLayout } from '@ui';
 import { requestGetAdventure, requestUserAdventures } from 'src/services/slices/adventures/actions';
 import { requestCreateThread } from 'src/services/slices/threads/actions';
 import { ThreadType } from '@utils-types';
@@ -23,14 +23,7 @@ import styles from './app.module.scss';
 const CreateHero = () => <div>элемент описывает экран создания персонажа</div>;
 const Invite = () => <div>элемент описывает содержимое модального окна приглашения персонаж</div>;
 const Main = () => <div>элемент описывает основной контент главной страницы приключения</div>;
-const AuthLayout = () => {
-	return (
-		<div>
-			<p>элемент который мы размещаем на плашке</p>
-			<Outlet />
-		</div>
-	);
-};
+
 const AdventureLayout = () => {
 	return (
 		<div>

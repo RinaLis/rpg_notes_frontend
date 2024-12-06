@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Input } from '@ui';
-import clsx from 'clsx';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
 import { InputNames } from '../../input/type';
@@ -22,33 +21,26 @@ export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
 	errors,
 }) => {
 	return (
-		<main className={clsx(styles.page, styles.page_fixed, styles.page_centered)}>
-			<div className={styles.container}>
-				<div className={styles.content}>
-					<h2 className={styles.content__title}>Восстановление пароля</h2>
-
-					<form className={styles.authForm} name="forgotPassword" onSubmit={onSubmit} noValidate>
-						<Input
-							type="email"
-							placeholder="Email"
-							register={register('email')}
-							error={errors.email?.message}
-							сlassNameCustom={InputNames.auth}
-						/>
-						<Button type="submit" className={styles.button}>
-							Восстановить
-						</Button>
-						<div className={styles.authForm__linkContainer}>
-							<div className={styles.question}>
-								<div className={styles.queston__text}>Вспомнили пароль?</div>
-								<Link to="/auth/Login" className={styles.question__link}>
-									Войти
-								</Link>
-							</div>
-						</div>
-					</form>
+		<form className={styles.authForm} name="forgotPassword" onSubmit={onSubmit} noValidate>
+			<h2 className={styles.authForm__title}>Восстановление пароля</h2>
+			<Input
+				type="email"
+				placeholder="Email"
+				register={register('email')}
+				error={errors.email?.message}
+				сlassNameCustom={InputNames.auth}
+			/>
+			<Button type="submit" className={styles.button}>
+				Восстановить
+			</Button>
+			<div className={styles.authForm__linkContainer}>
+				<div className={styles.question}>
+					<div className={styles.queston__text}>Вспомнили пароль?</div>
+					<Link to="/auth/Login" className={styles.question__link}>
+						Войти
+					</Link>
 				</div>
 			</div>
-		</main>
+		</form>
 	);
 };
