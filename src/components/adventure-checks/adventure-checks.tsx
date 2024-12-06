@@ -93,5 +93,5 @@ export const AdventureChecks: React.FC = () => {
 		return <Page404 text="Кажется вас еще не пригласили в это приключение" />;
 	}
 
-	return <Navigate replace to={`/${id}/create-hero`} state={{ from: location }} />;
+	return <Navigate replace to={`/adventure/${id}/create-hero`} state={{ from: location }} />;
 };
