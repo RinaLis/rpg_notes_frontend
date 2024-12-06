@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const AdventuresUI: React.FC = () => {
-	return <div>Adventures</div>;
+	return <div>элемент описывает экран всех приключений пользователя</div>;
 };
