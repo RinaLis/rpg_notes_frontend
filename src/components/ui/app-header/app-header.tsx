@@ -19,7 +19,7 @@ export const AppHeaderUI: React.FC = () => {
 					</NavLink>
 				</div>
 				<div className={styles.header__logoContainer}>
-					<NavLink to="/login">
+					<NavLink to="/auth/login">
 						<img src={logo} alt="logo" className={styles.header__logo} />
 					</NavLink>
 				</div>
