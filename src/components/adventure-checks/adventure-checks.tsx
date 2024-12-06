@@ -82,14 +82,16 @@ export const AdventureChecks: React.FC = () => {
 		return <Page404 text="Пользователь не найден" />;
 	}
 
+	// если герои есть и хоть один из них используется
+	// или если юзер мастер
+	if (usersHeroes?.some((hero) => hero.is_used) || currentAdventure.owner.id === currentUser.id) {
+		return <Outlet />;
+	}
+
 	// если списка для героев нет
 	if (usersHeroes === null) {
 		return <Page404 text="Кажется вас еще не пригласили в это приключение" />;
 	}
 
-	// если герои есть и хоть один из них используется
-	if (usersHeroes.some((hero) => hero.is_used)) {
-		return <Outlet />;
-	}
 	return <Navigate replace to={`/${id}/create-hero`} state={{ from: location }} />;
 };

@@ -50,21 +50,20 @@ export const App: React.FC = () => {
 		<div className={styles.app}>
 			<AppHeaderUI />
 			<Routes location={backgroundLocation || location}>
-				<Route path="/example" element={<ExamplePage />} />
-				<Route path="/adventures" element={<Adventures />} />
-
 				<Route
-					path="/:adventure_id/invite"
+					path="/adventures"
 					element={
-						<CenterBlock>
-							<Invite />
-						</CenterBlock>
+						<ProtectedRoute>
+							<Adventures />
+						</ProtectedRoute>
 					}
 				/>
+
 				<Route path="/profile" element={<Profile />} />
 
 				<Route
 					path="/auth"
+					// все роуты внутри только для неавторизованных пользователей
 					element={
 						<ProtectedRoute onlyUnAuth>
 							<AuthLayout />
@@ -88,12 +87,14 @@ export const App: React.FC = () => {
 					}
 				>
 					<Route path="create-hero" element={<CreateHero />} />
+
 					<Route
 						path=""
 						// элементы внутри этого роута будут отображаться внутри AdventureLayout
 						element={<AdventureLayout />}
 					>
 						<Route path="" element={<Main />} />
+						<Route path="invite" element={<Invite />} />
 					</Route>
 				</Route>
 			</Routes>
