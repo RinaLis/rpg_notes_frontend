@@ -8,7 +8,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ title }) => {
 			<div className={styles.fire}>
 				<div className={styles.fire__flameContainer}>
 					{[...Array(parts)].map(() => (
-						<div className={styles.fire__flame} />
+						<div className={styles.fire__flame} key={crypto.randomUUID()} />
 					))}
 				</div>
 				<div className={styles.fire__logs} />

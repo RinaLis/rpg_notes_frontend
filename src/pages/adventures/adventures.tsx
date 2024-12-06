@@ -2,7 +2,12 @@ import { FC, useEffect, useState } from 'react';
 
 import { AdventuresUI } from '@ui-pages';
 import { useAppDispatch, useAppSelector } from '@store';
-import { getAdventures, getUserState, isAdventuresLoading, requestUserAdventures } from '@slices';
+import {
+	getAdventures,
+	getUserState,
+	getAdventuresIsLoading,
+	requestUserAdventures,
+} from '@slices';
 import { Preloader } from '@ui';
 import { TOption } from 'src/components/ui/select/types';
 
@@ -14,7 +19,7 @@ const selectOptions = [
 
 export const Adventures: FC = () => {
 	const dispatch = useAppDispatch();
-	const isLoading = useAppSelector(isAdventuresLoading);
+	const isLoading = useAppSelector(getAdventuresIsLoading);
 	const adventures = useAppSelector(getAdventures);
 	const userId = useAppSelector(getUserState).user?.id;
 

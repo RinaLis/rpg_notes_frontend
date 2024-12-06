@@ -1,3 +1,7 @@
-import { FC } from 'react';
+type Page404Props = {
+	text?: string;
+};
 
-export const Page404: FC = () => <h2>Страницы нет. 404.</h2>;
+export const Page404: React.FC<Page404Props> = ({ text }) => (
+	<h2>{text || 'Страницы нет. 404.'}</h2>
+);

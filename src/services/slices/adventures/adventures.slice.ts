@@ -30,10 +30,10 @@ export const adventuresSlice = createSlice({
 	initialState,
 	reducers: {},
 	selectors: {
-		isAdventuresLoading: (sliceState) => sliceState.isLoading,
 		getAdventures: (sliceState) => sliceState.adventures,
 		getCurrentAdventure: (sliceState) => sliceState.currentAdventure,
 		getCreatedAdventure: (sliceState) => sliceState.createdAdventure,
+		getAdventuresIsLoading: (sliceState) => sliceState.isLoading,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -120,7 +120,7 @@ export const adventuresSlice = createSlice({
 
 export { initialState as adventuresInitialState };
 
-export const { getCurrentAdventure, getAdventures, isAdventuresLoading } =
+export const { getCurrentAdventure, getAdventures, getAdventuresIsLoading } =
 	adventuresSlice.selectors;
 
 export default adventuresSlice.reducer;

@@ -1,0 +1,20 @@
+.threads {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 40px;
+	}
+	// если надо будет стилизовать плашку героя
+	// &__plate {
+	// }
+	// если надо будет стилизовать кнопку добавления героя
+	// &__add {
+
+	// }
+}
