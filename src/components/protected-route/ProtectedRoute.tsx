@@ -26,7 +26,7 @@ export const ProtectedRoute = ({ onlyUnAuth, children }: ProtectedRouteProps) =>
 
 	// Если страница защищена только для неавторизованных пользователей и пользователь уже авторизован
 	if (onlyUnAuth && user) {
-		const from = location.state?.from || { pathname: '/' };
+		const from = location.state?.from || { pathname: '/adventures' };
 		return <Navigate replace to={from} />;
 	}
 

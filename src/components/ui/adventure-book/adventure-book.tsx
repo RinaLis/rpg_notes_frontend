@@ -50,7 +50,7 @@ export const AdventureBookUI: FC<AdventureBookUIProps> = ({ adventure }) => {
 								<div className={styles.content__title}>{adventure.name}</div>
 								<div className={styles.content__subtitle}>Мастер: {adventure.owner.name}</div>
 								<div className={styles.content__buttonContainer}>
-									<Link to={`/${adventure.id}`} className={styles.content__button}>
+									<Link to={`/adventure/${adventure.id}`} className={styles.content__button}>
 										В приключение
 									</Link>
 									<Button className={clsx(styles.content__button)} onClick={() => setPageState(2)}>
@@ -74,7 +74,7 @@ export const AdventureBookUI: FC<AdventureBookUIProps> = ({ adventure }) => {
 									>
 										Назад
 									</Button>
-									<Link to={`/${adventure.id}`} className={styles.content__button}>
+									<Link to={`/adventure/${adventure.id}`} className={styles.content__button}>
 										В приключение
 									</Link>
 								</div>

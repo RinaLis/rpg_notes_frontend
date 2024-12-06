@@ -101,7 +101,7 @@ export const App: React.FC = () => {
 			{backgroundLocation && (
 				<Routes>
 					<Route
-						path="/:adventure_id/invite"
+						path="/adventure/:adventure_id/invite"
 						element={
 							<Modal onClose={closeModal} title="Заголовок">
 								<Invite />
