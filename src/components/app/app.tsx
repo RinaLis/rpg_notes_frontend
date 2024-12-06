@@ -16,7 +16,7 @@ import { AppHeaderUI, AuthLayout } from '@ui';
 import { requestGetAdventure, requestUserAdventures } from 'src/services/slices/adventures/actions';
 import { requestCreateThread } from 'src/services/slices/threads/actions';
 import { ThreadType } from '@utils-types';
-import { Modal } from '@components';
+import { Modal, ProtectedRoute } from '@components';
 import styles from './app.module.scss';
 
 // элементы описывают страницы приложения их необходимо выделить в отдельные компоненты
@@ -71,7 +71,14 @@ export const App: React.FC = () => {
 				/>
 				<Route path="/profile" element={<Profile />} />
 
-				<Route path="/auth" element={<AuthLayout />}>
+				<Route
+					path="/auth"
+					element={
+						<ProtectedRoute onlyUnAuth>
+							<AuthLayout />
+						</ProtectedRoute>
+					}
+				>
 					<Route path="login" element={<Login />} />
 					<Route path="register" element={<Register />} />
 					<Route path="forgot-password" element={<ForgotPassword />} />
