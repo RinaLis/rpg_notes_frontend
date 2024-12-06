@@ -3,7 +3,7 @@ import { ExampleComponent } from 'src/components/example-component';
 // импортируем его как компонент
 // вместо Frame пишем имя кторое бхотим нашему SVG компоненту
 // и ипортируем из нужного svg файла
-import { ReactComponent as Frame } from '@assets/frame.svg';
+
 import styles from './example-page-ui.module.scss';
 import { Select } from '../../select/select';
 
@@ -20,9 +20,6 @@ export const ExamplePageUI: React.FC = () => (
 			<div className={styles.exampleSection__content}>
 				<ExampleComponent />
 			</div>
-			<div className={styles.exampleSection__frame}>
-				<Frame />
-			</div>
 		</section>
 		<div className={styles.selectContainer}>
 			<Select
@@ -37,9 +34,9 @@ export const ExamplePageUI: React.FC = () => (
 				// принимает объект выбранной опции или null если опция снята
 				onChange={(option) => {
 					if (option) {
-						console.log(option);
+						// console.log(option);
 					} else {
-						console.log('clear');
+						// console.log('clear');
 					}
 				}}
 				// placeholder - текст в пустом поле

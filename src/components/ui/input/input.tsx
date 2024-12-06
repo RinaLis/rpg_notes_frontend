@@ -13,7 +13,7 @@ export const Input: React.FC<InputProps> = ({
 	сlassNameCustom = InputNames.info,
 }) => {
 	return (
-		<div className={clsx(styles[`${сlassNameCustom}__container`])}>
+		<div className={clsx(styles[`${сlassNameCustom}`])}>
 			{/* Отображение метки, если она задана */}
 			{label && (
 				<label htmlFor={register.name} className={styles[`${сlassNameCustom}__label`]}>
@@ -22,7 +22,7 @@ export const Input: React.FC<InputProps> = ({
 			)}
 			{/* обертка для общих стилей инпута */}
 			<div
-				className={clsx(styles[`${сlassNameCustom}`], {
+				className={clsx(styles[`${сlassNameCustom}__container`], {
 					[styles[`${сlassNameCustom}__error`]]: error,
 				})}
 			>
