@@ -2,7 +2,6 @@ import * as yup from 'yup';
 
 export const schemaLogin = yup
 	.object({
-		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
 		email: yup.string().email('Некорректный email').required('Введите email'),
 		password: yup
 			.string()
@@ -13,6 +12,7 @@ export const schemaLogin = yup
 
 export const schemaRegister = yup
 	.object({
+		name: yup.string().required('Введите имя'),
 		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
 		email: yup.string().email('Некорректный email').required('Введите email'),
 		password: yup
@@ -36,11 +36,7 @@ export const schemaReset = yup
 			.string()
 			.oneOf([yup.ref('password')], 'Пароли не совпадают')
 			.required('Повторите пароль'),
-		confirmCode: yup
-			.string()
-			.min(3, 'Код должен быть не менее 3 символов')
-			.max(9, 'Код должен быть не более 9 символов')
-			.required('Введите код из письма'),
+		code: yup.string().required('Введите код из письма'),
 	})
 	.required();
 

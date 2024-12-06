@@ -9,15 +9,21 @@ import { InputNames } from '../../input/type';
 interface FormValues {
 	password: string;
 	confirmPassword: string;
-	confirmCode: string;
+	code: string;
 }
 interface ResetPasswordUIProps {
 	onSubmit: (e: React.FormEvent) => void;
 	register: UseFormRegister<FormValues>;
 	errors: FieldErrors<FormValues>;
+	error: string | null;
 }
 
-export const ResetPasswordUI: React.FC<ResetPasswordUIProps> = ({ onSubmit, register, errors }) => {
+export const ResetPasswordUI: React.FC<ResetPasswordUIProps> = ({
+	onSubmit,
+	register,
+	errors,
+	error,
+}) => {
 	return (
 		<form name="resetPassword" onSubmit={onSubmit} className={styles.authForm} noValidate>
 			<h2 className={styles.authForm__title}>Смена пароля</h2>
@@ -40,13 +46,14 @@ export const ResetPasswordUI: React.FC<ResetPasswordUIProps> = ({ onSubmit, regi
 			<Input
 				type="text"
 				placeholder="Введите код из письма"
-				register={register('confirmCode')}
-				error={errors.confirmCode?.message}
+				register={register('code')}
+				error={errors.code?.message}
 				сlassNameCustom={InputNames.auth}
 			/>
 			<Button type="submit" className={styles.button}>
 				Сохранить
 			</Button>
+			<div className={styles.authForm__error}>{error && <span>{error}</span>}</div>
 			<div className={styles.authForm__linkContainer}>
 				<div className={styles.question}>
 					<div className={styles.queston__text}>Вспомнили пароль?</div>

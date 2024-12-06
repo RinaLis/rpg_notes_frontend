@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ResetPasswordUI } from '@ui-pages';
+import { useAppDispatch, useAppSelector } from '@store';
+import { isAuthCheckedSelector, userErrorSelector } from 'src/services/slices/user/user.slice';
+import { resetPassword } from 'src/services/slices/user/actions';
 import { schemaReset } from '../../utils/validation';
 
 // Типизация формы, основанная на yup-схеме
@@ -18,10 +21,26 @@ export const ResetPassword: React.FC = () => {
 		resolver: yupResolver(schemaReset),
 	});
 
+	const isLoading = useAppSelector(isAuthCheckedSelector);
+	const responseError = useAppSelector(userErrorSelector);
+	const dispatch = useAppDispatch();
 	// Обработчик успешной отправки формы
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
-		console.log(`Запишите свой пароль: ${data.password}`);
-		reset();
+		dispatch(resetPassword({ ...data }));
 	};
-	return <ResetPasswordUI onSubmit={handleSubmit(onSubmit)} register={register} errors={errors} />;
+
+	// Сброс формы при успешной смене пароля
+	useEffect(() => {
+		if (!isLoading && !responseError) {
+			reset();
+		}
+	}, [isLoading, responseError, reset]);
+	return (
+		<ResetPasswordUI
+			onSubmit={handleSubmit(onSubmit)}
+			register={register}
+			errors={errors}
+			error={responseError}
+		/>
+	);
 };

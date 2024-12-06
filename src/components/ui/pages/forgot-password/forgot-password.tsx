@@ -13,12 +13,14 @@ interface ForgotPasswordUIProps {
 	onSubmit: (e: React.FormEvent) => void;
 	register: UseFormRegister<FormValues>;
 	errors: FieldErrors<FormValues>;
+	error: string | null;
 }
 
 export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
 	onSubmit,
 	register,
 	errors,
+	error,
 }) => {
 	return (
 		<form className={styles.authForm} name="forgotPassword" onSubmit={onSubmit} noValidate>
@@ -33,6 +35,7 @@ export const ForgotPasswordUI: React.FC<ForgotPasswordUIProps> = ({
 			<Button type="submit" className={styles.button}>
 				Восстановить
 			</Button>
+			<div className={styles.authForm__error}>{error && <span>{error}</span>}</div>
 			<div className={styles.authForm__linkContainer}>
 				<div className={styles.question}>
 					<div className={styles.queston__text}>Вспомнили пароль?</div>
