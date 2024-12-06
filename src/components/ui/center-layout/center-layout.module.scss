@@ -1,0 +1,76 @@
+// все страницы желательно оборачивать в этот класс
+.page {
+	display: flex;
+	width: 100%;
+	min-height: fit-content;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+
+	// класс модификатор для всех страниц с липким беком
+	&_fixed {
+		// если захотим можем сделать модификатор с разными картинками
+		background-image:
+			linear-gradient(
+				to bottom,
+				rgb(167, 131, 87, 0.5) 1%,
+				rgba(208, 167, 116, 0.7) 10%,
+				rgba(208, 167, 116, 0.8) 28%,
+				rgba(208, 167, 116, 0.99) 95%,
+				rgb(167, 131, 87) 100%
+			),
+			// этот градиент надо заменить на другой который посчитает юля
+			var(
+					--background,
+					url('@assets/images/authorizationBackground.png')
+				); // в переменной --background путь к картинке
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		// background-color: var(--color-bg);
+	}
+	// модификатор  для страниц с содержимым по центру
+	&_centered {
+		justify-content: center;
+	}
+}
+
+// контейнер для контента
+// имеет бежевый фон и размытие
+// рамки тоже будем цеплять к нему . пока их нет
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 850px;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+
+	// размытый бежевый фон контейнера
+	// &::before {
+	// 	content: '';
+	// 	position: absolute;
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	background-color: var(--color-bg);
+	// 	filter: blur(50px);
+	// 	z-index: -1;
+	// }
+}
+
+// место для смыслового содержимого страницы
+.content {
+	margin: 90px 100px 80px;
+	width: 480px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+
+	&__title {
+		font-size: 24px;
+		font-family: var(--amagro);
+		margin: 0;
+	}
+}
