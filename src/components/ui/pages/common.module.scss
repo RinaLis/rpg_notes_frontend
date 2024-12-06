@@ -17,6 +17,10 @@
 		font-family: var(--amagro);
 		margin: 0;
 	}
+	&__error {
+		height: 1em;
+		color: var(--color-accent);
+	}
 }
 
 // наша страндартная кнопка
