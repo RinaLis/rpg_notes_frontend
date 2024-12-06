@@ -386,6 +386,12 @@ export interface PlayerDTO {
 	heroes: HeroDTO[];
 }
 
+/** PlayersByAdventureOutputDTO */
+export interface PlayersByAdventureOutputDTO {
+	/** Игроки */
+	players: PlayerDTO[];
+}
+
 /** PostDTO */
 export interface PostDTO {
 	/**
