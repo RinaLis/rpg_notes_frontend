@@ -17,7 +17,7 @@ export interface AdventuresState {
 	error: string | null;
 }
 
-export const initialState: AdventuresState = {
+const initialState: AdventuresState = {
 	isLoading: false,
 	adventures: null,
 	currentAdventure: null,
@@ -33,6 +33,7 @@ export const adventuresSlice = createSlice({
 		getAdventures: (sliceState) => sliceState.adventures,
 		getCurrentAdventure: (sliceState) => sliceState.currentAdventure,
 		getCreatedAdventure: (sliceState) => sliceState.createdAdventure,
+		getAdventuresIsLoading: (sliceState) => sliceState.isLoading,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -47,9 +48,9 @@ export const adventuresSlice = createSlice({
 				state.adventures = null;
 			})
 			.addCase(requestUserAdventures.fulfilled, (state, { payload }) => {
-				state.isLoading = false;
 				state.error = null;
 				state.adventures = payload.adventures ? payload.adventures : null;
+				state.isLoading = false;
 			})
 			.addCase(requestCreateAdventure.pending, (state) => {
 				state.isLoading = true;
@@ -119,6 +120,7 @@ export const adventuresSlice = createSlice({
 
 export { initialState as adventuresInitialState };
 
-export const { getCurrentAdventure, getAdventures } = adventuresSlice.selectors;
+export const { getCurrentAdventure, getAdventures, getAdventuresIsLoading } =
+	adventuresSlice.selectors;
 
 export default adventuresSlice.reducer;

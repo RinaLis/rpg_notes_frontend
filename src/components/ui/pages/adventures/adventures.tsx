@@ -1,25 +1,41 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@store';
-import { requestGetAdventure } from 'src/services/slices/adventures/actions';
-import { getCurrentAdventure } from 'src/services/slices/adventures/adventures.slice';
-import { requestLoginUser } from 'src/services/slices/user/actions';
-import { AdventureBookUI } from '../../adventure-book/adventure-book';
+import { FC, memo } from 'react';
+import { Link } from 'react-router-dom';
+import smile from '@assets/images/sadFace.png';
+import { AdventuresUIProps } from './type';
+import styles from './adventures.module.scss';
+import { Select } from '../../select';
+import { AdventureBookUI } from '../../adventure-book';
 
-export const AdventuresUI: React.FC = () => {
-	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-		dispatch(
-			requestLoginUser({
-				email: 'anpast2018@gmail.com',
-				password: '1234567890',
-			})
-		);
-		dispatch(requestGetAdventure('8ce57dde-1893-4ee6-b21b-fdafc467fc57'));
-	}, [dispatch]);
-
-	const adventure = useAppSelector(getCurrentAdventure);
-
-	if (!adventure) return null;
-	return <AdventureBookUI adventure={adventure} onClick={() => {}} />;
-};
+export const AdventuresUI: FC<AdventuresUIProps> = memo(
+	({ adventures, onFilterChange, options }) => (
+		<div className={styles.content}>
+			<div className={styles.content__buttonContainer}>
+				<Link to="/create-adventure" className={styles.content__createButton}>
+					Создать
+				</Link>
+				<Select
+					options={options}
+					onChange={onFilterChange}
+					placeholder="Фильтровать"
+					classNameProp={styles.content__select}
+				/>
+			</div>
+			{adventures ? (
+				<div className={`${styles.content__adventures}`}>
+					{adventures.map((adventure) => (
+						<AdventureBookUI adventure={adventure} key={adventure.id} />
+					))}
+				</div>
+			) : (
+				<div className={styles.content__noAdventures}>
+					<img
+						className={styles.content__image}
+						src={smile}
+						alt="Мы не нашли приключений по вашему запросу"
+					/>
+					<div className={styles.content__title}>Мы не нашли приключений по вашему запросу</div>
+				</div>
+			)}
+		</div>
+	)
+);

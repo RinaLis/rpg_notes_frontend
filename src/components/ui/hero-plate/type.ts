@@ -1,6 +1,6 @@
 export type HeroPlateProps = {
 	heroName?: string;
-	playerName: string;
+	playerName?: string;
 	image?: string | null;
 	master?: boolean;
 	dead?: boolean;

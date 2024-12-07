@@ -17,7 +17,7 @@ export interface ThreadsState {
 	error: string | null;
 }
 
-export const initialState: ThreadsState = {
+const initialState: ThreadsState = {
 	isLoading: false,
 	threads: null,
 	currentThread: null,
@@ -32,6 +32,7 @@ export const threadsSlice = createSlice({
 	selectors: {
 		getThreads: (sliceState) => sliceState.threads,
 		getcurrentThread: (sliceState) => sliceState.currentThread,
+		getTreadsIsLoading: (sliceState) => sliceState.isLoading,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -116,6 +117,6 @@ export const threadsSlice = createSlice({
 
 export { initialState as threadsInitialState };
 
-export const { getThreads, getcurrentThread } = threadsSlice.selectors;
+export const { getThreads, getcurrentThread, getTreadsIsLoading } = threadsSlice.selectors;
 
 export default threadsSlice.reducer;

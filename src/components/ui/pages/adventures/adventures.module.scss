@@ -1,0 +1,70 @@
+.content {
+	--border-radius: 16px;
+	--box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+	--control-height: 40px;
+	--font-family: var(--metrika);
+	--font-size: 16px;
+
+	min-height: 70%;
+
+	&__adventures {
+		margin-top: 50px;
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+		justify-content: center;
+		gap: 40px;
+		background-color: var(--color-bg);
+	}
+
+	&__buttonContainer {
+		position: relative;
+		z-index: 100;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		width: 100%;
+		margin-top: 30px;
+	}
+
+	&__select {
+		width: 200px;
+	}
+
+	&__createButton {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 200px;
+		height: var(--control-height);
+		background: var(--gradient-input);
+		border-radius: var(--border-radius);
+		box-shadow: var(--box-shadow);
+		font-family: var(--font-family);
+		font-size: var(--font-size);
+		color: var(--color-text-input);
+	}
+
+	&__noAdventures {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		gap: 30px;
+	}
+
+	&__image {
+		width: 298px;
+		aspect-ratio: 1/1;
+	}
+
+	&__title {
+		font-size: 24px;
+		font-family: var(--amagro);
+		padding: 20px 0;
+		margin: 0;
+		text-align: center;
+		width: 450px;
+	}
+}

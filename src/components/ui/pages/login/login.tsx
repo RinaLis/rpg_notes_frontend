@@ -9,7 +9,6 @@ import styles from '../common.module.scss';
 import { InputNames } from '../../input/type';
 
 interface FormValues {
-	login: string;
 	email: string;
 	password: string;
 }
@@ -17,20 +16,15 @@ interface LoginUIProps {
 	onSubmit: (e: React.FormEvent) => void;
 	register: UseFormRegister<FormValues>;
 	errors: FieldErrors<FormValues>;
+	error: string | null;
 }
 
-export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
+export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors, error }) => {
 	return (
 		<>
 			<form name="login" onSubmit={onSubmit} className={styles.authForm} noValidate>
 				<h2 className={styles.authForm__title}>Вход</h2>
-				<Input
-					type="text"
-					placeholder="Логин"
-					register={register('login')}
-					error={errors.login?.message}
-					сlassNameCustom={InputNames.auth}
-				/>
+
 				<Input
 					type="email"
 					placeholder="Email"
@@ -50,6 +44,8 @@ export const LoginUI: FC<LoginUIProps> = ({ onSubmit, register, errors }) => {
 				<Button type="submit" className={styles.button}>
 					Войти
 				</Button>
+				<div className={styles.authForm__error}>{error && <span>{error}</span>}</div>
+
 				<div className={styles.authForm__linkContainer}>
 					<div className={styles.question}>
 						<Link to="/auth/register" className={styles.question__link}>

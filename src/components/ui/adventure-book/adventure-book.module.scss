@@ -29,6 +29,7 @@
 	background-repeat: no-repeat;
 	height: 575px;
 	width: 900px;
+	z-index: 50;
 
 	&__pagesContainer {
 		height: 100%;
@@ -62,11 +63,11 @@
 			margin-left: 50%;
 			transform: scaleX(-1);
 			left: 0;
-			z-index: 0;
+			z-index: 51;
 		}
 	}
 	&__duplex {
-		z-index: 100;
+		z-index: 52;
 		position: relative;
 		transform-style: preserve-3d;
 		padding: 0;

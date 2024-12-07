@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Frame } from '@assets/images/linesAdventure.svg';
 import baseAdventure from '@assets/images/baseAdventure.png';
 
 import { Button } from '../button';
-
 import { AdventureBookUIProps } from './type';
 import styles from './adventure-book.module.scss';
 
-export const AdventureBookUI: FC<AdventureBookUIProps> = ({ adventure, onClick }) => {
+export const AdventureBookUI: FC<AdventureBookUIProps> = ({ adventure }) => {
 	const [pageState, setPageState] = useState(1);
 
 	return (
@@ -50,9 +50,9 @@ export const AdventureBookUI: FC<AdventureBookUIProps> = ({ adventure, onClick }
 								<div className={styles.content__title}>{adventure.name}</div>
 								<div className={styles.content__subtitle}>Мастер: {adventure.owner.name}</div>
 								<div className={styles.content__buttonContainer}>
-									<Button className={clsx(styles.content__button)} onClick={onClick}>
+									<Link to={`/adventure/${adventure.id}`} className={styles.content__button}>
 										В приключение
-									</Button>
+									</Link>
 									<Button className={clsx(styles.content__button)} onClick={() => setPageState(2)}>
 										Подробнее
 									</Button>
@@ -74,9 +74,9 @@ export const AdventureBookUI: FC<AdventureBookUIProps> = ({ adventure, onClick }
 									>
 										Назад
 									</Button>
-									<Button className={clsx(styles.content__button)} onClick={onClick}>
+									<Link to={`/adventure/${adventure.id}`} className={styles.content__button}>
 										В приключение
-									</Button>
+									</Link>
 								</div>
 							</div>
 						</div>
