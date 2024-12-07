@@ -87,11 +87,17 @@ export const AdventureChecks: React.FC = () => {
 	if (usersHeroes?.some((hero) => hero.is_used) || currentAdventure.owner.id === currentUser.id) {
 		return <Outlet />;
 	}
+	// Проверяем, не находимся ли мы уже на странице создания героя
+	const isCreateHeroPage = location.pathname.includes('create-hero');
 
 	// если списка для героев нет
 	if (usersHeroes === null) {
-		return <Page404 text="Кажется вас еще не пригласили в это приключение" />;
+		return <Page404 text="Кажется вас еще не пригласили в это приключение" />; // не работает
+		// return <Navigate replace to="*" state={{ from: location }} />;  // работает
 	}
 
-	return <Navigate replace to={`/adventure/${id}/create-hero`} state={{ from: location }} />;
+	if (!isCreateHeroPage) {
+		return <Navigate replace to={`/adventure/${id}/create-hero`} state={{ from: location }} />;
+	}
+	return null;
 };

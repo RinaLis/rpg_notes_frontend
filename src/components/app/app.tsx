@@ -2,7 +2,15 @@ import React from 'react';
 
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
-import { Adventures, Login, Profile, Register, ForgotPassword, ResetPassword } from '@pages';
+import {
+	Adventures,
+	Login,
+	Profile,
+	Register,
+	ForgotPassword,
+	ResetPassword,
+	Page404,
+} from '@pages';
 import { AdventureLayout, AppHeaderUI, AuthLayout, CenterLayout } from '@ui';
 
 import { Modal, ProtectedRoute } from '@components';
@@ -84,6 +92,8 @@ export const App: React.FC = () => {
 						</ProtectedRoute>
 					}
 				/>
+
+				<Route path="*" element={<Page404 text="Страницы нет. 404." />} />
 			</Routes>
 
 			{backgroundLocation && (
