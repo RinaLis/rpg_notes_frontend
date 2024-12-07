@@ -2,8 +2,7 @@ import { useAppDispatch, useAppSelector } from '@store';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Preloader } from '@ui';
 import { useEffect } from 'react';
-import { getUserApi } from '@api';
-import { getUserState } from 'src/services/slices/user/user.slice';
+import { requestGetUser, getUserState } from '@slices';
 import { ProtectedRouteProps } from './type';
 
 export const ProtectedRoute = ({ onlyUnAuth, children }: ProtectedRouteProps) => {
@@ -15,7 +14,7 @@ export const ProtectedRoute = ({ onlyUnAuth, children }: ProtectedRouteProps) =>
 		const refreshToken = localStorage.getItem('refreshToken');
 		if (!user && refreshToken) {
 			// Если нет пользователя и refresh токен есть, пробуем обновить пользователя по refresh токену
-			dispatch(getUserApi);
+			dispatch(requestGetUser());
 		}
 	}, [dispatch, user]);
 
