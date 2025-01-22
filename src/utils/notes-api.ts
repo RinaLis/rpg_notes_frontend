@@ -90,7 +90,7 @@ export const getUserApi = () =>
 	}).catch((err) => {
 		localStorage.removeItem('accessToken');
 		localStorage.removeItem('refreshToken');
-		return err;
+		return Promise.reject(err);
 	});
 
 export const getUserByLoginApi = (login: string) =>
