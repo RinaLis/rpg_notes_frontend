@@ -1,0 +1,61 @@
+.card {
+	overflow: hidden;
+	position: relative;
+	width: 350px;
+	aspect-ratio: 1 / 1.1;
+	background-image: var(--gradient-cards);
+
+	border-radius: 20px;
+
+	&__img {
+		object-fit: cover;
+		width: 100%;
+		min-height: 100%;
+		transition: 0.2s;
+		border: 0;
+		border-radius: 0;
+	}
+
+	&__body {
+		position: absolute;
+		width: 100%;
+		top: 70%;
+		bottom: 0;
+		z-index: 2;
+		background-color: rgba($color: #000000, $alpha: 0.7);
+		transition: 0.5s;
+
+		color: #fff;
+		font-family: var(--metrika);
+		text-align: center;
+	}
+
+	&__text {
+		transition: 0.3s;
+		opacity: 0;
+
+		font-size: 16px;
+	}
+
+	&__title {
+		font-size: 20px;
+		margin: 10px 0;
+	}
+
+	&:hover {
+		.card__img {
+			transform: translateY(-3px) scale(1.1);
+		}
+		.card__body {
+			transition-delay: 0.1s;
+			top: 0%;
+			transform: none;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+		}
+		.card__text {
+			transition-delay: 0.1s;
+			opacity: 1;
+			transform: none;
+		}
+	}
+}

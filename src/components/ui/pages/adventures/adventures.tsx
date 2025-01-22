@@ -4,7 +4,7 @@ import smile from '@assets/images/sadFace.png';
 import { AdventuresUIProps } from './type';
 import styles from './adventures.module.scss';
 import { Select } from '../../select';
-import { AdventureBookUI } from '../../adventure-book';
+import { AdventureCardUI } from '../../adventure-card';
 
 export const AdventuresUI: FC<AdventuresUIProps> = memo(
 	({ adventures, onFilterChange, options }) => (
@@ -23,7 +23,7 @@ export const AdventuresUI: FC<AdventuresUIProps> = memo(
 			{adventures ? (
 				<div className={`${styles.content__adventures}`}>
 					{adventures.map((adventure) => (
-						<AdventureBookUI adventure={adventure} key={adventure.id} />
+						<AdventureCardUI adventure={adventure} key={adventure.id} />
 					))}
 				</div>
 			) : (

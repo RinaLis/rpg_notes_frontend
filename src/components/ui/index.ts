@@ -4,7 +4,7 @@ export * from './add-button';
 export * from './button';
 export * from './modal';
 export * from './modal-overlay';
-export * from './adventure-book';
+export * from './adventure-card';
 export * from './hero-plate';
 export * from './input';
 export * from './preloader';
