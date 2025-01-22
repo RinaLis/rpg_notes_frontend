@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import styles from './ImageUploader.module.scss'; // Импорт стилей
 import { ImageUploaderUIProps } from './type';
 
@@ -6,6 +7,7 @@ export const ImageUploaderUI: React.FC<ImageUploaderUIProps> = ({
 	imageUrl,
 	isUploading,
 	error,
+	className,
 	onFileSelect,
 	onReset,
 }) => {
@@ -17,7 +19,12 @@ export const ImageUploaderUI: React.FC<ImageUploaderUIProps> = ({
 	};
 
 	return (
-		<div className={styles.photo}>
+		<div className={clsx(styles.photo, className)}>
+			<div className={styles.photo__textContainer}>
+				{/* Текстовое сообщение об ошибке или загрузке */}
+				{isUploading && <p className={styles.photo__status}>Загрузка...</p>}
+				{error && <p className={styles.photo__error}>{error}</p>}
+			</div>
 			<div className={styles.photo__container}>
 				{imageUrl ? (
 					<>
@@ -42,10 +49,6 @@ export const ImageUploaderUI: React.FC<ImageUploaderUIProps> = ({
 					/>
 				)}
 			</div>
-
-			{/* Текстовое сообщение об ошибке или загрузке */}
-			{isUploading && <p className={styles.status}>Загрузка...</p>}
-			{error && <p className={styles.error}>{error}</p>}
 		</div>
 	);
 };
