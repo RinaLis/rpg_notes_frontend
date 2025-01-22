@@ -17,7 +17,7 @@ export interface UserState {
 	error: string | null;
 }
 
-export const initialState: UserState = {
+const initialState: UserState = {
 	isLoading: false,
 	user: null,
 	error: null,

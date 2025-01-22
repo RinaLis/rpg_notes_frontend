@@ -1,0 +1,47 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 20px;
+	padding-bottom: 20px;
+}
+
+.master {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	&__title {
+		font-family: var(--metrika);
+		font-size: 20px;
+		margin: 0;
+	}
+	// если надо будет стилизовать плашку мастера
+	// &__plate {
+	// }
+}
+
+.heroes {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	&__title {
+		margin: 0;
+		font-family: var(--metrika);
+		font-size: 20px;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 40px;
+	}
+	// если надо будет стилизовать плашку героя
+	// &__plate {
+	// }
+	// если надо будет стилизовать кнопку добавления героя
+	// &__add {
+
+	// }
+}

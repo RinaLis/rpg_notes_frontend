@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { LoginUI } from '@ui-pages';
-
-// Схема валидации через yup
-const schemaLogin = yup
-	.object({
-		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
-		email: yup.string().email('Некорректный email').required('Введите email'),
-		password: yup
-			.string()
-			.min(6, 'Пароль должен быть не менее 6 символов')
-			.required('Введите пароль'),
-	})
-	.required();
+import { useAppDispatch, useAppSelector } from '@store';
+import { requestLoginUser } from 'src/services/slices/user/actions';
+import {
+	isAuthCheckedSelector,
+	userDataSelector,
+	userErrorSelector,
+} from 'src/services/slices/user/user.slice';
+import { schemaLogin } from '../../utils/validation';
 
 // Типизация формы, основанная на yup-схеме
 type FormValues = yup.InferType<typeof schemaLogin>;
@@ -30,10 +26,27 @@ export const Login: React.FC = () => {
 		resolver: yupResolver(schemaLogin),
 	});
 
+	const user = useAppSelector(userDataSelector);
+	const isLoading = useAppSelector(isAuthCheckedSelector);
+	const responseError = useAppSelector(userErrorSelector);
+	const dispatch = useAppDispatch();
 	// Обработчик успешной отправки формы
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
-		console.log('Форма отправлена:', data);
-		reset();
+		dispatch(requestLoginUser({ ...data }));
 	};
-	return <LoginUI onSubmit={handleSubmit(onSubmit)} register={register} errors={errors} />;
+	// Сброс формы при успешном входе
+	useEffect(() => {
+		if (!isLoading && !responseError && user) {
+			reset();
+		}
+	}, [isLoading, responseError, user, reset]);
+
+	return (
+		<LoginUI
+			onSubmit={handleSubmit(onSubmit)}
+			register={register}
+			errors={errors}
+			error={responseError}
+		/>
+	);
 };

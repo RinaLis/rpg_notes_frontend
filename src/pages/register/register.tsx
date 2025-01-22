@@ -1,24 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { RegisterUI } from '@ui-pages';
-
-// Схема валидации через yup
-const schemaRegister = yup
-	.object({
-		login: yup.string().min(3, 'Логин должен быть не менее 3 символов').required('Введите логин'),
-		email: yup.string().email('Некорректный email').required('Введите email'),
-		password: yup
-			.string()
-			.min(6, 'Пароль должен быть не менее 6 символов')
-			.required('Введите пароль'),
-		confirmPassword: yup
-			.string()
-			.oneOf([yup.ref('password')], 'Пароли не совпадают')
-			.required('Повторите пароль'),
-	})
-	.required();
+import { useAppDispatch, useAppSelector } from '@store';
+import {
+	isAuthCheckedSelector,
+	userDataSelector,
+	userErrorSelector,
+} from 'src/services/slices/user/user.slice';
+import { requestRegisterUser } from 'src/services/slices/user/actions';
+import { schemaRegister } from '../../utils/validation';
 
 // Типизация формы, основанная на yup-схеме
 type FormValues = yup.InferType<typeof schemaRegister>;
@@ -34,10 +26,27 @@ export const Register: React.FC = () => {
 		resolver: yupResolver(schemaRegister),
 	});
 
+	const responseError = useAppSelector(userErrorSelector);
+	const user = useAppSelector(userDataSelector);
+	const isLoading = useAppSelector(isAuthCheckedSelector);
+	const dispatch = useAppDispatch();
 	// Обработчик успешной отправки формы
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
-		console.log('Форма отправлена:', data);
-		reset();
+		dispatch(requestRegisterUser({ ...data }));
 	};
-	return <RegisterUI onSubmit={handleSubmit(onSubmit)} register={register} errors={errors} />;
+	// Сброс формы при успешной регистрации
+	useEffect(() => {
+		if (!isLoading && !responseError && user) {
+			reset();
+		}
+	}, [isLoading, responseError, user, reset]);
+
+	return (
+		<RegisterUI
+			onSubmit={handleSubmit(onSubmit)}
+			register={register}
+			errors={errors}
+			error={responseError}
+		/>
+	);
 };

@@ -16,7 +16,7 @@ export interface HeroesState {
 	error: string | null;
 }
 
-export const initialState: HeroesState = {
+const initialState: HeroesState = {
 	isLoading: false,
 	heroes: null,
 	currentHero: null,

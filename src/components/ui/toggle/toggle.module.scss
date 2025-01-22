@@ -1,0 +1,44 @@
+.toggle {
+	--height: 64px;
+	display: grid;
+	grid-template-columns: var(--height) 1fr var(--height);
+	border-radius: calc(var(--height) / 2);
+	overflow: hidden;
+	background: var(--gradient-beige-soft);
+	box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.55);
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+
+	&__text {
+		width: 100%;
+		font-family: var(--amagro);
+		font-size: 22px;
+		line-height: 1;
+		text-align: center;
+		color: var(--color-text-input);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__option {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+
+		&_active {
+			opacity: 1;
+		}
+	}
+
+	&__image {
+		border-radius: 50%;
+		border: 1px solid var(--color-icon);
+
+		width: var(--height);
+		height: var(--height);
+	}
+}

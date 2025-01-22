@@ -18,7 +18,7 @@ export interface PostsState {
 	error: string | null;
 }
 
-export const initialState: PostsState = {
+const initialState: PostsState = {
 	isLoading: false,
 	posts: null,
 	currentPost: null,

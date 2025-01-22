@@ -1,0 +1,107 @@
+$fireColor: rgb(255, 80, 0);
+$fireColorT: rgba(228, 65, 0, 0);
+$dur: 1s;
+$logsColor: #000000;
+$blur: 0.05em;
+$fireRad: 5.5em;
+$parts: 50;
+$partSize: 3.5em;
+@use 'sass:math';
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+.preloader {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 30px;
+	&__header {
+		width: 600px;
+		font-size: 30px;
+		font-family: var(--amagro);
+		margin: 0;
+	}
+}
+
+.fire {
+	font-size: 24px;
+	filter: blur($blur);
+	-webkit-filter: blur($blur);
+	margin: 0 auto;
+	position: relative;
+	width: 10em;
+	height: 12em;
+
+	&__flameContainer {
+		position: absolute;
+		bottom: 10%;
+		left: 50%;
+		z-index: 100;
+	}
+
+	&__flame {
+		animation: rise $dur ease-in infinite;
+		background-image: radial-gradient($fireColor 20%, $fireColorT 70%);
+		border-radius: 50%;
+		mix-blend-mode: screen;
+		opacity: 0;
+		position: absolute;
+		bottom: 0;
+		width: $partSize;
+		height: $partSize;
+		// spread particles out in time and x-position to get desired effect
+		@for $p from 1 through $parts {
+			&:nth-of-type(#{$p}) {
+				animation-delay: $dur * math.random();
+				left: calc((100% - #{$partSize}) * #{$p - 1} / #{$parts});
+			}
+		}
+	}
+	&__logs {
+		position: absolute;
+		bottom: 15%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 80%;
+		height: 10%;
+		&::before,
+		&::after {
+			position: absolute;
+			content: '';
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(20deg);
+			height: 100%;
+			width: 100%;
+			border-radius: 1vw;
+			background-color: $logsColor;
+		}
+		&::before {
+			transform: translate(-50%, -50%) rotate(-20deg);
+			background-color: $logsColor;
+		}
+	}
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(0) scale(1);
+	}
+	25% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-10em) scale(0);
+	}
+}

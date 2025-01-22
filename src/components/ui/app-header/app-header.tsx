@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import logo from '@assets/logo.svg';
+import logo from '@assets/icons/logo.svg';
 import styles from './app-header.module.scss';
 
 export const AppHeaderUI: React.FC = () => {
@@ -19,7 +19,7 @@ export const AppHeaderUI: React.FC = () => {
 					</NavLink>
 				</div>
 				<div className={styles.header__logoContainer}>
-					<NavLink to="/login">
+					<NavLink to="/auth/login">
 						<img src={logo} alt="logo" className={styles.header__logo} />
 					</NavLink>
 				</div>

@@ -6,6 +6,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export const api = axios.create({ baseURL: BASE_URL });
 
 api.interceptors.response.use(
+	// eslint-disable-next-line func-names
 	function (response) {
 		if (response.data) {
 			if (response.status === 200 || response.status === 201) {
@@ -16,6 +17,7 @@ api.interceptors.response.use(
 
 		return Promise.reject(response);
 	},
+	// eslint-disable-next-line func-names
 	function (error) {
 		// TODO: Оставить только 1 часть, когда поправят бэк
 		if (error.response.data.detail[0].msg) {
