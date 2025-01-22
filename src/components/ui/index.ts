@@ -19,3 +19,4 @@ export * from './thread-plate';
 export * from './thread-plate-list';
 export * from './toggle-section';
 export * from './center-layout';
+export * from './image-uploader';
