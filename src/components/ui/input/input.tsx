@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { FC, useRef } from 'react';
 import clsx from 'clsx';
 import { InputNames, InputProps } from './type';
 import styles from './input.module.scss';
 
-export const Input: React.FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
 	label, // Метка инпута
 	type, // Тип инпута (например, текст, пароль)
 	placeholder, // Плейсхолдер для инпута
@@ -12,33 +12,7 @@ export const Input: React.FC<InputProps> = ({
 	icon, // Иконка, если задана
 	сlassNameCustom = InputNames.info, // Кастомный класс для стилизации (по умолчанию info)
 }) => {
-	const [preview, setPreview] = useState<string | null>(null); // Состояние для хранения превью изображения
-	const inputRef = React.useRef<HTMLInputElement | null>(null);
-
-	// Обработчик изменения файла
-	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.files && event.target.files[0]) {
-			const file = event.target.files[0]; // Берем первый выбранный файл
-			const reader = new FileReader(); // Создаем FileReader для чтения файла
-
-			// Обработка завершения чтения файла
-			reader.onload = (e) => {
-				if (e.target?.result) {
-					setPreview(e.target.result as string); // Устанавливаем превью
-				}
-			};
-
-			reader.readAsDataURL(file); // Читаем файл как Data URL
-		}
-	};
-
-	// Обработчик сброса превью
-	const handleReset = () => {
-		setPreview(null); // Сбрасываем превью
-		if (inputRef.current) {
-			inputRef.current.value = ''; // Сбрасываем значение в инпуте
-		}
-	};
+	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	return (
 		<div className={clsx(styles[`${сlassNameCustom}`])}>

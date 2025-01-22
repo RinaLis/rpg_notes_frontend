@@ -1,7 +1,6 @@
 import {
 	AdventureDTO,
 	AdventuresListDTO,
-	BodyUploadMediaUploadPost,
 	CommentDTO,
 	CommentListDTO,
 	CreateAdventureInputDTO,

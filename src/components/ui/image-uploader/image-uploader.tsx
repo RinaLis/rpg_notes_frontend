@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './ImageUploader.module.scss'; // Импорт стилей
+import styles from './image-uploader.module.scss'; // Импорт стилей
 import { ImageUploaderUIProps } from './type';
 
 export const ImageUploaderUI: React.FC<ImageUploaderUIProps> = ({
