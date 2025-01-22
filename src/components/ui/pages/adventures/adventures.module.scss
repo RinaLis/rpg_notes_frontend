@@ -10,11 +10,11 @@
 	&__adventures {
 		margin-top: 50px;
 		display: flex;
-		flex-direction: column-reverse;
 		align-items: center;
 		justify-content: center;
 		gap: 40px;
 		background-color: var(--color-bg);
+		flex-wrap: wrap;
 	}
 
 	&__buttonContainer {

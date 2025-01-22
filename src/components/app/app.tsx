@@ -41,7 +41,7 @@ export const App: React.FC = () => {
 					path="/auth"
 					// все роуты внутри только для неавторизованных пользователей
 					element={
-						<ProtectedRoute onlyUnAuth>
+						<ProtectedRoute onlyAuth={false}>
 							<AuthLayout />
 						</ProtectedRoute>
 					}
@@ -56,7 +56,7 @@ export const App: React.FC = () => {
 					// все роуты внутри только для авторизованных пользователей
 					// проверка приключения и что пользователь в нем участвует
 					element={
-						<ProtectedRoute>
+						<ProtectedRoute onlyAuth>
 							<AdventureChecks />
 						</ProtectedRoute>
 					}
@@ -76,7 +76,7 @@ export const App: React.FC = () => {
 				<Route
 					path="/adventures"
 					element={
-						<ProtectedRoute>
+						<ProtectedRoute onlyAuth>
 							<Adventures />
 						</ProtectedRoute>
 					}
@@ -85,7 +85,7 @@ export const App: React.FC = () => {
 				<Route
 					path="/profile"
 					element={
-						<ProtectedRoute>
+						<ProtectedRoute onlyAuth>
 							<CenterLayout>
 								<Profile />
 							</CenterLayout>

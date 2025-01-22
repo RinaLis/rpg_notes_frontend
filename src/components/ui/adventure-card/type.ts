@@ -1,5 +1,5 @@
 import { AdventureDTO } from '@utils-types';
 
-export type AdventureBookUIProps = {
+export type AdventureCardUIProps = {
 	adventure: AdventureDTO;
 };

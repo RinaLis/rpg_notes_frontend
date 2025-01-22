@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { requestGetUser, getUserState } from '@slices';
 import { ProtectedRouteProps } from './type';
 
-export const ProtectedRoute = ({ onlyUnAuth, children }: ProtectedRouteProps) => {
+export const ProtectedRoute = ({ onlyAuth, children }: ProtectedRouteProps) => {
 	const { isLoading, user } = useAppSelector((state) => getUserState(state));
 	const dispatch = useAppDispatch();
 	const location = useLocation();
@@ -24,13 +24,13 @@ export const ProtectedRoute = ({ onlyUnAuth, children }: ProtectedRouteProps) =>
 	}
 
 	// Если страница защищена только для неавторизованных пользователей и пользователь уже авторизован
-	if (onlyUnAuth && user) {
+	if (!onlyAuth && user) {
 		const from = location.state?.from || { pathname: '/adventures' };
 		return <Navigate replace to={from} />;
 	}
 
 	// Если страница защищена для авторизованных пользователей, но пользователь не авторизован
-	if (!onlyUnAuth && !user) {
+	if (onlyAuth && !user) {
 		return <Navigate replace to="/auth/login" state={{ from: location }} />;
 	}
 

@@ -1,4 +1,4 @@
 export type ProtectedRouteProps = {
-	onlyUnAuth?: boolean;
+	onlyAuth?: boolean;
 	children: React.ReactElement;
 };
