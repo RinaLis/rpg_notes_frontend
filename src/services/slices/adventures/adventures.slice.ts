@@ -28,12 +28,17 @@ const initialState: AdventuresState = {
 export const adventuresSlice = createSlice({
 	name: adventuresSliceConst.name,
 	initialState,
-	reducers: {},
+	reducers: {
+		clearCreatedAdventure: (state) => {
+			state.createdAdventure = null;
+		},
+	},
 	selectors: {
 		getAdventures: (sliceState) => sliceState.adventures,
 		getCurrentAdventure: (sliceState) => sliceState.currentAdventure,
 		getCreatedAdventure: (sliceState) => sliceState.createdAdventure,
 		getAdventuresIsLoading: (sliceState) => sliceState.isLoading,
+		getAdventureError: (sliceState) => sliceState.error,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -120,7 +125,14 @@ export const adventuresSlice = createSlice({
 
 export { initialState as adventuresInitialState };
 
-export const { getCurrentAdventure, getAdventures, getAdventuresIsLoading } =
-	adventuresSlice.selectors;
+export const {
+	getCurrentAdventure,
+	getCreatedAdventure,
+	getAdventures,
+	getAdventuresIsLoading,
+	getAdventureError,
+} = adventuresSlice.selectors;
+
+export const { clearCreatedAdventure } = adventuresSlice.actions;
 
 export default adventuresSlice.reducer;

@@ -154,7 +154,7 @@
 
 	&__errorMessage {
 		position: absolute;
-		top: 110%;
+		bottom: -30px;
 		left: 0;
 		font-size: 14px;
 		color: var(--color-accent);
@@ -165,105 +165,86 @@
 	}
 }
 
-.photo {
-	box-sizing: border-box;
+.textarea {
+	position: relative;
 	width: 100%;
 	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	font-family: var(--metrika);
+	white-space: pre-wrap;
 
-	/* Контейнер для инпута */
 	&__container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		min-width: 50px;
-		min-height: 50px;
-		width: 100%; // принимает размеры родителя
-		height: 100%;
-		background-color: var(--color-bg-photo); /* Коричневый цвет */
-		border-radius: 19px;
-		cursor: pointer;
-		overflow: hidden;
-		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
-
-		&::after {
-			content: '✕';
-			position: absolute;
-			transition: opacity 0.3s ease;
-			pointer-events: none;
-			transform: rotate(45deg);
-			text-shadow: 2px 1px 2px hwb(0 0% 100% / 0.5);
-		}
-	}
-
-	/* Инпут скрыт */
-	&__field {
-		position: absolute;
+		box-sizing: border-box;
 		width: 100%;
 		height: 100%;
-		opacity: 0;
-		cursor: pointer;
-	}
-
-	/* Изображение превью */
-	&__image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		z-index: 1;
-		animation: fadeIn 0.6s ease-in-out;
-	}
-
-	/* Кнопка сброса */
-	&__resetButton {
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		background-color: rgba(255, 255, 255, 0.8);
-		color: var(--color-text);
+		background: var(--gradient-input-grey);
 		border: none;
-		border-radius: 50%;
-		width: 20px;
-		height: 20px;
+		border-radius: 10px;
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+		outline: none;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		font-size: 16px;
+		cursor: text;
+	}
+
+	&__field {
+		padding: 10px;
+		appearance: none;
+		background-color: transparent;
+		border: none;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-family: inherit;
+		font-size: inherit;
+		height: 100%;
+		color: var(--color-text-input);
+
+		&:focus-visible {
+			outline: none;
+		}
+		&:-webkit-autofill::first-line,
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active {
+			transition: background-color 5000s ease-in-out 0s;
+			color: var(--color-text-input);
+			appearance: none;
+			outline: none;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: var(--color-text-input);
+			font-size: inherit;
+			font-family: inherit;
+		}
+	}
+
+	&__icon {
+		color: var(--color-icon);
 		cursor: pointer;
-		z-index: 1;
-		transition: transform 0.3s ease;
-
-		&::after {
-			content: '✕';
-			pointer-events: none;
-			text-shadow: 2px 1px 2px hwb(0 0% 100% / 0.5);
-		}
-
-		&:hover {
-			background-color: rgba(255, 255, 255, 1);
-			animation: rotateBack 0.6s ease-in-out;
-		}
+		padding-inline-end: 25px;
+		width: 45px;
+		height: 45px;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: scale(0.85);
-		}
-		to {
-			opacity: 1;
-			transform: scale(1);
-		}
+	&__label {
+		font-size: 16px;
+		color: var(--color-text-input);
 	}
-}
 
-@keyframes rotateBack {
-	0% {
-		transform: rotate(0deg);
+	&__error {
+		border: 3px solid var(--color-accent);
 	}
-	50% {
-		transform: rotate(45deg);
+
+	&__errorMessage {
+		position: absolute;
+		bottom: -30px;
+		left: 0;
+		font-size: 14px;
+		color: var(--color-accent);
 	}
-	100% {
-		transform: rotate(0deg);
+
+	::placeholder {
+		color: var(--color-text-input);
 	}
 }

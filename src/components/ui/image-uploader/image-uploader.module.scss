@@ -1,4 +1,5 @@
 .photo {
+	overflow: hidden;
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
@@ -22,7 +23,6 @@
 		height: 100%;
 
 		cursor: pointer;
-		overflow: hidden;
 	}
 
 	/* Инпут скрыт */
@@ -72,9 +72,9 @@
 
 	&__textContainer {
 		position: absolute;
-		top: 0%;
-		left: 10%;
+		top: 40%;
 		text-align: center;
+		width: 100%;
 		font-family: var(--metrika);
 		font-size: 18px;
 	}

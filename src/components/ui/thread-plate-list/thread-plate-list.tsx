@@ -16,11 +16,9 @@ export const ThreadPlateListUI: React.FC<ThreadPlateListUIProps> = ({ threads, o
 						</div>
 					))}
 			</div>
-			{onAdd && (
-				<div className={clsx(styles.threads__add)}>
-					<AddButton attachment="Создать тред" onClick={onAdd} />
-				</div>
-			)}
+			<div className={clsx(styles.threads__add)}>
+				<AddButton attachment="Создать тред" onClick={() => {}} />
+			</div>
 		</section>
 	);
 };

@@ -10,6 +10,7 @@ import {
 	ForgotPassword,
 	ResetPassword,
 	Page404,
+	AdventureCreate,
 } from '@pages';
 import { AdventureLayout, AppHeaderUI, AuthLayout, CenterLayout } from '@ui';
 
@@ -78,6 +79,15 @@ export const App: React.FC = () => {
 					element={
 						<ProtectedRoute onlyAuth>
 							<Adventures />
+						</ProtectedRoute>
+					}
+				/>
+
+				<Route
+					path="/create-adventure"
+					element={
+						<ProtectedRoute onlyAuth>
+							<AdventureCreate />
 						</ProtectedRoute>
 					}
 				/>
