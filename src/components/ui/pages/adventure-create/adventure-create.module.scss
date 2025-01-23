@@ -1,0 +1,39 @@
+.adventureForm {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 40px 0;
+	display: grid;
+	gap: 40px;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas:
+		'title title'
+		'name name'
+		'image description'
+		'text text';
+
+	&__title {
+		grid-area: title;
+	}
+
+	&__name {
+		grid-area: name;
+		min-height: var(--input-info-height);
+	}
+
+	&__image {
+		min-width: 350px;
+		aspect-ratio: 1 / 1.1;
+		grid-area: image;
+	}
+
+	&__description {
+		grid-area: description;
+		max-height: 300px;
+		align-self: center;
+	}
+
+	&__text {
+		grid-area: text;
+		min-height: 300px;
+	}
+}

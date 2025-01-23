@@ -371,10 +371,20 @@ export const getImageApi = (id: string) =>
 		},
 	});
 
-export const uploadImageApi = (data: FormData) =>
+export const uploadImageByFileApi = (data: FormData) =>
 	requestWithRefresh<FormData, UploadFileOutputDTO>({
 		method: 'post',
 		url: '/media/upload',
+		data,
+		headers: {
+			'Content-Type': 'multipart/form-data',
+		},
+	});
+
+export const uploadImageByUrlApi = (data: { url: string }) =>
+	requestWithRefresh<{ url: string }, UploadFileOutputDTO>({
+		method: 'post',
+		url: '/media/upload_from_url',
 		data,
 		headers: {
 			'Content-Type': 'multipart/form-data',

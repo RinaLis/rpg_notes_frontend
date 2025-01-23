@@ -1,41 +1,23 @@
-.container {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
+.players {
+	display: grid;
+	min-height: 100%;
+	grid-template-rows: min-content min-content min-content auto min-content;
 	gap: 20px;
 	padding-bottom: 20px;
-}
 
-.master {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
 	&__title {
 		font-family: var(--metrika);
 		font-size: 20px;
 		margin: 0;
 	}
-	// если надо будет стилизовать плашку мастера
-	// &__plate {
-	// }
-}
 
-.heroes {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-
-	&__title {
-		margin: 0;
-		font-family: var(--metrika);
-		font-size: 20px;
-	}
-
-	&__list {
+	&__heroesList {
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
 		gap: 40px;
+		overflow-y: scroll;
 	}
 	// если надо будет стилизовать плашку героя
 	// &__plate {

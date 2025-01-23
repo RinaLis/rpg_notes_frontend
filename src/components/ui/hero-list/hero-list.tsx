@@ -6,33 +6,27 @@ import { AddButton } from '../add-button';
 
 export const HeroListUI: React.FC<HeroListUIProps> = ({ master, heroes, onAdd }) => {
 	return (
-		<section className={clsx(styles.container)}>
-			<div className={clsx(styles.master)}>
-				<h4 className={clsx(styles.master__title)}>Мастер</h4>
-				<div className={clsx(styles.master__plate)}>
-					<HeroPlate playerName={master.name} image={master.avatar} master id={master.id} />
-				</div>
+		<section className={clsx(styles.players)}>
+			<h4 className={clsx(styles.players__title)}>Мастер</h4>
+			<div className={clsx(styles.players__masterPlate)}>
+				<HeroPlate playerName={master.name} image={master.avatar} master id={master.id} />
 			</div>
-			<div className={clsx(styles.heroes)}>
-				<h4 className={clsx(styles.heroes__title)}>Герои</h4>
-				<div className={clsx(styles.heroes__list)}>
-					{heroes.map((hero) => (
-						<div key={hero.id} className={clsx(styles.heroes__plate)}>
-							<HeroPlate
-								playerName={hero.username}
-								heroName={hero.name}
-								image={hero.image}
-								id={hero.id}
-								dead={!hero.is_alive}
-							/>
-						</div>
-					))}
-				</div>
-				{onAdd && (
-					<div className={clsx(styles.heroes__add)}>
-						<AddButton attachment="Добавить игрока" onClick={onAdd} />
+			<h4 className={clsx(styles.players__title)}>Герои</h4>
+			<div className={clsx(styles.players__heroesList)}>
+				{heroes.map((hero) => (
+					<div key={hero.id} className={clsx(styles.heroes__plate)}>
+						<HeroPlate
+							playerName={hero.username}
+							heroName={hero.name}
+							image={hero.image}
+							id={hero.id}
+							dead={!hero.is_alive}
+						/>
 					</div>
-				)}
+				))}
+			</div>
+			<div className={clsx(styles.players__add)}>
+				<AddButton attachment="Добавить игрока" onClick={() => {}} />
 			</div>
 		</section>
 	);

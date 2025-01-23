@@ -12,12 +12,18 @@ export const AdventureCardUI: FC<AdventureCardUIProps> = ({ adventure }) => {
 			<figure className={clsx(styles.card)}>
 				<img
 					className={styles.card__img}
-					src={adventure.image ? adventure.image : baseAdventure}
+					src={
+						adventure.image
+							? `http://45.151.31.138/media/get/?id=${adventure.image}`
+							: baseAdventure
+					}
 					alt={adventure.name}
 				/>
 				<figcaption className={styles.card__body}>
 					<h5 className={styles.card__title}>{adventure.name}</h5>
-					<p className={styles.card__text}>{adventure.description}</p>
+					<textarea className={styles.card__text} disabled>
+						{adventure.description}
+					</textarea>
 				</figcaption>
 			</figure>
 		</Link>

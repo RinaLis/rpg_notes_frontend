@@ -8,8 +8,10 @@ export type InputProps = {
 	placeholder?: string; // Подсказка в поле
 	icon?: React.ReactNode; // Иконка
 	сlassNameCustom?: InputNames;
+	className?: string;
 };
 export enum InputNames {
 	auth = 'auth', // для инпутов авторизации
 	info = 'info', // для инпутов информации
+	textarea = 'textarea', // большие текста
 }

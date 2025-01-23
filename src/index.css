@@ -29,6 +29,7 @@
 	/* размеры элементов */
 	--header-height: 100px;
 	--aside-width: 440px;
+	--input-info-height: 45px;
 
 	/* кастомные свойства шрифтов */
 	line-height: 1.5;

@@ -4,5 +4,5 @@ export type ImageUploaderUIProps = {
 	error: string | null; // Сообщение об ошибке
 	className?: string; // Задаем размеры
 	onFileSelect: (file: File) => void; // Обработчик выбора файла
-	onReset: () => void; // Обработчик сброса изображения
+	onReset: (evt: MouseEvent) => void; // Обработчик сброса изображения
 };

@@ -9,6 +9,7 @@ import { postsSlice } from './slices/posts/posts.slice';
 import { commentsSlice } from './slices/comments/comments.slice';
 import { playersSlice } from './slices/players/players.slice';
 import { heroesSlice } from './slices/heroes/heroes.slice';
+import { imagesSlice } from './slices/images/images.slice';
 
 export const rootReducer = combineSlices(
 	userSlice,
@@ -17,7 +18,8 @@ export const rootReducer = combineSlices(
 	postsSlice,
 	commentsSlice,
 	playersSlice,
-	heroesSlice
+	heroesSlice,
+	imagesSlice
 );
 
 const store = configureStore({

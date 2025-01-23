@@ -1,8 +1,9 @@
 .threads {
-	margin-top: 50px;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	height: 100%;
+	grid-template-rows: auto min-content;
 	gap: 20px;
+	padding-bottom: 20px;
 
 	&__list {
 		display: flex;
@@ -10,11 +11,4 @@
 		align-items: stretch;
 		gap: 40px;
 	}
-	// если надо будет стилизовать плашку героя
-	// &__plate {
-	// }
-	// если надо будет стилизовать кнопку добавления героя
-	// &__add {
-
-	// }
 }
