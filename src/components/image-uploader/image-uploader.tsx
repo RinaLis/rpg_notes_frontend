@@ -35,7 +35,7 @@ export const ImageUploader: FC<{ className: string }> = ({ className }) => {
 		// Отправляем запрос на сервер для загрузки файла
 		dispatch(requestSendImage(formData));
 	};
-	const handleReset = (evt: MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const handleReset = (evt: MouseEvent) => {
 		evt.preventDefault();
 		if (imageId) {
 			dispatch(requestDeleteImage(imageId));

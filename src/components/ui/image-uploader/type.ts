@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, MouseEventHandler } from 'react';
 
 export type ImageUploaderUIProps = {
 	imageUrl: string | null; // URL загруженного изображения
@@ -6,5 +6,5 @@ export type ImageUploaderUIProps = {
 	error: string | null; // Сообщение об ошибке
 	className?: string; // Задаем размеры
 	onFileSelect: (file: File) => void; // Обработчик выбора файла
-	onReset: (evt: MouseEvent<HTMLButtonElement, MouseEvent>) => void; // Обработчик сброса изображения
+	onReset: MouseEventHandler<HTMLButtonElement>; // Обработчик сброса изображения
 };
