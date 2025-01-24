@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
 import { ImageUploaderUI } from '@ui'; // Импорт визуального компонента
 import { useAppDispatch, useAppSelector } from '@store';
 import {
@@ -35,7 +35,7 @@ export const ImageUploader: FC<{ className: string }> = ({ className }) => {
 		// Отправляем запрос на сервер для загрузки файла
 		dispatch(requestSendImage(formData));
 	};
-	const handleReset = (evt: MouseEvent) => {
+	const handleReset = (evt: MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		evt.preventDefault();
 		if (imageId) {
 			dispatch(requestDeleteImage(imageId));
