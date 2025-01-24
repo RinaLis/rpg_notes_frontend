@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
 import { ImageUploaderUI } from '@ui'; // Импорт визуального компонента
 import { useAppDispatch, useAppSelector } from '@store';
 import {
