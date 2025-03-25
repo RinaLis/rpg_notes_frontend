@@ -28,11 +28,17 @@ const initialState: ThreadsState = {
 export const threadsSlice = createSlice({
 	name: threadsSliceConst.name,
 	initialState,
-	reducers: {},
+	reducers: {
+		clearCreatedThread: (sliceState) => {
+			sliceState.createdThread = null;
+		},
+	},
 	selectors: {
 		getThreads: (sliceState) => sliceState.threads,
-		getcurrentThread: (sliceState) => sliceState.currentThread,
+		getCurrentThread: (sliceState) => sliceState.currentThread,
+		getCreatedThread: (sliceState) => sliceState.createdThread,
 		getTreadsIsLoading: (sliceState) => sliceState.isLoading,
+		getThreadError: (sliceState) => sliceState.error,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -117,6 +123,12 @@ export const threadsSlice = createSlice({
 
 export { initialState as threadsInitialState };
 
-export const { getThreads, getcurrentThread, getTreadsIsLoading } = threadsSlice.selectors;
+export const {
+	getThreads,
+	getCurrentThread,
+	getTreadsIsLoading,
+	getCreatedThread,
+	getThreadError,
+} = threadsSlice.selectors;
 
 export default threadsSlice.reducer;

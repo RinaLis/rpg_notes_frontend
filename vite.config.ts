@@ -19,6 +19,7 @@ export default defineConfig({
 			'@utils': '/src/utils',
 			'@const': '/src/utils/constants',
 			'@api': 'src/utils/notes-api.ts',
+			'@validation': '/src/utils/validation.ts',
 			'@services': '/src/services',
 			'@slices': 'src/services/slices',
 			'@store': 'src/services/store.ts',

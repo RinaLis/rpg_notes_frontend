@@ -4,13 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { LoginUI } from '@ui-pages';
 import { useAppDispatch, useAppSelector } from '@store';
-import { requestLoginUser } from 'src/services/slices/user/actions';
 import {
 	isAuthCheckedSelector,
 	userDataSelector,
 	userErrorSelector,
-} from 'src/services/slices/user/user.slice';
-import { schemaLogin } from '../../utils/validation';
+	requestLoginUser,
+} from '@slices';
+import { schemaLogin } from '@validation';
 
 // Типизация формы, основанная на yup-схеме
 type FormValues = yup.InferType<typeof schemaLogin>;

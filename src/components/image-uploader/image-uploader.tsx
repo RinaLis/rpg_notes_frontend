@@ -8,7 +8,7 @@ import {
 	isImageLoadingSelector,
 	requestDeleteImage,
 	requestSendImage,
-} from 'src/services/slices/images';
+} from '@slices';
 
 export const ImageUploader: FC<{ className: string }> = ({ className }) => {
 	const dispatch = useAppDispatch();

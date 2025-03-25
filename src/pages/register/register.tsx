@@ -8,9 +8,9 @@ import {
 	isAuthCheckedSelector,
 	userDataSelector,
 	userErrorSelector,
-} from 'src/services/slices/user/user.slice';
-import { requestRegisterUser } from 'src/services/slices/user/actions';
-import { schemaRegister } from '../../utils/validation';
+	requestRegisterUser,
+} from '@slices';
+import { schemaRegister } from '@validation';
 
 // Типизация формы, основанная на yup-схеме
 type FormValues = yup.InferType<typeof schemaRegister>;

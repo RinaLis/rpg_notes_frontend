@@ -1,9 +1,7 @@
 import { HeroListUI } from '@ui';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@store';
-import { userDataSelector } from 'src/services/slices/user/user.slice';
-import { getCurrentAdventure } from 'src/services/slices/adventures/adventures.slice';
-import { getHeroes } from 'src/services/slices/heroes/heroes.slice';
+import { userDataSelector, getCurrentAdventure, getHeroes } from '@slices';
 
 export const HeroList: React.FC = () => {
 	const location = useLocation();

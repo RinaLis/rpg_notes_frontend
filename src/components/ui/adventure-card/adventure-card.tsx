@@ -21,9 +21,11 @@ export const AdventureCardUI: FC<AdventureCardUIProps> = ({ adventure }) => {
 				/>
 				<figcaption className={styles.card__body}>
 					<h5 className={styles.card__title}>{adventure.name}</h5>
-					<textarea className={styles.card__text} disabled>
-						{adventure.description}
-					</textarea>
+					<textarea
+						className={styles.card__text}
+						defaultValue={adventure.description ? adventure.description : ''}
+						readOnly
+					/>
 				</figcaption>
 			</figure>
 		</Link>

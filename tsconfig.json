@@ -26,6 +26,7 @@
 			"@const": ["src/utils/constants"],
 			"@api": ["src/utils/notes-api.ts"],
 			"@cookie": ["src/utils/cookie.ts"],
+            "@validation": ["src/utils/validation.ts"],
 			"@hooks": ["src/hooks"],
 			"@slices": ["src/services/slices"],
 			"@store": ["src/services/store.ts"],

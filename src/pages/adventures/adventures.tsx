@@ -8,8 +8,7 @@ import {
 	getAdventuresIsLoading,
 	requestUserAdventures,
 } from '@slices';
-import { Preloader } from '@ui';
-import { TOption } from 'src/components/ui/select/types';
+import { Preloader, TOption } from '@ui';
 
 const selectOptions = [
 	{ label: 'Все', value: 'all' },

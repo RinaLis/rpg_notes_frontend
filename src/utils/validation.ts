@@ -90,6 +90,7 @@ export const schemaCreateThread = yup
 	.object({
 		name: yup.string().required('Введите название'),
 		description: yup.string().required('Введите описание'),
+		type: yup.boolean().oneOf([true, false]),
 	})
 	.required();
 

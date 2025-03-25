@@ -4,11 +4,10 @@ import { ForgotPasswordUI } from '@ui-pages';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { isAuthCheckedSelector, userErrorSelector } from 'src/services/slices/user/user.slice';
+import { isAuthCheckedSelector, userErrorSelector, requestSendCode } from '@slices';
 import { useAppDispatch, useAppSelector } from '@store';
-import { requestSendCode } from 'src/services/slices/user/actions';
 import { VerifyCodeType } from '@utils-types';
-import { schemaForgot } from '../../utils/validation';
+import { schemaForgot } from '@validation';
 
 // Типизация формы, основанная на yup-схеме
 type FormValues = yup.InferType<typeof schemaForgot>;

@@ -4,9 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ResetPasswordUI } from '@ui-pages';
 import { useAppDispatch, useAppSelector } from '@store';
-import { isAuthCheckedSelector, userErrorSelector } from 'src/services/slices/user/user.slice';
-import { resetPassword } from 'src/services/slices/user/actions';
-import { schemaReset } from '../../utils/validation';
+import { isAuthCheckedSelector, userErrorSelector, resetPassword } from '@slices';
+import { schemaReset } from '@validation';
 
 // Типизация формы, основанная на yup-схеме
 type FormValues = yup.InferType<typeof schemaReset>;

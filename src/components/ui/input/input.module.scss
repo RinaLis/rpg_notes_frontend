@@ -85,7 +85,7 @@
 .info {
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 40px;
 	font-family: var(--metrika);
 
 	&__container {
@@ -154,8 +154,8 @@
 
 	&__errorMessage {
 		position: absolute;
-		bottom: -30px;
-		left: 0;
+		bottom: -25px;
+		left: 30px;
 		font-size: 14px;
 		color: var(--color-accent);
 	}

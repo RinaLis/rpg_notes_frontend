@@ -72,11 +72,12 @@
 
 	&__textContainer {
 		position: absolute;
-		top: 40%;
+		top: 30%;
 		text-align: center;
 		width: 100%;
 		font-family: var(--metrika);
 		font-size: 18px;
+		color: var(--color-text-button);
 	}
 
 	@keyframes fadeIn {
