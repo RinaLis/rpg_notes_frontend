@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import { ImageUploader } from '@components';
+import { Input, Button, InputNames } from '@ui';
 import { AdventureCreateUIProps } from './type';
-import { InputNames } from '../../input/type';
-import { Input } from '../../input';
-import { Button } from '../../button';
 import stylesCommon from '../common.module.scss';
 import styles from './adventure-create.module.scss';
 

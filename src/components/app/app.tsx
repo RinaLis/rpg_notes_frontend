@@ -11,6 +11,7 @@ import {
 	ResetPassword,
 	Page404,
 	AdventureCreate,
+	ThreadCreate,
 } from '@pages';
 import { AdventureLayout, AppHeaderUI, AuthLayout, CenterLayout } from '@ui';
 
@@ -120,7 +121,7 @@ export const App: React.FC = () => {
 						path="/adventure/:adventure_id/addthread"
 						element={
 							<Modal onClose={closeModal} title="Создать тред">
-								<Invite />
+								<ThreadCreate />
 							</Modal>
 						}
 					/>

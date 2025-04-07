@@ -9,12 +9,16 @@ export const ThreadPlate: React.FC<ThreadPlateProps> = ({ name, image, id }) => 
 	return (
 		<Link
 			className={clsx(styles.plate)}
-			to={`/tread/${id}`} // тут нужен нормальный путь
+			to={`/thread/${id}`} // тут нужен нормальный путь
 			state={{ background: location }}
 		>
 			<div className={styles.plate__picture}>
 				{image ? (
-					<img src={image} alt="картинка треда" className={styles.plate__image} />
+					<img
+						src={`http://45.151.31.138/media/get/?id=${image}`}
+						alt="картинка треда"
+						className={styles.plate__image}
+					/>
 				) : (
 					<img
 						src={defaultAvatarImg}

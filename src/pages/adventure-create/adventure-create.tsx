@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react';
 import { AdventureCreateUI } from '@ui-pages';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import { schemaCreateAdventure } from 'src/utils/validation';
+import { schemaCreateAdventure } from '@validation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
 	getAdventuresIsLoading,
@@ -11,9 +11,10 @@ import {
 	getCreatedAdventure,
 	getAdventureError,
 	clearCreatedAdventure,
+	clearUploadImageId,
+	getUploadImageSelector,
 } from '@slices';
 import { useAppDispatch, useAppSelector } from '@store';
-import { clearUploadImageId, getUploadImageSelector } from 'src/services/slices/images';
 
 type FormValues = yup.InferType<typeof schemaCreateAdventure>;
 

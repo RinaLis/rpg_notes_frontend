@@ -1,8 +1,6 @@
-import { HeroList } from 'src/components/hero-list';
+import { HeroList, ThreadPlateList } from '@components';
 import { Outlet } from 'react-router-dom';
-import { ThreadPlateList } from 'src/components/thread-plate-list';
-import { AsideLayoutUI } from '../aside-layout';
-import { ToggleSectionUI } from '../toggle-section';
+import { AsideLayoutUI, ToggleSectionUI } from '@ui';
 
 export const AdventureLayout: React.FC = () => {
 	return (

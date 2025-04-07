@@ -1,12 +1,11 @@
 import { FC } from 'react';
-import { Input, Button } from '@ui';
+import { Input, InputNames, Button } from '@ui';
 import { Link } from 'react-router-dom';
 
 import eyeInput from '@assets/icons/eyeInput.svg';
 
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
-import { InputNames } from '../../input/type';
 
 interface FormValues {
 	email: string;

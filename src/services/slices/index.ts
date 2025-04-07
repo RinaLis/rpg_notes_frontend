@@ -5,3 +5,4 @@ export * from './posts';
 export * from './comments';
 export * from './players';
 export * from './heroes';
+export * from './images';

@@ -1,12 +1,12 @@
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import { schemaCreateAdventure } from '@validation';
+import { schemaCreateThread } from '@validation';
 import * as yup from 'yup';
 
-type FormValues = yup.InferType<typeof schemaCreateAdventure>;
+type FormValues = yup.InferType<typeof schemaCreateThread>;
 
-export interface AdventureCreateUIProps {
+export type ThreadCreateProps = {
 	onSubmit: (e: React.FormEvent) => void;
 	register: UseFormRegister<FormValues>;
 	errors: FieldErrors<FormValues>;
 	error: string | null;
-}
+};

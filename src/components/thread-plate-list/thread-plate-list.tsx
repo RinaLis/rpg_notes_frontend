@@ -1,11 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@store';
-import { userDataSelector } from 'src/services/slices/user/user.slice';
 
-import { getThreads, getTreadsIsLoading } from 'src/services/slices/threads/threads.slice';
-
-import { getCurrentAdventure } from 'src/services/slices/adventures/adventures.slice';
-import { ThreadPlateListUI } from '../ui/thread-plate-list';
+import { getCurrentAdventure, getThreads, getTreadsIsLoading, userDataSelector } from '@slices';
+import { ThreadPlateListUI } from '@ui';
 
 export const ThreadPlateList: React.FC = () => {
 	const location = useLocation();

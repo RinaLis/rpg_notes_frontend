@@ -1,0 +1,31 @@
+.adventureForm {
+	width: 50vw;
+	display: grid;
+	gap: 20px;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-columns: 128px 1fr;
+	grid-template-areas:
+		'img inputs'
+		'img inputs'
+		'button button';
+
+	&__picture {
+		grid-area: img;
+	}
+	&__image {
+		width: 128px; // что бы был круглый
+		height: 128px;
+		border-radius: 50%;
+	}
+
+	&__text {
+		grid-area: inputs;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	&__button {
+		grid-area: button;
+	}
+}

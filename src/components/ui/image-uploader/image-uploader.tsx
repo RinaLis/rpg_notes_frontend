@@ -25,7 +25,7 @@ export const ImageUploaderUI: React.FC<ImageUploaderUIProps> = ({
 				{isUploading && <p className={styles.photo__status}>Загрузка...</p>}
 				{error && <p className={styles.photo__error}>{error}</p>}
 				{!imageUrl && !isUploading && !error && (
-					<p className={styles.photo__text}>Здесь можно загрузить свое изображение</p>
+					<p className={styles.photo__text}>Загрузить изображение</p>
 				)}
 			</div>
 			<div className={styles.photo__container}>

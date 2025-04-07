@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Input } from '@ui';
+import { Button, Input, InputNames } from '@ui';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from '../common.module.scss';
-import { InputNames } from '../../input/type';
 
 interface FormValues {
 	email: string;

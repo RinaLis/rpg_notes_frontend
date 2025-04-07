@@ -2,18 +2,20 @@ import React, { useEffect } from 'react';
 
 import { Navigate, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@store';
-import { requestGetAdventure } from 'src/services/slices/adventures/actions';
-import { isAuthCheckedSelector, userDataSelector } from 'src/services/slices/user/user.slice';
-import { requestGetHeroesByAdventureAndUser } from 'src/services/slices/heroes/actions';
+
+import { Page404 } from '@pages';
 import {
+	getPlayers,
+	getPlayersIsLoading,
+	requestGetPlayers,
+	requestGetAdventure,
+	requestGetThreadsByAdventure,
+	requestGetHeroesByAdventureAndUser,
+	isAuthCheckedSelector,
+	userDataSelector,
 	getAdventuresIsLoading,
 	getCurrentAdventure,
-} from 'src/services/slices/adventures/adventures.slice';
-
-import { requestGetThreadsByAdventure } from 'src/services/slices/threads/actions';
-import { Page404 } from '@pages';
-import { requestGetPlayers } from 'src/services/slices/players/actions';
-import { getPlayers, getPlayersIsLoading } from 'src/services/slices/players/players.slice';
+} from '@slices';
 
 export const AdventureChecks: React.FC = () => {
 	const location = useLocation();
