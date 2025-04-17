@@ -25,11 +25,16 @@ const initialState: PlayersState = {
 export const playersSlice = createSlice({
 	name: playersSliceConst.name,
 	initialState,
-	reducers: {},
+	reducers: {
+		clearInvitedUser: (sliceState) => {
+			sliceState.invitedUser = null;
+		},
+	},
 	selectors: {
 		getPlayers: (sliceState) => sliceState.players,
 		getInvitedUser: (sliceState) => sliceState.invitedUser,
 		getPlayersIsLoading: (sliceState) => sliceState.isLoading,
+		getPlayersError: (sliceState) => sliceState.error,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -91,6 +96,8 @@ export const playersSlice = createSlice({
 
 export { initialState as playersInitialState };
 
-export const { getPlayers, getInvitedUser, getPlayersIsLoading } = playersSlice.selectors;
+export const { getPlayers, getInvitedUser, getPlayersIsLoading, getPlayersError } =
+	playersSlice.selectors;
+export const { clearInvitedUser } = playersSlice.actions;
 
 export default playersSlice.reducer;

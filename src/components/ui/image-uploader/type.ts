@@ -1,4 +1,4 @@
-import { MouseEvent, MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 
 export type ImageUploaderUIProps = {
 	imageUrl: string | null; // URL загруженного изображения

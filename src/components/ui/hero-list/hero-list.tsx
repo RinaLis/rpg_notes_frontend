@@ -26,7 +26,7 @@ export const HeroListUI: React.FC<HeroListUIProps> = ({ master, heroes, onAdd })
 				))}
 			</div>
 			<div className={clsx(styles.players__add)}>
-				<AddButton attachment="Добавить игрока" onClick={() => {}} />
+				{onAdd && <AddButton attachment="Добавить игрока" onClick={onAdd ?? (() => {})} />}
 			</div>
 		</section>
 	);

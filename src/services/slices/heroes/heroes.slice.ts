@@ -27,10 +27,17 @@ const initialState: HeroesState = {
 export const heroesSlice = createSlice({
 	name: heroesSliceConst.name,
 	initialState,
-	reducers: {},
+	reducers: {
+		clearCreatedHero: (sliceState) => {
+			sliceState.createdHero = null;
+		},
+	},
 	selectors: {
 		getHeroes: (sliceState) => sliceState.heroes,
 		getCurrentHero: (sliceState) => sliceState.currentHero,
+		getCreatedHero: (sliceState) => sliceState.createdHero,
+		getHeroesLoading: (sliceState) => sliceState.isLoading,
+		getHeroesError: (sliceState) => sliceState.error,
 	},
 	extraReducers: (builder) => {
 		builder
@@ -100,6 +107,9 @@ export const heroesSlice = createSlice({
 
 export { initialState as heroesInitialState };
 
-export const { getHeroes, getCurrentHero } = heroesSlice.selectors;
+export const { getHeroes, getCurrentHero, getCreatedHero, getHeroesLoading, getHeroesError } =
+	heroesSlice.selectors;
+
+export const { clearCreatedHero } = heroesSlice.actions;
 
 export default heroesSlice.reducer;

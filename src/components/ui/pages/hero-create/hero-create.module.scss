@@ -1,0 +1,43 @@
+.heroForm {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 40px 40px;
+	display: grid;
+	gap: 40px;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas:
+		'title title'
+		'smallContainer image'
+		'descriptionContainer descriptionContainer';
+
+	&__title {
+		grid-area: title;
+	}
+
+	&__smallContainer {
+		grid-area: smallContainer;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__smallField {
+		min-height: var(--input-info-height);
+	}
+
+	&__image {
+		grid-area: image;
+		margin: 0 auto;
+	}
+
+	&__bigContainer {
+		grid-area: descriptionContainer;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__bigField {
+		align-self: center;
+	}
+}
