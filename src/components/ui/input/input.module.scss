@@ -191,10 +191,11 @@
 	&__field {
 		padding: 10px;
 		appearance: none;
+		resize: none;
+		min-height: 100px;
+		max-height: 500px;
 		background-color: transparent;
 		border: none;
-		overflow: hidden;
-		text-overflow: ellipsis;
 		font-family: inherit;
 		font-size: inherit;
 		height: 100%;

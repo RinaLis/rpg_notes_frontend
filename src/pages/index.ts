@@ -8,3 +8,5 @@ export * from './forgot-password';
 export * from './page-404';
 export * from './adventure-create';
 export * from './thread-create';
+export * from './hero-create';
+export * from './invite-players';

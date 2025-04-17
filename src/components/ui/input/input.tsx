@@ -3,6 +3,13 @@ import clsx from 'clsx';
 import { InputNames, InputProps } from './type';
 import styles from './input.module.scss';
 
+const autoGrow = (element: HTMLTextAreaElement) => {
+	/* eslint-disable-next-line no-param-reassign */
+	element.style.height = '5px';
+	/* eslint-disable-next-line no-param-reassign */
+	element.style.height = `${element.scrollHeight}px`;
+};
+
 export const Input: FC<InputProps> = ({
 	className,
 	label, // Метка инпута
@@ -53,6 +60,11 @@ export const Input: FC<InputProps> = ({
 						}}
 						onChange={(e) => {
 							register.onChange(e); // Обработка события изменения через React Hook Form
+						}}
+						onInput={(e) => {
+							if (e.target instanceof HTMLTextAreaElement) {
+								autoGrow(e.target);
+							}
 						}}
 						onBlur={register.onBlur} // Обработка события потери фокуса через React Hook Form
 						placeholder={placeholder} // Плейсхолдер, если задан

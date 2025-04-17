@@ -1,0 +1,14 @@
+.adventureForm {
+	width: 30vw;
+	min-width: 420px;
+	max-width: 500px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+}

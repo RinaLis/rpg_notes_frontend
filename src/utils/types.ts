@@ -277,6 +277,8 @@ export enum HeroCharacteristicsEnum {
 	Others = 'others',
 }
 
+export type HeroCharacteristic = keyof typeof HeroCharacteristicsEnum;
+
 /** HeroDTO */
 export interface HeroDTO {
 	/** Имя */

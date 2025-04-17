@@ -5,7 +5,6 @@ import * as yup from 'yup';
 import { schemaCreateThread } from '@validation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
-	clearCreatedAdventure,
 	getCurrentAdventure,
 	requestCreateThread,
 	getCreatedThread,
@@ -53,7 +52,7 @@ export const ThreadCreate: FC = () => {
 		if (!isLoading && !responseError && createdThread) {
 			reset();
 			dispatch(clearUploadImageId());
-			dispatch(clearCreatedAdventure());
+			// dispatch(clearCreatedAdventure());
 
 			route(`/adventure/${createdThread.adventure_path_id}/thread/${createdThread.id}`);
 		}

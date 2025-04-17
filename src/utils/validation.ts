@@ -86,6 +86,20 @@ export const schemaCreateAdventure = yup
 	})
 	.required();
 
+export const schemaCreateHero = yup
+	.object({
+		name: yup.string().required('Введите имя'),
+		age: yup.string().max(10),
+		background: yup.string(),
+		class: yup.string(),
+		race: yup.string(),
+		gender: yup.string(),
+		character: yup.string(),
+		description: yup.string(),
+		others: yup.string(),
+	})
+	.required();
+
 export const schemaCreateThread = yup
 	.object({
 		name: yup.string().required('Введите название'),
@@ -122,5 +136,11 @@ export const schemaCreateMessage = yup
 export const schemaUpdateMessage = yup
 	.object({
 		text: yup.string().required('Введите текст'),
+	})
+	.required();
+
+export const schemaInvitePlayer = yup
+	.object({
+		login: yup.string().required('Введите логин игрока'),
 	})
 	.required();

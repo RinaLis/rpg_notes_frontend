@@ -12,6 +12,8 @@ import {
 	Page404,
 	AdventureCreate,
 	ThreadCreate,
+	HeroCreate,
+	InvitePlayers,
 } from '@pages';
 import { AdventureLayout, AppHeaderUI, AuthLayout, CenterLayout } from '@ui';
 
@@ -20,8 +22,6 @@ import styles from './app.module.scss';
 import { AdventureChecks } from '../adventure-checks';
 
 // элементы описывают страницы приложения их необходимо выделить в отдельные компоненты
-const CreateHero = () => <div>элемент описывает экран создания персонажа</div>;
-const Invite = () => <div>элемент описывает содержимое модального окна приглашения персонаж</div>;
 const Main = () => <div>элемент описывает основной контент главной страницы приключения</div>;
 
 export const App: React.FC = () => {
@@ -63,7 +63,7 @@ export const App: React.FC = () => {
 						</ProtectedRoute>
 					}
 				>
-					<Route path="create-hero" element={<CreateHero />} />
+					<Route path="create-hero" element={<HeroCreate />} />
 
 					<Route
 						path=""
@@ -71,7 +71,6 @@ export const App: React.FC = () => {
 						element={<AdventureLayout />}
 					>
 						<Route path="" element={<Main />} />
-						<Route path="invite" element={<Invite />} />
 					</Route>
 				</Route>
 
@@ -113,7 +112,7 @@ export const App: React.FC = () => {
 						path="/adventure/:adventure_id/invite"
 						element={
 							<Modal onClose={closeModal} title="Пригласить игрока">
-								<Invite />
+								<InvitePlayers />
 							</Modal>
 						}
 					/>

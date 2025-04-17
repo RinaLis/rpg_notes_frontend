@@ -68,11 +68,7 @@ export const AdventureChecks: React.FC = () => {
 
 	if (userLoading || adventureLoading || playersIsLoading) {
 		// заменить на загрузку
-		return (
-			<div>
-				Loading...{id}...{userLoading} ... {adventureLoading}
-			</div>
-		);
+		return <div>Loading...</div>;
 	}
 	// если приключение не найдено
 	if (!currentAdventure) {
@@ -83,7 +79,6 @@ export const AdventureChecks: React.FC = () => {
 	if (!currentUser) {
 		return <Page404 text="Пользователь не найден" />;
 	}
-
 	// если герои есть и хоть один из них используется
 	// или если юзер мастер
 	if (usersHeroes?.some((hero) => hero.is_used) || currentAdventure.owner.id === currentUser.id) {
@@ -93,13 +88,13 @@ export const AdventureChecks: React.FC = () => {
 	const isCreateHeroPage = location.pathname.includes('create-hero');
 
 	// если списка для героев нет
-	if (usersHeroes === null) {
-		return <Page404 text="Кажется вас еще не пригласили в это приключение" />; // не работает
+	if (!usersHeroes) {
+		return <Page404 text="Кажется вас еще не пригласили в это приключение" />; // не работаетS
 		// return <Navigate replace to="*" state={{ from: location }} />;  // работает
 	}
 
 	if (!isCreateHeroPage) {
 		return <Navigate replace to={`/adventure/${id}/create-hero`} state={{ from: location }} />;
 	}
-	return null;
+	return <Outlet />;
 };
